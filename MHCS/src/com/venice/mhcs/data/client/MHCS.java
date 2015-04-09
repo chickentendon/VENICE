@@ -39,4 +39,6 @@ public class MHCS implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
+		//Hey guys! ... bitches
+	}
 }
