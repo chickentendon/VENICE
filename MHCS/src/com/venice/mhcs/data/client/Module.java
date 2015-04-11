@@ -10,22 +10,22 @@ import java.lang.String;
 public class Module {
 
 	//Module type - needs ModuleType declaration somewhere
-	private ModuleType type;
+	private static ModuleType type;
 	
 	//Module ID number
-	private String id;
+	private static String id;
 	
 	//Condition of module (damaged/undamaged)
-	private String damage;
+	private static String damage;
 	
 	//X coordinate value of module
-	private String xCoord;
+	private static String xCoord;
 	
 	//Y coordinate value of module
-	private String yCoord;
+	private static String yCoord;
 	
 	//Number of rotations to upright state
-	private String rotations;
+	private static String rotations;
 	
 	
 	//Declares Module type with a string for each type
@@ -82,7 +82,56 @@ public class Module {
 			return moduleString;
 		}
 	
+		/**
+		 * Getter for module ID
+		 * @return id
+		 */
+		public String getID() {
+			return id;
+		}
 		
+		/**
+		 * Getter for module damage
+		 * @return damage
+		 */
+		public String getDamage() {
+			return damage;
+		}
 		
+		/**
+		 * Getter for xCoord
+		 * @return
+		 */
+		public String getX() {
+			return xCoord;
+		}
+		
+		/**
+		 * Getter for yCoord
+		 * @return yCoord
+		 */
+		public String getY() {
+			return yCoord;
+		}
+		
+		/**
+		 * Getter for module type
+		 * @return type
+		 */
+		public ModuleType getModuleType() {
+			return type;
+		}
+		
+		/**
+		 * Getter for module rotations
+		 * @return rotations
+		 */
+		public String getRotation() {
+			return rotations;
+		}
+		
+		public final String moduleString() {
+			return id + " " + damage + " " + rotations + " " + xCoord + ", " + yCoord;
+		}
 	}	
 }
