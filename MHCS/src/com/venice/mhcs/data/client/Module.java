@@ -129,6 +129,12 @@ public class Module {
 		return id + " " + damage + " " + rotations + " " + xCoord + ", " + yCoord;
 	}
 		
+	/**
+	 * Tests module variables to ensure it is consistent with module rules
+	 * @return true if module adheres to rules, false if module breaks a rule
+	 * @throws RuntimeException 
+	 */
+	
 	public boolean isConsistent(){
 		int newId = Integer.parseInt(id);
 		int newXCoord = Integer.parseInt(xCoord);
@@ -144,10 +150,13 @@ public class Module {
 			if(damage.equals("Good") || damage.equals("Moderate") || damage.equals("Bad")){}
 			else throw new RuntimeException(damage + " is not a valid condition");
 				
-			if(newXCoord >= 1 || newXCoord <= 50 || newYCoord >= 1 || newYCoord <= 50){}
+			if(newXCoord >= 1 && newXCoord <= 50){} 
 			else throw new RuntimeException("Coordinates " + xCoord + "," + yCoord + " are out range");
 				
-			if(newRotations == 1 || newRotations == 2){}
+			if(newYCoord >= 1 && newYCoord <= 50){}
+			else throw new RuntimeException("Coordinates " + xCoord + "," + yCoord + " are out range");
+			
+			if(newRotations == 0 || newRotations == 1 || newRotations == 2){}
 			else throw new RuntimeException(rotations + " is not a valid number of rotations");
 				
 			if(type.toString().equals("Plain") || type.toString().equals("Airlock") || type.toString().equals("Plain") 
