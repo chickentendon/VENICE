@@ -27,111 +27,140 @@ public class Module {
 	//Number of rotations to upright state
 	private static String rotations;
 	
+	/**
+	 * Getter for module ID
+	 * @return id
+	*/
+	public String getID() {
+		return id;
+	}
+		
+	/**
+	 * Getter for module damage
+	 * @return damage
+	 */
+	public String getDamage() {
+		return damage;
+	}
+		
+	/**
+	 * Getter for xCoord
+	 * @return
+	 */
+	public String getX() {
+		return xCoord;
+	}
+		
+	/**
+	 * Getter for yCoord
+	 * @return yCoord
+	 */
+	public String getY() {
+		return yCoord;
+	}
+		
+	/**
+	 * Getter for module type
+	 * @return type
+	 */
+	public ModuleType getModuleType() {
+		return type;
+	}
+		
+	/**
+	 * Getter for module rotations
+	 * @return rotations
+	 */
+	public String getRotation() {
+		return rotations;
+	}
 	
-	//Declares Module type with a string for each type
-	public static enum ModuleType {
 	
-		//Plain module
-		PLAIN("Plain");
+	/**
+	 * Setter for ID
+	 * 
+	 */
+	public void setID(String s) {
+		id = s;
+	}
 		
-		//Airlock module
-		AIRLOCK("Airlock");
+	/**
+	 * Setter for module damage
+	 * 
+	 */
+	public void setDamage(String s) {
+		damage = s;
+	}
 		
-		//Control module
-		CONTROL("Control");
+	/**
+	 * Setter for xCoord
+	 * 
+	 */
+	public void setX(String s) {
+		xCoord = s;
+	}
 		
-		//Power module
-		POWER("Power");
+	/**
+	 * Setter for yCoord
+	 * 
+	 */
+	public void setY(String s) {
+		yCoord = s;
+	}
 		
-		//Dormitory module
-		DORMITORY("Dormitory");
+	/**
+	 * Setter for module type
+	 * 
+	 */
+	public void setModuleType(ModuleType mt) {
+		type = mt;
+	}
 		
-		//Canteen module
-		CANTEEN("Canteen");
-		
-		//Gym & relaxation module
-		GYM_RELAXATION("Gym and Relaxation");
-		
-		//Sanitation module
-		SANITATION("Sanitation");
-		
-		//Medical module
-		MEDICAL("Medical");
-		
-		//Food & water module
-		FOOD_WATER("Food and Water");
-		
-		//for string value of module type
-		private String moduleString;
-		
-		/**
-		 * 
-		 * Module type constructor
-		 * @param moduleString - string value associated with each module type
-		 * 
-		 */
-		private ModuleType(String str) {
-			this.moduleString = str;
-		}
-		
-		/**
-		 * definition of toString method
-		 * @return moduleString associated with module type
-		 */
-		public String toString() {
-			return moduleString;
-		}
+	/**
+	 * Setter for module rotations
+	 * 
+	 */
+	public void setRotation(String s) {
+		rotations = s;
+	}
 	
-		/**
-		 * Getter for module ID
-		 * @return id
-		 */
-		public String getID() {
-			return id;
-		}
 		
-		/**
-		 * Getter for module damage
-		 * @return damage
-		 */
-		public String getDamage() {
-			return damage;
-		}
+	public final String moduleString() {
+		return id + " " + damage + " " + rotations + " " + xCoord + ", " + yCoord;
+	}
 		
-		/**
-		 * Getter for xCoord
-		 * @return
-		 */
-		public String getX() {
-			return xCoord;
+	public boolean isConsistent(){
+		int newId = Integer.parseInt(id);
+		int newXCoord = Integer.parseInt(xCoord);
+		int newYCoord = Integer.parseInt(yCoord);
+		int newRotations = Integer.parseInt(rotations);
+		try{
+			if(newId>=1 && newId<=40 || newId>=61 && newId<=80 || newId >= 91 && newId<=100 || 
+			newId>=111 && newId<=120 || newId>=131 && newId<=134 || newId>=141 && newId<= 144 ||
+			newId>=151 && newId<=154 || newId>=161 && newId<=164 || newId>=171 && newId<=174 ||
+			newId>=181 && newId<=184){}
+			else throw new RuntimeException("ID number " + id + " is out of range");
+			
+			if(damage.equals("Good") || damage.equals("Moderate") || damage.equals("Bad")){}
+			else throw new RuntimeException(damage + " is not a valid condition");
+				
+			if(newXCoord >= 1 || newXCoord <= 50 || newYCoord >= 1 || newYCoord <= 50){}
+			else throw new RuntimeException("Coordinates " + xCoord + "," + yCoord + " are out range");
+				
+			if(newRotations == 1 || newRotations == 2){}
+			else throw new RuntimeException(rotations + " is not a valid number of rotations");
+				
+			if(type.toString().equals("Plain") || type.toString().equals("Airlock") || type.toString().equals("Plain") 
+			|| type.toString().equals("Power") || type.toString().equals("Dormitory") || type.toString().equals("Canteen")
+			|| type.toString().equals("Gym and Relaxation") || type.toString().equals("Sanitation") || type.toString().equals("Medical")
+			|| type.toString().equals("Food and Water")){}
+			else throw new RuntimeException("The type of module you have entered is invalid, try again.");
+				
+			return true;
 		}
-		
-		/**
-		 * Getter for yCoord
-		 * @return yCoord
-		 */
-		public String getY() {
-			return yCoord;
+		catch(RuntimeException e){
+			System.out.println(e.getMessage());	
+			return false;
 		}
-		
-		/**
-		 * Getter for module type
-		 * @return type
-		 */
-		public ModuleType getModuleType() {
-			return type;
-		}
-		
-		/**
-		 * Getter for module rotations
-		 * @return rotations
-		 */
-		public String getRotation() {
-			return rotations;
-		}
-		
-		public final String moduleString() {
-			return id + " " + damage + " " + rotations + " " + xCoord + ", " + yCoord;
-		}
-	}	
-}
+	}
+}	
