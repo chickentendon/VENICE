@@ -1,6 +1,9 @@
 package com.venice.mhcs.data.client;
 import java.lang.String;
-import com.google.gwt.json.client.*;
+
+import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONString;
+import com.google.gwt.json.client.JSONValue;
 
 /**
 *
@@ -27,6 +30,18 @@ public class Module {
 	
 	//Number of rotations to upright state
 	private static String rotations;
+	
+	public Module(){
+		
+	}
+	
+	public Module(String id, String damage, String xCoord, String yCoord, String rotations, ModuleType Type){
+		setID(id);
+		setDamage(damage);
+		setX(xCoord);
+		setY(yCoord);
+		setRotation(rotations);
+	}
 	
 	/**
 	 * Getter for module ID
@@ -137,7 +152,7 @@ public class Module {
 		
 		return JO.toString();
 		
-	//	return id + " " + damage + " " + rotations + " " + xCoord + ", " + yCoord;
+		
 	}
 		
 	/**
