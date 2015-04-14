@@ -94,50 +94,88 @@ public class Module {
 	
 	/**
 	 * Setter for ID
-	 * 
+	 * @return true if set was successful, false if set was unsuccessful
 	 */
-	public void setID(String s) {
-		id = s;
+	public boolean setID(String s) {
+		int newId = Integer.parseInt(s);
+		
+		if(newId>=1 && newId<=40 || newId>=61 && newId<=80 || newId >= 91 && newId<=100 || 
+				newId>=111 && newId<=120 || newId>=131 && newId<=134 || newId>=141 && newId<= 144 ||
+				newId>=151 && newId<=154 || newId>=161 && newId<=164 || newId>=171 && newId<=174 ||
+				newId>=181 && newId<=184){
+			id = s;
+			return true;
+		}
+		else return false;
 	}
 		
 	/**
 	 * Setter for module damage
-	 * 
+	 * @return true if successful, false if unsuccessful
 	 */
-	public void setDamage(String s) {
-		damage = s;
+	public boolean setDamage(String s) {
+		if(s.equals("Good") || s.equals("Moderate") || s.equals("Bad")){
+			damage = s;
+			return true;
+		}
+		else return false;
 	}
 		
 	/**
 	 * Setter for xCoord
 	 * 
 	 */
-	public void setX(String s) {
-		xCoord = s;
+	public boolean setX(String s) {
+		int newXCoord = Integer.parseInt(s);
+		
+		if(newXCoord >= 1 && newXCoord <= 50){
+			xCoord = s;
+			return true;
+		} 
+		else return false;
 	}
 		
 	/**
 	 * Setter for yCoord
 	 * 
 	 */
-	public void setY(String s) {
-		yCoord = s;
+	public boolean setY(String s) {
+		int newYCoord = Integer.parseInt(s);
+		
+		if(newYCoord >= 1 && newYCoord <= 50){
+			yCoord = s;
+			return true;
+		}
+		else return false;
 	}
 		
 	/**
 	 * Setter for module type
 	 * 
 	 */
-	public void setModuleType(ModuleType mt) {
-		type = mt;
+	public boolean setModuleType(ModuleType mt) {
+		if(mt.toString().equals("Plain") || mt.toString().equals("Airlock") || mt.toString().equals("Plain") 
+				|| mt.toString().equals("Power") || mt.toString().equals("Dormitory") || mt.toString().equals("Canteen")
+				|| mt.toString().equals("Gym and Relaxation") || mt.toString().equals("Sanitation") || mt.toString().equals("Medical")
+				|| mt.toString().equals("Food and Water")){
+			type = mt;
+			return true;
+		}
+		else return false;
 	}
 		
 	/**
 	 * Setter for module rotations
 	 * 
 	 */
-	public void setRotation(String s) {
-		rotations = s;
+	public boolean setRotation(String s) {
+		int newRotations = Integer.parseInt(s);
+		
+		if(newRotations == 0 || newRotations == 1 || newRotations == 2){
+			rotations = s;
+			return true;
+		}
+		else return false;
 	}
 	
 		
