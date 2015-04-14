@@ -1,5 +1,6 @@
 package com.venice.mhcs.data.client;
 import java.lang.String;
+import com.google.gwt.json.client.*;
 
 /**
 *
@@ -126,7 +127,17 @@ public class Module {
 	
 		
 	public final String moduleString() {
-		return id + " " + damage + " " + rotations + " " + xCoord + ", " + yCoord;
+		JSONObject JO = new JSONObject();
+		
+		JO.put("id", new JSONString(id));
+		JO.put("damage", new JSONString(damage));
+		JO.put("rotations", new JSONString(rotations));
+		JO.put("xCoord", new JSONString(xCoord));
+		JO.put("yCoord", new JSONString(yCoord));
+		
+		return JO.toString();
+		
+	//	return id + " " + damage + " " + rotations + " " + xCoord + ", " + yCoord;
 	}
 		
 	/**

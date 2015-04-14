@@ -36,12 +36,13 @@ public class LocalSorage implements EntryPoint {
 	 * @param key The key in local storage for the module.
 	 * @return String value of the module.
 	 */
-	public String read (String key){
+	public String Read (String key){
 		moduleStore = Storage.getLocalStorageIfSupported();
 		
 		String value = moduleStore.getItem(key);
 		
 		return value;
 	}
+	
 	
 }
