@@ -35,12 +35,13 @@ public class Module {
 		
 	}
 	
-	public Module(String id, String damage, String xCoord, String yCoord, String rotations, ModuleType Type){
+	public Module(String id, String damage, String xCoord, String yCoord, String rotations){
 		setID(id);
 		setDamage(damage);
 		setX(xCoord);
 		setY(yCoord);
 		setRotation(rotations);
+		setModuleType(id);
 	}
 	
 	/**
@@ -153,15 +154,45 @@ public class Module {
 	 * Setter for module type
 	 * 
 	 */
-	public boolean setModuleType(ModuleType mt) {
-		if(mt.toString().equals("Plain") || mt.toString().equals("Airlock") || mt.toString().equals("Plain") 
-				|| mt.toString().equals("Power") || mt.toString().equals("Dormitory") || mt.toString().equals("Canteen")
-				|| mt.toString().equals("Gym and Relaxation") || mt.toString().equals("Sanitation") || mt.toString().equals("Medical")
-				|| mt.toString().equals("Food and Water")){
-			type = mt;
-			return true;
+	public boolean setModuleType(String Id) {
+		boolean rbool = true;
+		int IdNum = Integer.parseInt(Id);
+		
+		if (IdNum >= 0 && IdNum <= 40){
+			type = ModuleType.PLAIN; 
 		}
-		else return false;
+		else if(IdNum >= 61 && IdNum <= 80){
+			type = ModuleType.DORMITORY;
+		}
+		else if(IdNum >= 91 && IdNum <= 100){
+			type = ModuleType.SANITATION;
+		}
+		else if(IdNum >= 111 && IdNum <= 120){
+			type = ModuleType.FOOD_WATER;
+		}
+		else if(IdNum >= 131 && IdNum <= 134){
+			type = ModuleType.GYM_RELAXATION;
+		}
+		else if(IdNum >= 141 && IdNum <= 144){
+			type = ModuleType.CANTEEN;
+		}
+		else if(IdNum >= 151 && IdNum <= 154){
+			type = ModuleType.POWER;
+		}
+		else if(IdNum >= 161 && IdNum <= 164){
+			type = ModuleType.CONTROL;
+		}
+		else if(IdNum >= 171 && IdNum <= 174){
+			type = ModuleType.AIRLOCK;
+		}
+		else if(IdNum >= 181 && IdNum <= 184){
+			type = ModuleType.MEDICAL;
+		}
+		else{
+			rbool = false;
+		}
+		
+			return rbool;
 	}
 		
 	/**
