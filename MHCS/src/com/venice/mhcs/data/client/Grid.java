@@ -10,7 +10,7 @@ public class Grid {
 	{
 		length = GridLength;
 		height = GridHeight;
-		grid = new Object[GridHeight][GridLength];
+		grid = new Cell[GridHeight][GridLength];
 	}
 	/**
 	 * Constructor called when no dimensions given.
@@ -19,7 +19,7 @@ public class Grid {
 	{
 		length = 100;
 		height = 50;
-		grid = new Object[height][length];
+		grid = new Cell[height][length];
 	}
 	
 	/**
@@ -46,9 +46,9 @@ public class Grid {
 	 * @param ycoord
 	 * @return object 
 	 */
-	public Object getItem(int xcoord, int ycoord)
+	public Cell getItem(int xcoord, int ycoord)
 	{
-		Object module;
+		Cell module;
 		if(xcoord < length && xcoord >= 1 && ycoord < height && ycoord >= 1)
 		{
 			module = grid[xcoord - 1][ycoord - 1];
@@ -67,12 +67,13 @@ public class Grid {
 	 * @param module
 	 * @return boolean 
 	 */
-	public boolean setItem(int xcoord, int ycoord, Object module)			   
+	public boolean setItem(int xcoord, int ycoord, Module module)			   
 	{
 		boolean result;
+		Cell cell = new Cell(module);
 		if(xcoord < length && xcoord >= 1 && ycoord < height && ycoord >= 1)
 		{
-			grid[xcoord - 1][ycoord - 1] = module;
+			grid[xcoord - 1][ycoord - 1] = cell;
 			result = true;
 		}
 		else
@@ -81,6 +82,23 @@ public class Grid {
 		}
 		return result;
 	}
+	
+	public boolean removeItem(int xcoord, int ycoord)			   
+	{
+		boolean result;
+		if(xcoord < length && xcoord >= 1 && ycoord < height && ycoord >= 1)
+		{
+			grid[xcoord - 1][ycoord - 1] = null;
+			result = true;
+		}
+		else
+		{
+			result = false;
+		}
+		return result;
+	}
+	
+	
 	private int length, height;
-	private Object[][] grid;
+	private Cell[][] grid;
 }
