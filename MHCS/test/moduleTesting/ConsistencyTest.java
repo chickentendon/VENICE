@@ -51,5 +51,46 @@ public class ConsistencyTest {
 
 		assertFalse(m3.isConsistent());
 	}
-
+	
+	@Test
+	public void illegalxCoordModule(){
+		Module m3 = new Module();
+		
+		m3.setID("40");
+		m3.setDamage("Good");
+		m3.setModuleType(ModuleType.PLAIN);
+		m3.setRotation("2");
+		m3.setX("0");
+		m3.setY("13");
+		
+		assertFalse(m3.isConsistent());
+	}
+	
+	@Test
+	public void illegalyCoordModule(){
+		Module m3 = new Module();
+		
+		m3.setID("40");
+		m3.setDamage("Good");
+		m3.setModuleType(ModuleType.PLAIN);
+		m3.setRotation("2");
+		m3.setX("31");
+		m3.setY("0");
+		
+		assertFalse(m3.isConsistent());
+	}
+	
+	@Test
+	public void illegalRotationsModule(){
+		Module m3 = new Module();
+		
+		m3.setID("40");
+		m3.setDamage("Good");
+		m3.setModuleType(ModuleType.PLAIN);
+		m3.setRotation("3");
+		m3.setX("31");
+		m3.setY("13");
+		
+		assertFalse(m3.isConsistent());
+	}
 }
