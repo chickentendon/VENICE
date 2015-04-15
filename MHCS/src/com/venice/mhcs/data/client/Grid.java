@@ -131,7 +131,16 @@ public class Grid {
 	
 	public boolean isTerrain(int xcoord, int ycoord)
 	{
-		return grid[xcoord - 1][ycoord - 1].isTerrain();
+		boolean result;
+		if(grid[xcoord - 1][ycoord - 1] != null)
+		{
+			result = grid[xcoord - 1][ycoord - 1].isTerrain();
+		}
+		else
+		{
+			result = false;
+		}
+		return result;
 	}
 	
 	public void addTerrain(int xcoord, int ycoord)
