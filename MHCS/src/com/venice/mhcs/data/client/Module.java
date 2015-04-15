@@ -4,6 +4,7 @@ import java.lang.String;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONString;
 import com.google.gwt.json.client.JSONValue;
+import com.google.gwt.user.client.Window;
 
 /**
 *
@@ -36,12 +37,23 @@ public class Module {
 	}
 	
 	public Module(String id, String damage, String xCoord, String yCoord, String rotations){
-		setID(id);
-		setDamage(damage);
-		setX(xCoord);
-		setY(yCoord);
-		setRotation(rotations);
-		setModuleType(id);
+		if(setID(id)) setID(id);
+		else Window.alert("Invalid ID, Please Try Again");
+		
+		if(setDamage(damage)) setDamage(damage);
+		else Window.alert("Invalid Damage, Please Try Again");
+		
+		if(setX(xCoord)) setX(xCoord);
+		else Window.alert("Invalid X Coordinate, Please Try Again");
+		
+		if(setY(yCoord)) setY(yCoord);
+		else Window.alert("Invalid Y Coordinate, Please Try Again");
+		
+		if(setRotation(rotations)) setRotation(rotations);
+		else Window.alert("Invalid amount of Rotations, Please Try Again");
+		
+		if(setModuleType(id)) setModuleType(id);
+		else Window.alert("Invalid Module Type, Please Try Again");
 	}
 	
 	/**
@@ -115,7 +127,7 @@ public class Module {
 	 * @return true if successful, false if unsuccessful
 	 */
 	public boolean setDamage(String s) {
-		if(s.equals("Good") || s.equals("Moderate") || s.equals("Bad")){
+		if(s.equals("Undamaged") || s.equals("Damaged") || s.equals("Uncertain")){
 			damage = s;
 			return true;
 		}
@@ -242,7 +254,7 @@ public class Module {
 			newId>=181 && newId<=184){}
 			else throw new RuntimeException("ID number " + id + " is out of range");
 			
-			if(damage.equals("Good") || damage.equals("Moderate") || damage.equals("Bad")){}
+			if(damage.equals("Undamaged") || damage.equals("Damaged") || damage.equals("Uncertain")){}
 			else throw new RuntimeException(damage + " is not a valid condition");
 				
 			if(newXCoord >= 1 && newXCoord <= 100){} 
