@@ -8,7 +8,7 @@ import com.google.gwt.json.client.JSONValue;
 /**
 *
 *
-*@author Max Ronning
+*@author Max Ronning, Nathan Gunnarson, Thomas Geeseman
 *
 */
 public class Module {
@@ -129,7 +129,7 @@ public class Module {
 	public boolean setX(String s) {
 		int newXCoord = Integer.parseInt(s);
 		
-		if(newXCoord >= 1 && newXCoord <= 50){
+		if(newXCoord >= 1 && newXCoord <= 100){
 			xCoord = s;
 			return true;
 		} 
@@ -245,7 +245,7 @@ public class Module {
 			if(damage.equals("Good") || damage.equals("Moderate") || damage.equals("Bad")){}
 			else throw new RuntimeException(damage + " is not a valid condition");
 				
-			if(newXCoord >= 1 && newXCoord <= 50){} 
+			if(newXCoord >= 1 && newXCoord <= 100){} 
 			else throw new RuntimeException("Coordinates " + xCoord + "," + yCoord + " are out range");
 				
 			if(newYCoord >= 1 && newYCoord <= 50){}
