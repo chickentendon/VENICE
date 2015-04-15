@@ -21,6 +21,8 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.StackLayoutPanel;
+import com.google.gwt.user.client.ui.TabBar;
+import com.google.gwt.user.client.ui.TabPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -42,10 +44,26 @@ public class MHCS implements EntryPoint {
 	private final GreetingServiceAsync greetingService = GWT
 			.create(GreetingService.class);
 
+    public void layoutInit () {
+    	
+    }
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
+		// Create a tab panel with three tabs, each of which displays a different
+	    // piece of text.
+	    TabBar tb = new TabBar();
+	    tb.addTab("Login");
+	    tb.addTab("Module Log");
+	    tb.addTab("Habitat Config");
+	    
+	    // Show the 'bar' tab initially.
+	    tb.selectTab(1);
+
+	    // Add it to the root panel.
+	    RootPanel.get().add(tb);
+	    
 
 	}
 }
