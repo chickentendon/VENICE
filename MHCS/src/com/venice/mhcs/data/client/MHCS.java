@@ -18,6 +18,39 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
+/**
+ * Entry point classes define <code>onModuleLoad()</code>.
+ */
+public class MHCS implements EntryPoint {
+	/**
+	 * The message displayed to the user when the server cannot be reached or
+	 * returns an error.
+	 */
+	private static final String SERVER_ERROR = "An error occurred while "
+			+ "attempting to contact the server. Please check your network "
+			+ "connection and try again.";
+
+	/**
+	 * Create a remote service proxy to talk to the server-side Greeting service.
+	 */
+	private final GreetingServiceAsync greetingService = GWT
+			.create(GreetingService.class);
+	
+	
+          
+
+	/**
+	 * This is the entry point method.
+	 */
+	public void onModuleLoad() {
+		//Declaration of Module Logging panel elements
+		
+		Panel modPanel = new FlowPanel();
+		Panel attribPanel = new FlowPanel();
+		DefaultTextBox idNum = new DefaultTextBox("Module ID");
+		idNum.setStylePrimaryName("textBoxMargin");
+		DefaultTextBox x = new DefaultTextBox("X");
+		x.setStylePrimaryName("textBoxMargin");
 		DefaultTextBox y = new DefaultTextBox("Y");
 		y.setStylePrimaryName("textBoxMargin");
 		
