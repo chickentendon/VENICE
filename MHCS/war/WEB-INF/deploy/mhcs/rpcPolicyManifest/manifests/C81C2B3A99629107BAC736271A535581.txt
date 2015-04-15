@@ -1,0 +1,2 @@
+serviceClass: com.venice.mhcs.data.client.GreetingService
+path: DE05732B65EB1C846D6AAC4DECDD84FF.gwt.rpc
