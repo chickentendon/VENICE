@@ -73,8 +73,18 @@ public class Grid {
 		Cell cell = new Cell(module);
 		if(xcoord < length && xcoord >= 1 && ycoord < height && ycoord >= 1)
 		{
-			grid[xcoord - 1][ycoord - 1] = cell;
-			result = true;
+			if(grid[xcoord - 1][ycoord - 1] == null)
+			{
+				grid[xcoord - 1][ycoord - 1] = cell;
+				result = true;
+			}
+			else
+			{
+				Cell oldCell = grid[xcoord - 1][ycoord - 1];
+				cell.cellOverwrite(oldCell);
+				grid[xcoord - 1][ycoord - 1] = cell;
+				result = true;
+			}
 		}
 		else
 		{
@@ -88,7 +98,14 @@ public class Grid {
 		boolean result;
 		if(xcoord < length && xcoord >= 1 && ycoord < height && ycoord >= 1)
 		{
-			grid[xcoord - 1][ycoord - 1] = null;
+			if(grid[xcoord - 1][ycoord-1].isTerrain())
+			{
+				grid[xcoord - 1][ycoord - 1].clear();
+			}
+			else
+			{
+				grid[xcoord - 1][ycoord - 1] = null;
+			}
 			result = true;
 		}
 		else
@@ -96,6 +113,26 @@ public class Grid {
 			result = false;
 		}
 		return result;
+	}
+	
+	public void addArray(Module[] modules)
+	{
+		int size = modules.length;
+		for(int i = 0; i < size; i++)
+		{
+			Module curModule = modules[i];
+			Cell curCell = new Cell(curModule);
+			int modX = (int) Integer.valueOf(curModule.getX());
+			int modY = (int) Integer.valueOf(curModule.getY());
+			
+			grid [modX - 1][modY - 1] = curCell;
+		}
+	}
+	
+	//TODO DISTANCE METHOD
+	public int distance(int xCoord1, int yCoord1, int xCoord2, int yCoord2)
+	{
+		return 0;
 	}
 	
 	
