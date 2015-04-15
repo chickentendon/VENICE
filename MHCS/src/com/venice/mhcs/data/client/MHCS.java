@@ -10,6 +10,8 @@ import com.google.gwt.dom.client.SelectElement;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FocusListener;
 import com.google.gwt.user.client.ui.HTML;
@@ -43,6 +45,9 @@ public class MHCS implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
+		
+		LocalStorage myStorage = new LocalStorage();
+		
 		//Declaration of Module Logging panel elements
 		
 		Panel modPanel = new FlowPanel();
@@ -102,6 +107,24 @@ public class MHCS implements EntryPoint {
 		
 		//Declaration of submit button to add modules to list
 		Button submit = new Button("Submit");
+		
+		submit.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event){
+				String ID = idNum.getText();
+				String X = x.getText();
+				String Y = y.getText();
+				String rotation = rotate.getItemText(rotate.getSelectedIndex());
+				String dam = damage.getItemText(damage.getSelectedIndex());
+				Module newModule = new Module(ID,dam,X,Y,rotation);
+				
+				if(newModule.isConsistent()){
+					myStorage.Store(newModule);
+				}
+				else{}
+				
+			}
+		});
+		
 		submit.setStylePrimaryName("buttonMargin");
 		
 		//Adding panel elements to Module Logging panel
