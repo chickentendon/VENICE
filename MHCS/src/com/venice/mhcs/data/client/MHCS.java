@@ -126,7 +126,6 @@ import com.google.gwt.user.client.ui.TextBox;
 
 		@Override
 		public void onLostFocus(com.google.gwt.user.client.ui.Widget sender) {
-			this.setText(defaultText);
 			
 		} 
 
