@@ -1,7 +1,7 @@
 package com.venice.mhcs.data.client;
 
 import apple.laf.JRSUIConstants.Widget;
-
+import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Panel;
 import com.venice.mhcs.data.shared.FieldVerifier;
@@ -65,21 +65,29 @@ public class MHCS implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		//Declaration of Module Logging panel elements
+		
 		Panel modPanel = new FlowPanel();
+		Panel attribPanel = new FlowPanel();
 		DefaultTextBox idNum = new DefaultTextBox("Module ID");
+		idNum.setStylePrimaryName("textBoxMargin");
 		DefaultTextBox x = new DefaultTextBox("X");
+		x.setStylePrimaryName("textBoxMargin");
 		DefaultTextBox y = new DefaultTextBox("Y");
+		y.setStylePrimaryName("textBoxMargin");
 		
 		//Set max number of characters allowed
 		//Also, set textbox width to reasonable size
 		idNum.setMaxLength(3);
 		idNum.setVisibleLength(9);
+		idNum.setAlignment(TextAlignment.CENTER);
 		
 		x.setMaxLength(3);
 		x.setVisibleLength(3);
+		x.setAlignment(TextAlignment.CENTER);
 		
 		y.setMaxLength(3);
 		y.setVisibleLength(3);
+		y.setAlignment(TextAlignment.CENTER);
 		
 		//Declaring rotations ListBox and adding choices
 		final ListBox rotate = new ListBox();
@@ -87,6 +95,7 @@ public class MHCS implements EntryPoint {
 		rotate.addItem("None");
 		rotate.addItem("1");
 		rotate.addItem("2");
+		rotate.setStylePrimaryName("listBoxMargin");
 		//Change handler to disable default "Rotations" value after a selection is made
 		rotate.addChangeHandler(new ChangeHandler() {
 	        public void onChange(ChangeEvent changeEvent) {
@@ -98,11 +107,11 @@ public class MHCS implements EntryPoint {
 		
 		//Declaring damage ListBox and adding choices
 		final ListBox damage = new ListBox();
-		damage.addItem("Damage");
-		damage.addItem("None");
-		damage.addItem("Minor");
-		damage.addItem("Moderate");
-		damage.addItem("Severe");
+		damage.addItem("Condition");
+		damage.addItem("Damaged");
+		damage.addItem("Undamaged");
+		damage.addItem("Uncertain");
+		damage.setStylePrimaryName("listBoxMargin");
 		//Change handler to disable default "Damage" value after a selection is made
 		damage.addChangeHandler(new ChangeHandler() {
 	        public void onChange(ChangeEvent changeEvent) {
@@ -114,22 +123,24 @@ public class MHCS implements EntryPoint {
 		
 		//Declaration of submit button to add modules to list
 		Button submit = new Button("Submit");
+		submit.setStylePrimaryName("buttonMargin");
 		
 		//Adding panel elements to Module Logging panel
-		modPanel.add(idNum);
-		modPanel.add(x);
-		modPanel.add(y);
-		modPanel.add(rotate);
-		modPanel.add(damage);
-		modPanel.add(submit);
-		
+		attribPanel.add(idNum);
+		attribPanel.add(x);
+		attribPanel.add(y);
+		attribPanel.add(rotate);
+		attribPanel.add(damage);
+		attribPanel.add(submit);
+		attribPanel.setStylePrimaryName("panelMargin");
+		//add characteristic
+		modPanel.add(attribPanel);
 		// Create a three-item tab panel, with the tab area 1.5em tall.
 		TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
 		p.add(new HTML("Login"), "Login");
 		p.add(modPanel, "Module Logging");
 		p.add(new HTML("Habitat Config"), "Habitat Config");
-		//p.add(modPanel, "Module Logging");
-		
+
 		
 		// Attach the LayoutPanel to the RootLayoutPanel. The latter will listen for
 	    // resize events on the window to ensure that its children are informed of
