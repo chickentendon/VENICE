@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.eclipse.jetty.util.ajax.JSON;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONString;
@@ -17,6 +18,7 @@ public class LocalStorage implements EntryPoint {
 	
 	private Storage moduleStore = null;
 	
+	
 	@Override
 	public void onModuleLoad() {
 		// TODO Auto-generated method stub
@@ -24,14 +26,14 @@ public class LocalStorage implements EntryPoint {
 	}
 	
 	
-	/**	Takes a module and stores into local storage, giving it the key Module + ID.
+	/**	Takes a module and stores into local storage, giving it the key venice + ID.
 	 * 
 	 * @param module The module that is to be Stored
 	 */
 	public void Store(Module module){
 		moduleStore = Storage.getLocalStorageIfSupported();
 	
-		String key ="module" + module.getID();
+		String key ="venice" + module.getID();
 		String Mvalue = module.moduleString();
 	 
 		
@@ -89,12 +91,16 @@ public class LocalStorage implements EntryPoint {
 	public ArrayList<Module> getModuleList(){
 		
 		ArrayList<Module> moduleList = new ArrayList<Module>();
+		Module tempModule = new Module();
 		
 		for (int i = 1; i < 185; i++) {
-			
+			if (Read("venice" + i)!= null){
+				tempModule = toModule("venice" + i);
+				moduleList.add(tempModule);
+			}
 		}
 		
-		return null;
+		return moduleList;
 	}
 	
 	

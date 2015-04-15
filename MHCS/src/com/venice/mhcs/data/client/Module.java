@@ -14,22 +14,22 @@ import com.google.gwt.json.client.JSONValue;
 public class Module {
 
 	//Module type - needs ModuleType declaration somewhere
-	private static ModuleType type;
+	private  ModuleType type;
 	
 	//Module ID number
-	private static String id;
+	private  String id;
 	
 	//Condition of module (damaged/undamaged)
-	private static String damage;
+	private  String damage;
 	
 	//X coordinate value of module
-	private static String xCoord;
+	private  String xCoord;
 	
 	//Y coordinate value of module
-	private static String yCoord;
+	private  String yCoord;
 	
 	//Number of rotations to upright state
-	private static String rotations;
+	private  String rotations;
 	
 	public Module(){
 		
@@ -210,7 +210,7 @@ public class Module {
 	}
 	
 		
-	public final String moduleString() {
+	public String moduleString() {
 		JSONObject JO = new JSONObject();
 		
 		JO.put("id", new JSONString(id));
