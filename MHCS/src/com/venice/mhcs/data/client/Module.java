@@ -1,6 +1,10 @@
 package com.venice.mhcs.data.client;
 import java.lang.String;
 
+import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONString;
+import com.google.gwt.json.client.JSONValue;
+
 /**
 *
 *
@@ -10,22 +14,35 @@ import java.lang.String;
 public class Module {
 
 	//Module type - needs ModuleType declaration somewhere
-	private static ModuleType type;
+	private  ModuleType type;
 	
 	//Module ID number
-	private static String id;
+	private  String id;
 	
 	//Condition of module (damaged/undamaged)
-	private static String damage;
+	private  String damage;
 	
 	//X coordinate value of module
-	private static String xCoord;
+	private  String xCoord;
 	
 	//Y coordinate value of module
-	private static String yCoord;
+	private  String yCoord;
 	
 	//Number of rotations to upright state
-	private static String rotations;
+	private  String rotations;
+	
+	public Module(){
+		
+	}
+	
+	public Module(String id, String damage, String xCoord, String yCoord, String rotations){
+		setID(id);
+		setDamage(damage);
+		setX(xCoord);
+		setY(yCoord);
+		setRotation(rotations);
+		setModuleType(id);
+	}
 	
 	/**
 	 * Getter for module ID
@@ -78,55 +95,133 @@ public class Module {
 	
 	/**
 	 * Setter for ID
-	 * 
+	 * @return true if set was successful, false if set was unsuccessful
 	 */
-	public void setID(String s) {
-		id = s;
+	public boolean setID(String s) {
+		int newId = Integer.parseInt(s);
+		
+		if(newId>=1 && newId<=40 || newId>=61 && newId<=80 || newId >= 91 && newId<=100 || 
+				newId>=111 && newId<=120 || newId>=131 && newId<=134 || newId>=141 && newId<= 144 ||
+				newId>=151 && newId<=154 || newId>=161 && newId<=164 || newId>=171 && newId<=174 ||
+				newId>=181 && newId<=184){
+			id = s;
+			return true;
+		}
+		else return false;
 	}
 		
 	/**
 	 * Setter for module damage
-	 * 
+	 * @return true if successful, false if unsuccessful
 	 */
-	public void setDamage(String s) {
-		damage = s;
+	public boolean setDamage(String s) {
+		if(s.equals("Good") || s.equals("Moderate") || s.equals("Bad")){
+			damage = s;
+			return true;
+		}
+		else return false;
 	}
 		
 	/**
 	 * Setter for xCoord
 	 * 
 	 */
-	public void setX(String s) {
-		xCoord = s;
+	public boolean setX(String s) {
+		int newXCoord = Integer.parseInt(s);
+		
+		if(newXCoord >= 1 && newXCoord <= 50){
+			xCoord = s;
+			return true;
+		} 
+		else return false;
 	}
 		
 	/**
 	 * Setter for yCoord
 	 * 
 	 */
-	public void setY(String s) {
-		yCoord = s;
+	public boolean setY(String s) {
+		int newYCoord = Integer.parseInt(s);
+		
+		if(newYCoord >= 1 && newYCoord <= 50){
+			yCoord = s;
+			return true;
+		}
+		else return false;
 	}
 		
 	/**
 	 * Setter for module type
 	 * 
 	 */
-	public void setModuleType(ModuleType mt) {
-		type = mt;
+	public boolean setModuleType(String Id) {
+		boolean rbool = true;
+		int IdNum = Integer.parseInt(Id);
+		
+		if (IdNum >= 0 && IdNum <= 40){
+			type = ModuleType.PLAIN; 
+		}
+		else if(IdNum >= 61 && IdNum <= 80){
+			type = ModuleType.DORMITORY;
+		}
+		else if(IdNum >= 91 && IdNum <= 100){
+			type = ModuleType.SANITATION;
+		}
+		else if(IdNum >= 111 && IdNum <= 120){
+			type = ModuleType.FOOD_WATER;
+		}
+		else if(IdNum >= 131 && IdNum <= 134){
+			type = ModuleType.GYM_RELAXATION;
+		}
+		else if(IdNum >= 141 && IdNum <= 144){
+			type = ModuleType.CANTEEN;
+		}
+		else if(IdNum >= 151 && IdNum <= 154){
+			type = ModuleType.POWER;
+		}
+		else if(IdNum >= 161 && IdNum <= 164){
+			type = ModuleType.CONTROL;
+		}
+		else if(IdNum >= 171 && IdNum <= 174){
+			type = ModuleType.AIRLOCK;
+		}
+		else if(IdNum >= 181 && IdNum <= 184){
+			type = ModuleType.MEDICAL;
+		}
+		else{
+			rbool = false;
+		}
+		
+			return rbool;
 	}
 		
 	/**
 	 * Setter for module rotations
 	 * 
 	 */
-	public void setRotation(String s) {
-		rotations = s;
+	public boolean setRotation(String s) {
+		int newRotations = Integer.parseInt(s);
+		
+		if(newRotations == 0 || newRotations == 1 || newRotations == 2){
+			rotations = s;
+			return true;
+		}
+		else return false;
 	}
 	
 		
-	public final String moduleString() {
-		return id + " " + damage + " " + rotations + " " + xCoord + ", " + yCoord;
+	public String moduleString() {
+		JSONObject JO = new JSONObject();
+		
+		JO.put("id", new JSONString(id));
+		JO.put("damage", new JSONString(damage));
+		JO.put("rotations", new JSONString(rotations));
+		JO.put("xCoord", new JSONString(xCoord));
+		JO.put("yCoord", new JSONString(yCoord));
+		
+		return JO.toString();
+		
+		
 	}
 		
 	/**
