@@ -159,7 +159,6 @@ public class MHCS implements EntryPoint {
 
 		@Override
 		public void onLostFocus(com.google.gwt.user.client.ui.Widget sender) {
-			this.setText(defaultText);
 			
 		} 
 
