@@ -129,6 +129,43 @@ public class Grid {
 		}
 	}
 	
+	public boolean isTerrain(int xcoord, int ycoord)
+	{
+		return grid[xcoord - 1][ycoord - 1].isTerrain();
+	}
+	
+	public void addTerrain(int xcoord, int ycoord)
+	{
+		if(grid[xcoord - 1][ycoord - 1] != null)
+		{
+			grid[xcoord - 1][ycoord - 1].setTerrain(true);
+		}
+		else
+		{
+			grid[xcoord - 1][ycoord - 1] = new Cell();
+		}
+	}
+	
+	public boolean removeTerrain(int xcoord, int ycoord)
+	{
+		boolean result;
+		if(grid[xcoord - 1][ycoord - 1] == null)
+		{
+			result = false;
+		}
+		else if(grid[xcoord - 1][ycoord - 1].getID().equals("N/A"))
+		{
+			grid[xcoord - 1][ycoord - 1] = null;
+			result = true;
+		}
+		else
+		{
+			grid[xcoord - 1][ycoord - 1].setTerrain(false);
+			result = true;
+		}
+		return result;
+	}
+	
 	//TODO DISTANCE METHOD
 	public int distance(int xCoord1, int yCoord1, int xCoord2, int yCoord2)
 	{

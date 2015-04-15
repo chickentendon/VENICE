@@ -44,8 +44,10 @@ public class Cell
 		return terrain;
 	}
 	
-	
-	
+	public void setTerrain(boolean value)
+	{
+		terrain = value;
+	}
 	
 	private String type;
 	private String ID;
