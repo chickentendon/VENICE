@@ -10,20 +10,23 @@ import com.google.gwt.user.client.ui.ScrollPanel;
 
 public class GUIComponets {
 	private ScrollPanel ModulePanel = new ScrollPanel(); 
+	private ScrollPanel ModulePanelReset = new ScrollPanel();
 	private FlexTable modtable = new FlexTable();
 	
-	public ScrollPanel getModulePanel(){
+	public FlexTable getModTable(){
 		
-		return ModulePanel;
+		return modtable;
 	}
 	
 	public ScrollPanel getScrollPanel(){
 		
 		return ModulePanel;
 	}
-	
+	public void resetPanel(){
+		ModulePanel = ModulePanelReset;
+	}
 	public void updatePanel(ArrayList<Module> modList){
-		Window.alert("updatePanel");
+		
 		ScrollPanel tempPanel = new ScrollPanel();
 		String tempID = new String();
 		String tempDamage = new String();
@@ -32,16 +35,18 @@ public class GUIComponets {
 		String tempRotation = new String();
 		String tempType = new String();
 		
+		//modtable.clear();
 		
 		modtable.setText(0, 0, "ID Number");
 		modtable.setText(0, 1, "Type");
-		modtable.setText(0, 2, "Condition");
-		modtable.setText(0, 3, "X Coordinate");
-		modtable.setText(0, 4, "Y Coordinate");
-		modtable.setText(0, 5, "Rotations");
+		modtable.setText(0, 2, "X-Coordinate");
+		modtable.setText(0, 3, "Y-Coordinate");
+		modtable.setText(0, 4, "Rotations");
+		modtable.setText(0, 5, "Condition");
 		
 		for (int i = 0; i < modList.size(); i++){
 			int size = modtable.getRowCount();
+			Window.alert("" + size);
 			tempID = modList.get(i).getID();
 			tempDamage = modList.get(i).getDamage();
 			tempX = modList.get(i).getX();
@@ -51,10 +56,10 @@ public class GUIComponets {
 			
 			modtable.setText(size, 0, tempID);
 			modtable.setText(size, 1, tempType);
-			modtable.setText(size, 2, tempDamage);
-			modtable.setText(size, 3, tempX);
-			modtable.setText(size, 4, tempY);
-			modtable.setText(size, 5, tempRotation);
+			modtable.setText(size, 2, tempX);
+			modtable.setText(size, 3, tempY);
+			modtable.setText(size, 4, tempRotation);
+			modtable.setText(size, 5, tempDamage);
 			
 		}
 		

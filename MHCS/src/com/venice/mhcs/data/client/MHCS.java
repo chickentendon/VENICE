@@ -113,7 +113,7 @@ public class MHCS implements EntryPoint {
 		
 		submit.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event){
-				Window.alert("click handler");
+				
 				String ID = idNum.getText();
 				String X = x.getText();
 				String Y = y.getText();
@@ -122,10 +122,13 @@ public class MHCS implements EntryPoint {
 				Module newModule = new Module(ID,dam,X,Y,rotation);
 				
 				if(newModule.isConsistent()){
-					Window.alert("consistency check");
+			
+					GUIHelper.resetPanel();
+					GUIHelper.updatePanel(myStorage.getModuleList());
+					modList.add(GUIHelper.getScrollPanel());
 					myStorage.Store(newModule);
 					GUIHelper.updatePanel(myStorage.getModuleList());
-					modList = GUIHelper.getScrollPanel();
+					modList.add(GUIHelper.getScrollPanel());
 				}
 				else{	
 				}
@@ -146,8 +149,8 @@ public class MHCS implements EntryPoint {
 		modList.setStylePrimaryName("panelMargin");
 		
 		//add characteristic
-		modPanel.add(modList);
 		modPanel.add(attribPanel);
+		modPanel.add(modList);
 		
 		
 		// Create a three-item tab panel, with the tab area 1.5em tall.
