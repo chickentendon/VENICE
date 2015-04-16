@@ -80,7 +80,7 @@ public class MHCS implements EntryPoint {
 		//Declaring rotations ListBox and adding choices
 		final ListBox rotate = new ListBox();
 		rotate.addItem("Rotations");
-		rotate.addItem("None");
+		rotate.addItem("0");
 		rotate.addItem("1");
 		rotate.addItem("2");
 		rotate.setStylePrimaryName("listBoxMargin");
@@ -121,11 +121,33 @@ public class MHCS implements EntryPoint {
 		submit.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event){
 				
-				String ID = idNum.getText();
-				String X = x.getText();
-				String Y = y.getText();
-				String rotation = rotate.getItemText(rotate.getSelectedIndex());
-				String dam = damage.getItemText(damage.getSelectedIndex());
+				String ID = "";
+				String X = "";
+				String Y = "";
+				String rotation = "";
+				String dam = "";
+				
+				if(!idNum.getText().equals("")) {
+					ID = idNum.getText();
+				}
+				else Window.alert("You must enter something for Id");
+				//String ID = idNum.getText();
+				if(!x.getText().equals("")){
+					X = x.getText();
+				}
+				else Window.alert("You must enter something for X");
+				if(!y.getText().equals("")){
+					Y = y.getText();
+				}
+				else Window.alert("You must enter something for Y");
+				if(!rotate.getItemText(rotate.getSelectedIndex()).equals("")){
+					rotation = rotate.getItemText(rotate.getSelectedIndex());
+				}
+				else Window.alert("You must enter something for rotations");
+				if(!damage.getItemText(damage.getSelectedIndex()).equals("")){
+					dam = damage.getItemText(damage.getSelectedIndex());
+				}
+				else Window.alert("You must enter something for damage");
 				Module newModule = new Module(ID,dam,X,Y,rotation);
 				
 				if(newModule.isConsistent()){
