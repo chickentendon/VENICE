@@ -47,6 +47,7 @@ public class MHCS implements EntryPoint {
 	public void onModuleLoad() {
 		
 		LocalStorage myStorage = new LocalStorage();
+		GUIComponets GUIHelper = new GUIComponets();
 		
 		//Declaration of Module Logging panel elements
 		
@@ -119,6 +120,7 @@ public class MHCS implements EntryPoint {
 				
 				if(newModule.isConsistent()){
 					myStorage.Store(newModule);
+					GUIHelper.updatePanel(myStorage.getModuleList());
 				}
 				else{}
 				

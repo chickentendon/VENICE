@@ -20,7 +20,7 @@ public class GUIComponets {
 		return ModulePanel;
 	}
 	
-	private void updatePanel(ArrayList<Module> modList){
+	public void updatePanel(ArrayList<Module> modList){
 		ScrollPanel tempPanel = new ScrollPanel();
 		String tempID = new String();
 		String tempDamage = new String();
