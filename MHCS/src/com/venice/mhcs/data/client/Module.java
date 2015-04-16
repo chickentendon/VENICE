@@ -269,7 +269,7 @@ public class Module {
 			if(type.toString().equals("Plain") || type.toString().equals("Airlock") || type.toString().equals("Plain") 
 			|| type.toString().equals("Power") || type.toString().equals("Dormitory") || type.toString().equals("Canteen")
 			|| type.toString().equals("Gym and Relaxation") || type.toString().equals("Sanitation") || type.toString().equals("Medical")
-			|| type.toString().equals("Food and Water")){}
+			|| type.toString().equals("Food and Water") || type.toString().equals("Control") ){}
 			else throw new RuntimeException("The type of module you have entered is invalid, try again.");
 				
 			return true;
