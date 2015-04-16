@@ -1,12 +1,12 @@
 package com.venice.mhcs.data.client;
 
-public class Grid {
+public class ModuleGrid {
 	/**
 	 * Constructor that is called when specific dimensions for a grid are required.
 	 * @param GridLength
 	 * @param GridHeight
 	 */
-	public Grid(int GridLength, int GridHeight)
+	public ModuleGrid(int GridLength, int GridHeight)
 	{
 		length = GridLength;
 		height = GridHeight;
@@ -15,7 +15,7 @@ public class Grid {
 	/**
 	 * Constructor called when no dimensions given.
 	 */
-	public Grid()
+	public ModuleGrid()
 	{
 		length = 100;
 		height = 50;

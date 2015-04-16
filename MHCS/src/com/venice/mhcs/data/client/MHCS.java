@@ -15,7 +15,9 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FocusListener;
+import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
@@ -51,7 +53,7 @@ public class MHCS implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		
+		ModuleGrid moduleGrid = new ModuleGrid();
 		//Declaration of Module Logging panel elements
 		FlowPanel modPanel = new FlowPanel();
 		FlowPanel attribPanel = new FlowPanel();
@@ -160,7 +162,52 @@ public class MHCS implements EntryPoint {
 	    // possible size changes.
 	    RootLayoutPanel rp = RootLayoutPanel.get();
 	    rp.add(p);
+	    
+	    Grid g = new Grid(50, 100);
+	    for(int row = 0; row < 50; row++)
+	    {
+	    	for(int col = 0; col < 100; col++)
+	    	{
+	    		if(moduleGrid.getItem(col, 50 - row).getType().equals("Plain"))
+	    		{
+	    			g.setWidget((row), col, new Image("images/Plain.jpg"));
+	    		}
+	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Airlock"))
+	    		{
+	    			g.setWidget((row), col, new Image("images/Airlock.jpg"));
+	    		}
+	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Canteen"))
+	    		{
+	    			g.setWidget((row), col, new Image("images/Canteen.jpg"));
+	    		}
+	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Control"))
+	    		{
+	    			g.setWidget((row), col, new Image("images/Control.jpg"));
+	    		}
+	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Dormitory"))
+	    		{
+	    			g.setWidget((row), col, new Image("images/Dormitory.jpg"));
+	    		}
+	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Food"))
+	    		{
+	    			g.setWidget((row), col, new Image("Food.jpg"));
+	    		}
+	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Gym"))
+	    		{
+	    			g.setWidget((row), col, new Image("images/Gym.jpg"));
+	    		}
+	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Power"))
+	    		{
+	    			g.setWidget((row), col, new Image("images/Power.jpg"));
+	    		}
+	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Sanitation"))
+	    		{
+	    			g.setWidget((row), col, new Image("images/Sanitation.jpg"));
+	    		}
 			  }
+	    }
+	}
+	
 	
 	/**
 	 * Helper class to create default text in textboxes

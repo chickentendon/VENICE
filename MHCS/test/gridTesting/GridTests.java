@@ -2,7 +2,7 @@ package gridTesting;
 
 import static org.junit.Assert.*;
 
-import com.venice.mhcs.data.client.Grid;
+import com.venice.mhcs.data.client.ModuleGrid;
 import com.venice.mhcs.data.client.Module;
 
 import org.junit.Test;
@@ -12,7 +12,7 @@ public class GridTests {
 	@Test
 	public void testIDRetreival() 
 	{
-		Grid grid1 = new Grid();
+		ModuleGrid grid1 = new ModuleGrid();
 		
 		int x1 = Integer.valueOf(module1.getX());
 		int y1 = Integer.valueOf(module1.getY());
@@ -35,7 +35,7 @@ public class GridTests {
 	@Test
 	public void testTypeRetreival()
 	{
-		Grid grid1 = new Grid();
+		ModuleGrid grid1 = new ModuleGrid();
 		
 		int x1 = Integer.valueOf(module1.getX());
 		int y1 = Integer.valueOf(module1.getY());
@@ -60,7 +60,7 @@ public class GridTests {
 	@Test
 	public void testTerrain()
 	{
-		Grid grid1 = new Grid();
+		ModuleGrid grid1 = new ModuleGrid();
 		
 		grid1.addTerrain(1,1);
 		grid1.addTerrain(2, 2);
@@ -75,7 +75,7 @@ public class GridTests {
 	@Test 
 	public void testErrorsGetting()
 	{
-		Grid grid1 = new Grid();
+		ModuleGrid grid1 = new ModuleGrid();
 		
 		int x1 = Integer.valueOf(module1.getX());
 		int y1 = Integer.valueOf(module1.getY());
@@ -100,7 +100,7 @@ public class GridTests {
 	@Test
 	public void testAddingArray()
 	{
-		Grid grid1 = new Grid();
+		ModuleGrid grid1 = new ModuleGrid();
 		grid1.addArray(moduleArray);
 		
 		assertTrue(grid1.getItem(1, 1).getID().equals("23"));
@@ -112,7 +112,7 @@ public class GridTests {
 	@Test
 	public void testRemovingCells()
 	{
-		Grid grid1 = new Grid();
+		ModuleGrid grid1 = new ModuleGrid();
 		
 		int x1 = Integer.valueOf(module1.getX());
 		int y1 = Integer.valueOf(module1.getY());
