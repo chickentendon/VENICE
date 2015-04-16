@@ -111,6 +111,12 @@ public class MHCS implements EntryPoint {
 		//Declaration of submit button to add modules to list
 		Button submit = new Button("Submit");
 		
+		GUIHelper.resetPanel();
+		//GUIHelper.updatePanel(myStorage.getModuleList());
+		//modList.add(GUIHelper.getScrollPanel());
+		GUIHelper.updatePanel(myStorage.getModuleList());
+		modList.add(GUIHelper.getScrollPanel());
+		
 		submit.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event){
 				
@@ -124,8 +130,8 @@ public class MHCS implements EntryPoint {
 				if(newModule.isConsistent()){
 			
 					GUIHelper.resetPanel();
-					GUIHelper.updatePanel(myStorage.getModuleList());
-					modList.add(GUIHelper.getScrollPanel());
+					//GUIHelper.updatePanel(myStorage.getModuleList());
+					//modList.add(GUIHelper.getScrollPanel());
 					myStorage.Store(newModule);
 					GUIHelper.updatePanel(myStorage.getModuleList());
 					modList.add(GUIHelper.getScrollPanel());

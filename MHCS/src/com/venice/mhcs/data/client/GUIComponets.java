@@ -14,7 +14,6 @@ public class GUIComponets {
 	private FlexTable modtable = new FlexTable();
 	
 	public FlexTable getModTable(){
-		
 		return modtable;
 	}
 	
@@ -26,7 +25,8 @@ public class GUIComponets {
 		ModulePanel = ModulePanelReset;
 	}
 	public void updatePanel(ArrayList<Module> modList){
-		
+
+		modtable.removeAllRows();
 		ScrollPanel tempPanel = new ScrollPanel();
 		String tempID = new String();
 		String tempDamage = new String();
@@ -35,7 +35,7 @@ public class GUIComponets {
 		String tempRotation = new String();
 		String tempType = new String();
 		
-		//modtable.clear();
+		
 		
 		modtable.setText(0, 0, "ID Number");
 		modtable.setText(0, 1, "Type");
@@ -46,7 +46,6 @@ public class GUIComponets {
 		
 		for (int i = 0; i < modList.size(); i++){
 			int size = modtable.getRowCount();
-			Window.alert("" + size);
 			tempID = modList.get(i).getID();
 			tempDamage = modList.get(i).getDamage();
 			tempX = modList.get(i).getX();
