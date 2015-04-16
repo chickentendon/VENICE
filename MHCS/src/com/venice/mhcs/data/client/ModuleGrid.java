@@ -1,5 +1,7 @@
 package com.venice.mhcs.data.client;
 
+import java.util.ArrayList;
+
 public class ModuleGrid {
 	/**
 	 * Constructor that is called when specific dimensions for a grid are required.
@@ -115,12 +117,12 @@ public class ModuleGrid {
 		return result;
 	}
 	
-	public void addArray(Module[] modules)
+	public void addArray(ArrayList<Module> modules)
 	{
-		int size = modules.length;
+		int size = modules.size();
 		for(int i = 0; i < size; i++)
 		{
-			Module curModule = modules[i];
+			Module curModule = modules.get(i);
 			Cell curCell = new Cell(curModule);
 			int modX = (int) Integer.valueOf(curModule.getX());
 			int modY = (int) Integer.valueOf(curModule.getY());

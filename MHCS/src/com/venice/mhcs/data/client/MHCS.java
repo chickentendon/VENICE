@@ -54,6 +54,7 @@ public class MHCS implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		ModuleGrid moduleGrid = new ModuleGrid();
+		moduleGrid.addArray(myStorage.getModuleList());
 		//Declaration of Module Logging panel elements
 		FlowPanel modPanel = new FlowPanel();
 		FlowPanel attribPanel = new FlowPanel();
@@ -158,6 +159,58 @@ public class MHCS implements EntryPoint {
 		modPanel.add(attribPanel);
 		modPanel.add(modList);
 		
+//		Grid g = new Grid(50, 100);
+//	    for(int row = 0; row < g.getRowCount(); row++)
+//	    {
+//	    	for(int col = 0; col < g.getColumnCount(); col++)
+//	    	{
+//	    		if(moduleGrid.getItem(col, g.getRowCount() - row) == null)
+//	    		{
+//	    			
+//	    		}
+//	    		else if(moduleGrid.getItem(col, g.getRowCount() - row).getType().equals("Plain"))
+//	    		{
+//	    			g.setWidget((row), col, new Image("images/Plain.jpg"));
+//	    		}
+//	    		else if(moduleGrid.getItem(col, g.getRowCount() - row).getType().equals("Airlock"))
+//	    		{
+//	    			g.setWidget((row), col, new Image("images/Airlock.jpg"));
+//	    		}
+//	    		else if(moduleGrid.getItem(col, g.getRowCount() - row).getType().equals("Canteen"))
+//	    		{
+//	    			g.setWidget((row), col, new Image("images/Canteen.jpg"));
+//	    		}
+//	    		else if(moduleGrid.getItem(col, g.getRowCount() - row).getType().equals("Control"))
+//	    		{
+//	    			g.setWidget((row), col, new Image("images/Control.jpg"));
+//	    		}
+//	    		else if(moduleGrid.getItem(col, g.getRowCount() - row).getType().equals("Dormitory"))
+//	    		{
+//	    			g.setWidget((row), col, new Image("images/Dormitory.jpg"));
+//	    		}
+//	    		else if(moduleGrid.getItem(col, g.getRowCount() - row).getType().equals("Food"))
+//	    		{
+//	    			g.setWidget((row), col, new Image("Food.jpg"));
+//	    		}
+//	    		else if(moduleGrid.getItem(col, g.getRowCount() - row).getType().equals("Gym"))
+//	    		{
+//	    			g.setWidget((row), col, new Image("images/Gym.jpg"));
+//	    		}
+//	    		else if(moduleGrid.getItem(col, g.getRowCount() - row).getType().equals("Power"))
+//	    		{
+//	    			g.setWidget((row), col, new Image("images/Power.jpg"));
+//	    		}
+//	    		else if(moduleGrid.getItem(col, g.getRowCount() - row).getType().equals("Sanitation"))
+//	    		{
+//	    			g.setWidget((row), col, new Image("images/Sanitation.jpg"));
+//	    		}
+//			  }
+//	    }
+//	    
+//	    g.setBorderWidth(3);
+//	    g.setVisible(true);
+//	    modPanel.add(g);
+		
 		
 		// Create a three-item tab panel, with the tab area 1.5em tall.
 		TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
@@ -172,49 +225,7 @@ public class MHCS implements EntryPoint {
 	    RootLayoutPanel rp = RootLayoutPanel.get();
 	    rp.add(p);
 	    
-	    Grid g = new Grid(50, 100);
-	    for(int row = 0; row < 50; row++)
-	    {
-	    	for(int col = 0; col < 100; col++)
-	    	{
-	    		if(moduleGrid.getItem(col, 50 - row).getType().equals("Plain"))
-	    		{
-	    			g.setWidget((row), col, new Image("images/Plain.jpg"));
-	    		}
-	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Airlock"))
-	    		{
-	    			g.setWidget((row), col, new Image("images/Airlock.jpg"));
-	    		}
-	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Canteen"))
-	    		{
-	    			g.setWidget((row), col, new Image("images/Canteen.jpg"));
-	    		}
-	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Control"))
-	    		{
-	    			g.setWidget((row), col, new Image("images/Control.jpg"));
-	    		}
-	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Dormitory"))
-	    		{
-	    			g.setWidget((row), col, new Image("images/Dormitory.jpg"));
-	    		}
-	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Food"))
-	    		{
-	    			g.setWidget((row), col, new Image("Food.jpg"));
-	    		}
-	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Gym"))
-	    		{
-	    			g.setWidget((row), col, new Image("images/Gym.jpg"));
-	    		}
-	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Power"))
-	    		{
-	    			g.setWidget((row), col, new Image("images/Power.jpg"));
-	    		}
-	    		else if(moduleGrid.getItem(col, 50 - row).getType().equals("Sanitation"))
-	    		{
-	    			g.setWidget((row), col, new Image("images/Sanitation.jpg"));
-	    		}
-			  }
-	    }
+	    
 	}
 	
 	
