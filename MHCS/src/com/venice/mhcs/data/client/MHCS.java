@@ -1,5 +1,6 @@
 package com.venice.mhcs.data.client;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Panel;
@@ -39,7 +40,7 @@ public class MHCS implements EntryPoint {
 	private final GreetingServiceAsync greetingService = GWT
 			.create(GreetingService.class);
 	
-	private Panel modList = new ScrollPanel();
+	private ScrollPanel modList = new ScrollPanel();
 	private DefaultTextBox idNum = new DefaultTextBox("Module ID");
 	private DefaultTextBox x = new DefaultTextBox("X");
 	private DefaultTextBox y = new DefaultTextBox("Y");
@@ -51,11 +52,9 @@ public class MHCS implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		
-		
-		
 		//Declaration of Module Logging panel elements
-		Panel modPanel = new FlowPanel();
-		Panel attribPanel = new FlowPanel();
+		FlowPanel modPanel = new FlowPanel();
+		FlowPanel attribPanel = new FlowPanel();
 		
 		idNum.setStylePrimaryName("textBoxMargin");
 		x.setStylePrimaryName("textBoxMargin");
@@ -112,6 +111,7 @@ public class MHCS implements EntryPoint {
 		
 		submit.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event){
+				Window.alert("click handler");
 				String ID = idNum.getText();
 				String X = x.getText();
 				String Y = y.getText();
@@ -120,6 +120,7 @@ public class MHCS implements EntryPoint {
 				Module newModule = new Module(ID,dam,X,Y,rotation);
 				
 				if(newModule.isConsistent()){
+					Window.alert("consistency check");
 					myStorage.Store(newModule);
 					GUIHelper.updatePanel(myStorage.getModuleList());
 					modList = GUIHelper.getScrollPanel();
@@ -143,8 +144,9 @@ public class MHCS implements EntryPoint {
 		modList.setStylePrimaryName("panelMargin");
 		
 		//add characteristic
-		modPanel.add(attribPanel);
 		modPanel.add(modList);
+		modPanel.add(attribPanel);
+		
 		
 		// Create a three-item tab panel, with the tab area 1.5em tall.
 		TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);

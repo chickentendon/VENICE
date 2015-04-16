@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.scene.control.ScrollToEvent;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.ScrollPanel;
 
@@ -17,10 +18,12 @@ public class GUIComponets {
 	}
 	
 	public ScrollPanel getScrollPanel(){
+		
 		return ModulePanel;
 	}
 	
 	public void updatePanel(ArrayList<Module> modList){
+		Window.alert("updatePanel");
 		ScrollPanel tempPanel = new ScrollPanel();
 		String tempID = new String();
 		String tempDamage = new String();
