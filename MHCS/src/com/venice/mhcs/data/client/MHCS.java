@@ -63,19 +63,25 @@ public class MHCS implements EntryPoint {
 		ModuleGrid moduleGrid = new ModuleGrid();
 		moduleGrid.addArray(myStorage.getModuleList());
 		//Declaration of Module Logging panel elements
-		Panel loginPanel = new AbsolutePanel();
+		AbsolutePanel loginPanel = new AbsolutePanel();
 		final FlowPanel modPanel = new FlowPanel();
 		FlowPanel attribPanel = new FlowPanel();
 		FlowPanel pwPanel = new FlowPanel();
-		Panel vertPanel = new VerticalPanel();
-		
+		VerticalPanel vertPanel = new VerticalPanel();
+		vertPanel.getElement().setAttribute("align", "center");
 		final Label top = new Label("Username:");
-	    final Label bottom = new Label("Password");
+		top.getElement().setAttribute("align", "center");
+	    final Label bottom = new Label("Password:");
+	    bottom.getElement().setAttribute("align", "center");
 	    final PasswordTextBox ptb = new PasswordTextBox();
+	    ptb.getElement().setAttribute("align", "center");
+	    ptb.setStyleName("logInMargin");
 	    ptb.setMaxLength(6);
 	    ptb.setVisibleLength(8);
 	    ptb.setAlignment(TextAlignment.CENTER);
 	    final TextBox user = new TextBox();
+	    user.getElement().setAttribute("align", "center");
+	    user.setStyleName("logInMargin");
 	    user.setAlignment(TextAlignment.CENTER);
 	    user.setMaxLength(6);
 	    user.setVisibleLength(8);
@@ -258,16 +264,25 @@ public class MHCS implements EntryPoint {
 //	    g.setVisible(true);
 //	    modPanel.add(g);
 		
-	    vertPanel.add(top);
+		final Label space = new Label("     ");
+	    
+		vertPanel.add(top);
 	    vertPanel.add(user);
 	    vertPanel.add(bottom);
 	    vertPanel.add(ptb);
-	    pwPanel.add(vertPanel);
-		loginPanel.add(pwPanel);
+	    vertPanel.add(space); 
+	    
+	    
+	   
+
+		
 		
 		// Create a three-item tab panel, with the tab area 1.5em tall.
 		final TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
 		final Button enter = new Button("Log In");
+		enter.getElement().setAttribute("align", "center");
+		pwPanel.add(vertPanel);
+		loginPanel.add(pwPanel);
 		vertPanel.add(enter);
 		p.add(loginPanel, "Login");
 
