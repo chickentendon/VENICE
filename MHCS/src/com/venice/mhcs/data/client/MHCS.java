@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.FocusListener;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
@@ -38,26 +39,26 @@ public class MHCS implements EntryPoint {
 	private final GreetingServiceAsync greetingService = GWT
 			.create(GreetingService.class);
 	
-	
-          
+	private Panel modList = new ScrollPanel();
+	private DefaultTextBox idNum = new DefaultTextBox("Module ID");
+	private DefaultTextBox x = new DefaultTextBox("X");
+	private DefaultTextBox y = new DefaultTextBox("Y");
+	private LocalStorage myStorage = new LocalStorage();
+	private GUIComponets GUIHelper = new GUIComponets();
 
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
 		
-		LocalStorage myStorage = new LocalStorage();
-		GUIComponets GUIHelper = new GUIComponets();
+		
 		
 		//Declaration of Module Logging panel elements
-		
 		Panel modPanel = new FlowPanel();
 		Panel attribPanel = new FlowPanel();
-		DefaultTextBox idNum = new DefaultTextBox("Module ID");
+		
 		idNum.setStylePrimaryName("textBoxMargin");
-		DefaultTextBox x = new DefaultTextBox("X");
 		x.setStylePrimaryName("textBoxMargin");
-		DefaultTextBox y = new DefaultTextBox("Y");
 		y.setStylePrimaryName("textBoxMargin");
 		
 		//Set max number of characters allowed
@@ -121,8 +122,10 @@ public class MHCS implements EntryPoint {
 				if(newModule.isConsistent()){
 					myStorage.Store(newModule);
 					GUIHelper.updatePanel(myStorage.getModuleList());
+					modList = GUIHelper.getScrollPanel();
 				}
-				else{}
+				else{	
+				}
 				
 			}
 		});
@@ -137,8 +140,12 @@ public class MHCS implements EntryPoint {
 		attribPanel.add(damage);
 		attribPanel.add(submit);
 		attribPanel.setStylePrimaryName("panelMargin");
+		modList.setStylePrimaryName("panelMargin");
+		
 		//add characteristic
 		modPanel.add(attribPanel);
+		modPanel.add(modList);
+		
 		// Create a three-item tab panel, with the tab area 1.5em tall.
 		TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
 		p.add(new HTML("Login"), "Login");

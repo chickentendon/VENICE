@@ -16,7 +16,7 @@ public class GUIComponets {
 		return ModulePanel;
 	}
 	
-	public ScrollPanel getSrollPanel(){
+	public ScrollPanel getScrollPanel(){
 		return ModulePanel;
 	}
 	
