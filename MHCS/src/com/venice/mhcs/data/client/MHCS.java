@@ -1,6 +1,5 @@
 package com.venice.mhcs.data.client;
 import com.venice.mhcs.GUI.*;
-
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
