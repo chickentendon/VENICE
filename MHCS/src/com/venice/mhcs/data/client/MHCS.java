@@ -85,10 +85,7 @@ public class MHCS implements EntryPoint {
 	    user.setAlignment(TextAlignment.CENTER);
 	    user.setMaxLength(6);
 	    user.setVisibleLength(8);
-	    
-	    
-	
-		
+	    	
 		
 		idNum.setStylePrimaryName("textBoxMargin");
 		x.setStylePrimaryName("textBoxMargin");
