@@ -2,6 +2,8 @@ package gridTesting;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import com.venice.mhcs.data.client.ModuleGrid;
 import com.venice.mhcs.data.client.Module;
 
@@ -101,6 +103,10 @@ public class GridTests {
 	public void testAddingArray()
 	{
 		ModuleGrid grid1 = new ModuleGrid();
+		ArrayList<Module> moduleArray =  new ArrayList<Module>();
+		moduleArray.add(module1);
+		moduleArray.add(module2);
+		moduleArray.add(module3);
 		grid1.addArray(moduleArray);
 		
 		assertTrue(grid1.getItem(1, 1).getID().equals("23"));
@@ -142,6 +148,7 @@ public class GridTests {
 	public Module module4 = new Module("99", "Good", "4", "4", "2"); //Sanitation
 	public Module module5 = new Module("66", "Bad", "5", "5", "0"); //Dormitory
 	
-	public Module[] moduleArray = {module1, module2, module3};
+
+
 
 }
