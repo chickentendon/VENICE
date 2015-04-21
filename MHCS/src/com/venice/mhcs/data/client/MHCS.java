@@ -143,7 +143,7 @@ public class MHCS implements EntryPoint {
 		GUIHelper.resetPanel();
 		//GUIHelper.updatePanel(myStorage.getModuleList());
 		//modList.add(GUIHelper.getScrollPanel());
-		GUIHelper.updatePanel(myStorage.getModuleList());
+		GUIHelper.updatePanel(myStorage.getModuleList(), myStorage);
 		modList.add(GUIHelper.getScrollPanel());
 		
 		submit.addClickHandler(new ClickHandler() {
@@ -184,7 +184,7 @@ public class MHCS implements EntryPoint {
 					//GUIHelper.updatePanel(myStorage.getModuleList());
 					//modList.add(GUIHelper.getScrollPanel());
 					myStorage.Store(newModule);
-					GUIHelper.updatePanel(myStorage.getModuleList());
+					GUIHelper.updatePanel(myStorage.getModuleList(), myStorage);
 					modList.add(GUIHelper.getScrollPanel());
 				}
 				else{	

@@ -54,7 +54,21 @@ public class LocalStorage implements EntryPoint {
 		String value = moduleStore.getItem(key);
 		return value;
 	}
-	
+	/**
+	 * Removes a module from Local Storage.
+	 * @param id of the String of the module to be removed
+	 * @return if the module was removed
+	 */
+	public boolean Remove(String id){
+		String ID = "venice" + id;
+		moduleStore.removeItem(ID);
+		return true;
+	}
+	/**
+	 * Changes a string of JSON format into a Module
+	 * @param key string of JSON format
+	 * @return Module filled with necessary data.
+	 */
 	public Module toModule(String key){
 		
 		String value = Read(key);
@@ -88,6 +102,10 @@ public class LocalStorage implements EntryPoint {
 		return rModule;
 	}
 	
+	/**
+	 * Returns an up-to date ArrayList of Modules
+	 * @return ArrayList
+	 */
 	public ArrayList<Module> getModuleList(){
 		
 		ArrayList<Module> moduleList = new ArrayList<Module>();
