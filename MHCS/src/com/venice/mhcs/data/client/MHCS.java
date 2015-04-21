@@ -13,6 +13,7 @@ import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.shared.UmbrellaException;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FocusListener;
@@ -60,6 +61,14 @@ public class MHCS implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
+		GWT.setUncaughtExceptionHandler(new
+		        GWT.UncaughtExceptionHandler() {
+		        public void onUncaughtException(Throwable e) {
+		          // do exception handling stuff
+		      }
+		      // do module loading stuff
+		    });
+		
 		ModuleGrid moduleGrid = new ModuleGrid();
 		moduleGrid.addArray(myStorage.getModuleList());
 		//Declaration of Module Logging panel elements
@@ -186,6 +195,7 @@ public class MHCS implements EntryPoint {
 					myStorage.Store(newModule);
 					GUIHelper.updatePanel(myStorage.getModuleList(), myStorage);
 					modList.add(GUIHelper.getScrollPanel());
+
 				}
 				else{	
 				}
@@ -311,7 +321,7 @@ public class MHCS implements EntryPoint {
 	    RootLayoutPanel rp = RootLayoutPanel.get();
 	    rp.add(p);
 	    
-	    
+
 	};
 	
 	

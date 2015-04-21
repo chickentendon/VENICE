@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.scene.control.ScrollToEvent;
 
+import com.google.gwt.dev.jjs.impl.CatchBlockNormalizer;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
@@ -11,6 +12,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.event.shared.UmbrellaException;
 
 public class GUIComponets {
 	private ScrollPanel ModulePanel = new ScrollPanel(); 
@@ -34,7 +36,7 @@ public class GUIComponets {
 	 * @param modList The up-to date ArrayList of modules 
 	 */
 	public void updatePanel(final ArrayList<Module> modList, final LocalStorage myStore){
-
+		
 		modtable.removeAllRows();
 		ScrollPanel tempPanel = new ScrollPanel();
 		String tempID = new String();
@@ -53,7 +55,7 @@ public class GUIComponets {
 		modtable.setText(0, 4, "Rotations");
 		modtable.setText(0, 5, "Condition");
 		modtable.setText(0, 6, "Remove");
-		
+
 		for (int i = 0; i < modList.size(); i++){
 			final int size = modtable.getRowCount();
 		    tempID = modList.get(i).getID();
@@ -69,7 +71,7 @@ public class GUIComponets {
 			modtable.setText(size, 3, tempY);
 			modtable.setText(size, 4, tempRotation);
 			modtable.setText(size, 5, tempDamage);
-			
+	
 			Button removeButton = new Button("X");
 			removeButton.addClickHandler(new ClickHandler() {
 				
@@ -81,11 +83,16 @@ public class GUIComponets {
 					
 				}
 			});
-			
+
 			modtable.setWidget(size, 6, removeButton);
+
 		}
+
 		
+		ModulePanel.setSize("500px", "500px");
 		ModulePanel.add(modtable);
+
+		
 	}
-	
+
 }
