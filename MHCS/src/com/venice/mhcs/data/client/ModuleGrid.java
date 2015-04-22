@@ -12,7 +12,7 @@ public class ModuleGrid {
 	{
 		length = GridLength;
 		height = GridHeight;
-		grid = new Cell[GridHeight][GridLength];
+		grid = new Cell[GridLength][GridHeight];
 	}
 	/**
 	 * Constructor called when no dimensions given.
@@ -21,7 +21,7 @@ public class ModuleGrid {
 	{
 		length = 100;
 		height = 50;
-		grid = new Cell[height][length];
+		grid = new Cell[length][height];
 	}
 	
 	/**

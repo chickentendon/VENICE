@@ -142,11 +142,11 @@ public class GridTests {
 	}
 	
 	
-	public Module module1 = new Module("23","Good", "1", "1", "2"); //Plain
-	public Module module2 = new Module("3", "Bad", "2", "2", "0"); //Plain
-	public Module module3 = new Module("14", "Moderate", "3", "3", "1"); //Plain
-	public Module module4 = new Module("99", "Good", "4", "4", "2"); //Sanitation
-	public Module module5 = new Module("66", "Bad", "5", "5", "0"); //Dormitory
+	public Module module1 = new Module("23","Undamaged", "1", "1", "2"); //Plain
+	public Module module2 = new Module("3", "Damaged", "2", "2", "0"); //Plain
+	public Module module3 = new Module("14", "Uncertain", "3", "3", "1"); //Plain
+	public Module module4 = new Module("99", "Undamaged", "4", "4", "2"); //Sanitation
+	public Module module5 = new Module("66", "Damaged", "5", "5", "0"); //Dormitory
 	
 
 
