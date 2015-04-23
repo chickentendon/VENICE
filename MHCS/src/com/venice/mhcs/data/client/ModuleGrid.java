@@ -2,6 +2,8 @@ package com.venice.mhcs.data.client;
 
 import java.util.ArrayList;
 
+import com.google.gwt.user.client.Window;
+
 public class ModuleGrid {
 	/**
 	 * Constructor that is called when specific dimensions for a grid are required.
@@ -51,7 +53,7 @@ public class ModuleGrid {
 	public Cell getItem(int xcoord, int ycoord)
 	{
 		Cell module;
-		if(xcoord < length && xcoord >= 1 && ycoord < height && ycoord >= 1)
+		if(xcoord <= length && xcoord >= 1 && ycoord <= height && ycoord >= 1)
 		{
 			module = grid[xcoord - 1][ycoord - 1];
 		}
