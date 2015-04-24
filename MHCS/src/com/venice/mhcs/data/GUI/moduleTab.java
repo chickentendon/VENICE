@@ -82,6 +82,7 @@ public class moduleTab {
 	rotate.addItem("1");
 	rotate.addItem("2");
 	rotate.setStylePrimaryName("listBoxMargin");
+	
 	//Change handler to disable default "Rotations" value after a selection is made
 	rotate.addChangeHandler(new ChangeHandler() {
         public void onChange(ChangeEvent changeEvent) {
@@ -171,6 +172,10 @@ public class moduleTab {
 	
 	public static FlowPanel getAttributes() {
 		return attribPanel;
+	}
+	
+	public static ScrollPanel getModList(){
+		return modList;
 	}
 }
 	
