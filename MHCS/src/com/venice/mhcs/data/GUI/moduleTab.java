@@ -9,7 +9,6 @@ import com.venice.mhcs.data.client.GUIComponets;
 import com.venice.mhcs.data.client.LocalStorage;
 import com.venice.mhcs.data.client.Module;
 import com.venice.mhcs.data.client.ModuleGrid;
-import com.venice.mhcs.data.client.MHCS.DefaultTextBox;
 import com.venice.mhcs.data.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
