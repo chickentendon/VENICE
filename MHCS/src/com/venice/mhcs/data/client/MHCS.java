@@ -76,7 +76,7 @@ public class MHCS implements EntryPoint {
 		AbsolutePanel loginPanel = new AbsolutePanel();
 		final FlowPanel modPanel = new FlowPanel();
 		final ScrollPanel mapPanel = new ScrollPanel();
-		mapPanel.setPixelSize(1500, 1000);
+		mapPanel.setPixelSize(1500, 400);
 		FlowPanel attribPanel = new FlowPanel();
 		FlowPanel pwPanel = new FlowPanel();
 		VerticalPanel vertPanel = new VerticalPanel();
@@ -222,68 +222,12 @@ public class MHCS implements EntryPoint {
 		modPanel.add(attribPanel);
 		modPanel.add(modList);
 		
+		//MODUEL MAP STUFF
 		ModuleMap.initalizeMap(moduleGrid);
-//		Grid g = new Grid(50, 100);
-//		g.setSize("5000px", "2500px");
-//		for(int row = 0; row < g.getRowCount(); row++)
-//	    {
-//	    	for(int col = 0; col < g.getColumnCount(); col++)
-//	    	{
-//	    		g.getCellFormatter().setHeight(row, col, "50px");
-//    			g.getCellFormatter().setWidth(row, col, "50px");
-//	    	}
-//	    }
-//		
-//	    for(int row = 0; row < g.getRowCount(); row++)
-//	    {
-//	    	for(int col = 0; col < g.getColumnCount(); col++)
-//	    	{
-//	    		if(moduleGrid.getItem(col + 1, g.getRowCount() - row) == null)
-//	    		{
-//	    		}
-//	    		else if(moduleGrid.getItem(col + 1, g.getRowCount() - row).getType().equals("Plain"))
-//	    		{
-//	    			g.setWidget((row), col, new Image("images/Plain.jpg"));
-//	    		}
-//	    		else if(moduleGrid.getItem(col + 1, g.getRowCount() - row).getType().equals("Airlock"))
-//	    		{
-//	    			g.setWidget((row), col, new Image("images/Airlock.jpg"));
-//	    		}
-//	    		else if(moduleGrid.getItem(col + 1, g.getRowCount() - row).getType().equals("Canteen"))
-//	    		{
-//	    			g.setWidget((row), col, new Image("images/Canteen.jpg"));
-//	    		}
-//	    		else if(moduleGrid.getItem(col + 1, g.getRowCount() - row).getType().equals("Control"))
-//	    		{
-//	    			g.setWidget((row), col, new Image("images/Control.jpg"));
-//	    		}
-//	    		else if(moduleGrid.getItem(col + 1, g.getRowCount() - row).getType().equals("Dormitory"))
-//	    		{
-//	    			g.setWidget((row), col, new Image("images/Dormitory.jpg"));
-//	    		}
-//	    		else if(moduleGrid.getItem(col + 1, g.getRowCount() - row).getType().equals("Food and Water"))
-//	    		{
-//	    			g.setWidget((row), col, new Image("images/Food.jpg"));
-//	    		}
-//	    		else if(moduleGrid.getItem(col + 1, g.getRowCount() - row).getType().equals("Gym and Relaxation"))
-//	    		{
-//	    			g.setWidget((row), col, new Image("images/Gym.jpg"));
-//	    		}
-//	    		else if(moduleGrid.getItem(col + 1, g.getRowCount() - row).getType().equals("Power"))
-//	    		{
-//	    			g.setWidget((row), col, new Image("images/Power.jpg"));
-//	    		}
-//	    		else if(moduleGrid.getItem(col + 1, g.getRowCount() - row).getType().equals("Sanitation"))
-//	    		{
-//	    			g.setWidget((row), col, new Image("images/Sanitation.jpg"));
-//	    		}
-//			  }
-//	    }
-	    
-//	    g.setVisible(true);
 	    mapPanel.add(ModuleMap.getGrid());
-	    mapPanel.scrollToRight();
 		modPanel.add(mapPanel);
+		//END MODULE MAP STUFF
+		
 		final Label space = new Label("     ");
 	    
 		vertPanel.add(top);
