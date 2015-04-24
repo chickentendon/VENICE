@@ -222,8 +222,7 @@ public class MHCS implements EntryPoint {
 		modPanel.add(attribPanel);
 		modPanel.add(modList);
 		
-		ModuleMap map = new ModuleMap();
-		map.initalizeMap(moduleGrid);
+		ModuleMap.initalizeMap(moduleGrid);
 //		Grid g = new Grid(50, 100);
 //		g.setSize("5000px", "2500px");
 //		for(int row = 0; row < g.getRowCount(); row++)

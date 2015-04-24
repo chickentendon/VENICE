@@ -6,10 +6,6 @@ import com.venice.mhcs.data.client.*;
 
 public class ModuleMap 
 {
-	public ModuleMap()
-	{
-		
-	}
 	private static Grid g;
 	private static ModuleGrid map;
 	public static void initalizeMap(ModuleGrid moduleMap)
