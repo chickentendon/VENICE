@@ -1,14 +1,15 @@
-package com.venice.mhcs.GUI;
+package com.venice.mhcs.data.GUI;
 
-import com.venice.mhcs.GUI.defaultTextBox;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Panel;
-import com.venice.mhcs.data.client.GUIComponets;
-import com.venice.mhcs.data.client.LocalStorage;
-import com.venice.mhcs.data.client.ModuleGrid;
-import com.venice.mhcs.data.client.MHCS.DefaultTextBox;
+import com.venice.mhcs.data.GUI.configTab;
+import com.venice.mhcs.data.GUI.loginTab;
+import com.venice.mhcs.data.GUI.moduleTab;
+import com.venice.mhcs.data.GUI.configTab.*;
+import com.venice.mhcs.data.GUI.loginTab.*;
+import com.venice.mhcs.data.GUI.moduleTab.*;
 import com.venice.mhcs.data.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -35,25 +36,28 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.ToggleButton;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class moduleTab {
-	
-	//Declaration of module attribute widgets
-	private static ScrollPanel modList = new ScrollPanel();
-	private static defaultTextBox idNum = new defaultTextBox("Module ID");
-	private static defaultTextBox x = new defaultTextBox("X");
-	private static defaultTextBox y = new defaultTextBox("Y");
-	
-	//Declaration of panels
-	final static FlowPanel modPanel = new FlowPanel();
-	final FlowPanel attribPanel = new FlowPanel();
-	
-	private LocalStorage myStorage = new LocalStorage();
-	private GUIComponets GUIHelper = new GUIComponets();
-	final ModuleGrid moduleGrid = new ModuleGrid();
-	//moduleGrid.addArray(myStorage.getModuleList());
+public class parentTabPanel {
 
-	public static FlowPanel getModPanel(){
-		Window.alert("moduleTab getModPanel()");
-		return modPanel;
+		public void initParentTab() {
+			
+			final TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
+			//loginTab.getEnterButton().addClickHandler(new ClickHandler() {
+			
+			//public void onClick(ClickEvent event) {
+				if (loginTab.getUser().getText().equals("astro1") && loginTab.getPTB().getText().equals("daisy")) {
+					Window.alert("Log In : Successful");
+					p.getTabWidget(0).removeFromParent();
+					p.add(moduleTab.modPanel, "Module Logging");
+					p.add(new HTML("Habitat Config"), "Habitat Config");
+					
+				}
+				else {
+				Window.alert("Incorrect user ID/password, try again");
+				loginTab.getPTB().setText("");
+				loginTab.user.setText("");
+				loginTab.user.setFocus(true);
+				}
+	
+			}
 	}
-}
+ 	

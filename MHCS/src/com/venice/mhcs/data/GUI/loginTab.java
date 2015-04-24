@@ -1,4 +1,4 @@
-package com.venice.mhcs.GUI;
+package com.venice.mhcs.data.GUI;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;

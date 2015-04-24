@@ -1,11 +1,5 @@
-package com.venice.mhcs.GUI;
+package com.venice.mhcs.data.GUI;
 
-import com.venice.mhcs.GUI.loginTab.*;
-import com.venice.mhcs.GUI.loginTab;
-import com.venice.mhcs.GUI.moduleTab.*;
-import com.venice.mhcs.GUI.moduleTab;
-import com.venice.mhcs.GUI.configTab.*;
-import com.venice.mhcs.GUI.configTab;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
@@ -36,28 +30,6 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.ToggleButton;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class parentTabPanel {
+public class configTab {
 
-		public void initParentTab() {
-			
-			final TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
-			//loginTab.getEnterButton().addClickHandler(new ClickHandler() {
-			
-			//public void onClick(ClickEvent event) {
-				if (loginTab.getUser().getText().equals("astro1") && loginTab.getPTB().getText().equals("daisy")) {
-					Window.alert("Log In : Successful");
-					p.getTabWidget(0).removeFromParent();
-					p.add(moduleTab.modPanel, "Module Logging");
-					p.add(new HTML("Habitat Config"), "Habitat Config");
-					
-				}
-				else {
-				Window.alert("Incorrect user ID/password, try again");
-				loginTab.getPTB().setText("");
-				loginTab.user.setText("");
-				loginTab.user.setFocus(true);
-				}
-	
-			}
-	}
- 	
+}
