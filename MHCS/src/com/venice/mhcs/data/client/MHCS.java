@@ -253,7 +253,7 @@ public class MHCS implements EntryPoint {
 		
     	enter.addClickHandler(new ClickHandler() {
     	public void onClick(ClickEvent event) {
-    			if (user.getText().equals("astro1") && ptb.getText().equals("daisy")) {
+    			if (user.getText().equals("astro1") && ptb.getText().equals("lol")) {
     				Window.alert("Log In : Successful");
     				p.getTabWidget(0).removeFromParent();
     				p.add(modPanel, "Module Logging");

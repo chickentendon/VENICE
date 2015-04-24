@@ -52,6 +52,29 @@ public class moduleTab {
 	final ModuleGrid moduleGrid = new ModuleGrid();
 	//moduleGrid.addArray(myStorage.getModuleList());
 
+	
+	public static void initAttributes() {
+	
+	idNum.setStylePrimaryName("textBoxMargin");
+	x.setStylePrimaryName("textBoxMargin");
+	y.setStylePrimaryName("textBoxMargin");
+	
+	//Set max number of characters allowed
+	//Also, set textbox width to reasonable size
+	idNum.setMaxLength(3);
+	idNum.setVisibleLength(9);
+	idNum.setAlignment(TextAlignment.CENTER);
+	
+	x.setMaxLength(3);
+	x.setVisibleLength(3);
+	x.setAlignment(TextAlignment.CENTER);
+	
+	y.setMaxLength(3);
+	y.setVisibleLength(3);
+	y.setAlignment(TextAlignment.CENTER);
+	
+}
+	
 	public static FlowPanel getModPanel(){
 		Window.alert("moduleTab getModPanel()");
 		return modPanel;
