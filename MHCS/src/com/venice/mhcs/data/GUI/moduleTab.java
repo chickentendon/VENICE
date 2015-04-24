@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.venice.mhcs.data.GUI.defaultTextBox;
 import com.venice.mhcs.data.client.GUIComponets;
 import com.venice.mhcs.data.client.LocalStorage;
+import com.venice.mhcs.data.client.Module;
 import com.venice.mhcs.data.client.ModuleGrid;
 import com.venice.mhcs.data.client.MHCS.DefaultTextBox;
 import com.venice.mhcs.data.shared.FieldVerifier;
@@ -42,13 +43,13 @@ public class moduleTab {
 	private static defaultTextBox idNum = new defaultTextBox("Module ID");
 	private static defaultTextBox x = new defaultTextBox("X");
 	private static defaultTextBox y = new defaultTextBox("Y");
-	
+
 	//Declaration of panels
-	final static FlowPanel modPanel = new FlowPanel();
-	final FlowPanel attribPanel = new FlowPanel();
+
+	final static FlowPanel attribPanel = new FlowPanel();
 	
-	private LocalStorage myStorage = new LocalStorage();
-	private GUIComponets GUIHelper = new GUIComponets();
+	private static LocalStorage myStorage = new LocalStorage();
+	private static GUIComponets GUIHelper = new GUIComponets();
 	final ModuleGrid moduleGrid = new ModuleGrid();
 	//moduleGrid.addArray(myStorage.getModuleList());
 
@@ -73,10 +74,104 @@ public class moduleTab {
 	y.setVisibleLength(3);
 	y.setAlignment(TextAlignment.CENTER);
 	
+	
+	//Declaring rotations ListBox and adding choices
+	final ListBox rotate = new ListBox();
+	rotate.addItem("Rotations");
+	rotate.addItem("0");
+	rotate.addItem("1");
+	rotate.addItem("2");
+	rotate.setStylePrimaryName("listBoxMargin");
+	//Change handler to disable default "Rotations" value after a selection is made
+	rotate.addChangeHandler(new ChangeHandler() {
+        public void onChange(ChangeEvent changeEvent) {
+            SelectElement selectElement = rotate.getElement().cast();
+            selectElement.getOptions().getItem(0).setDisabled(true);
+
+        }
+    });
+	
+	//Declaring damage ListBox and adding choices
+	final ListBox damage = new ListBox();
+	damage.addItem("Condition");
+	damage.addItem("Damaged");
+	damage.addItem("Undamaged");
+	damage.addItem("Uncertain");
+	damage.setStylePrimaryName("listBoxMargin");
+	//Change handler to disable default "Damage" value after a selection is made
+	damage.addChangeHandler(new ChangeHandler() {
+        public void onChange(ChangeEvent changeEvent) {
+            SelectElement selectElement = damage.getElement().cast();
+            selectElement.getOptions().getItem(0).setDisabled(true);
+
+        }
+    });
+	
+	//Declaration of submit button to add modules to list
+	Button submit = new Button("Submit");
+	
+	submit.addClickHandler(new ClickHandler() {
+		public void onClick(ClickEvent event){
+			
+			String ID = "";
+			String X = "";
+			String Y = "";
+			String rotation = "";
+			String dam = "";
+			
+			if(!idNum.getText().equals("")) {
+				ID = idNum.getText();
+			}
+			else Window.alert("You must enter something for Id");
+			//String ID = idNum.getText();
+			if(!x.getText().equals("")){
+				X = x.getText();
+			}
+			else Window.alert("You must enter something for X");
+			if(!y.getText().equals("")){
+				Y = y.getText();
+			}
+			else Window.alert("You must enter something for Y");
+			if(!rotate.getItemText(rotate.getSelectedIndex()).equals("")){
+				rotation = rotate.getItemText(rotate.getSelectedIndex());
+			}
+			else Window.alert("You must enter something for rotations");
+			if(!damage.getItemText(damage.getSelectedIndex()).equals("")){
+				dam = damage.getItemText(damage.getSelectedIndex());
+			}
+			else Window.alert("You must enter something for damage");
+			Module newModule = new Module(ID,dam,X,Y,rotation);
+			
+			if(newModule.isConsistent()){
+		
+				GUIHelper.resetPanel();
+				//GUIHelper.updatePanel(myStorage.getModuleList());
+				//modList.add(GUIHelper.getScrollPanel());
+				myStorage.Store(newModule);
+				GUIHelper.updatePanel(myStorage.getModuleList(), myStorage);
+				modList.add(GUIHelper.getScrollPanel());
+
+			}
+			else{	
+			}
+			
+		}
+	});
+	
+	submit.setStylePrimaryName("buttonMargin");
+	attribPanel.add(idNum);
+	attribPanel.add(x);
+	attribPanel.add(y);
+	attribPanel.add(rotate);
+	attribPanel.add(damage);
+	attribPanel.add(submit);
+	attribPanel.setStylePrimaryName("panelMargin");
 }
 	
-	public static FlowPanel getModPanel(){
-		Window.alert("moduleTab getModPanel()");
-		return modPanel;
+	
+	public static FlowPanel getAttributes() {
+		return attribPanel;
 	}
 }
+	
+
