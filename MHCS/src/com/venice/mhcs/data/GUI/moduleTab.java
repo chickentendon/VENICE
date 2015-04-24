@@ -39,23 +39,24 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class moduleTab {
 	
 	//Declaration of module attribute widgets
+	private final static FlowPanel attribPanel = new FlowPanel();
 	private static ScrollPanel modList = new ScrollPanel();
+	
 	private static defaultTextBox idNum = new defaultTextBox("Module ID");
 	private static defaultTextBox x = new defaultTextBox("X");
 	private static defaultTextBox y = new defaultTextBox("Y");
 
 	//Declaration of panels
 
-	final static FlowPanel attribPanel = new FlowPanel();
 	
-	private static LocalStorage myStorage = new LocalStorage();
+	private static LocalStorage myStorage;
 	private static GUIComponets GUIHelper = new GUIComponets();
 	final ModuleGrid moduleGrid = new ModuleGrid();
-	//moduleGrid.addArray(myStorage.getModuleList());
 
 	
-	public static void initAttributes() {
+	public static void initAttributes(LocalStorage Stor) {
 	
+	myStorage = Stor;
 	idNum.setStylePrimaryName("textBoxMargin");
 	x.setStylePrimaryName("textBoxMargin");
 	y.setStylePrimaryName("textBoxMargin");
@@ -110,6 +111,9 @@ public class moduleTab {
 	
 	//Declaration of submit button to add modules to list
 	Button submit = new Button("Submit");
+	GUIHelper.resetPanel();
+	GUIHelper.updatePanel(myStorage.getModuleList(), myStorage);
+	modList.add(GUIHelper.getScrollPanel());
 	
 	submit.addClickHandler(new ClickHandler() {
 		public void onClick(ClickEvent event){
@@ -167,6 +171,7 @@ public class moduleTab {
 	attribPanel.add(damage);
 	attribPanel.add(submit);
 	attribPanel.setStylePrimaryName("panelMargin");
+	modList.setStylePrimaryName("panelMargin");
 }
 	
 	
@@ -177,6 +182,42 @@ public class moduleTab {
 	public static ScrollPanel getModList(){
 		return modList;
 	}
+	/**
+	 * Helper class to create default text in textboxes
+	 * @author maxronning
+	 *
+	 */
+	
+	public class DefaultTextBox extends TextBox implements FocusListener { 
+        private String defaultText; 
+
+        public DefaultTextBox(String defText) { 
+                defaultText = defText; 
+                setText(defaultText); 
+                addFocusListener(this); 
+        } 
+
+        public void setDefaultText(String defText) { 
+                defaultText = defText; 
+        } 
+
+        public String getDefaultText() { 
+                return defaultText; 
+        } 
+
+
+		@Override
+		public void onFocus(com.google.gwt.user.client.ui.Widget sender) {
+			this.setText("");
+			
+		}
+
+		@Override
+		public void onLostFocus(com.google.gwt.user.client.ui.Widget sender) {
+			
+		} 
+
+} 
 }
 	
 
