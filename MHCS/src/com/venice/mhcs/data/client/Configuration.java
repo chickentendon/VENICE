@@ -80,10 +80,58 @@ public class Configuration {
 	 * @param y the y coordinate of module to be below newly placed module
 	 * @return the module with modified coordinates to be above the x,y coordinates
 	 */
-	public Module attachTop(int x, int y, Module attachMod){
+	private Module attachTop(int x, int y, Module attachMod){
 		int newY = y + 1;
 		attachMod.setY(Integer.toString(newY));
 		return attachMod;
+	}
+	
+	/*
+	 * Modifies coordinates of module to place it below another
+	 * @param x the x coordinate of module to be above newly placed module
+	 * @param y the y coordinate of module to be above newly placed module
+	 * @return the module with modified coordinates to be below the x,y coordinates
+	 */
+	private Module attachBottom(int x, int y, Module attachMod){
+		int newY = y - 1;
+		attachMod.setY(Integer.toString(newY));
+		return attachMod;
+	}
+	
+	/*
+	 * Modifies coordinates of module to place it left of another
+	 * @param x the x coordinate of module to be right of newly placed module
+	 * @param y the y coordinate of module to be right of newly placed module
+	 * @return the module with modified coordinates to be left of the x,y coordinates
+	 */
+	private Module attachLeft(int x, int y, Module attachMod){
+		int newX = x - 1;
+		attachMod.setX(Integer.toString(newX));
+		return attachMod;
+	}
+	
+	/*
+	 * Modifies coordinates of module to place it right of another
+	 * @param x the x coordinate of module to be left of newly placed module
+	 * @param y the y coordinate of module to be left of newly placed module
+	 * @return the module with modified coordinates to be right of the x,y coordinates
+	 */
+	private Module attachRight(int x, int y, Module attachMod){
+		int newX = x + 1;
+		attachMod.setX(Integer.toString(newX));
+		return attachMod;
+	}
+	
+	private Module setBuildSite(int x, int y, Module setMod){
+		setMod.setX(Integer.toString(x));
+		setMod.setY(Integer.toString(y));
+		return setMod;
+	}
+	
+	//TODO
+	public Configuration buildMin1(Configuration min, int x, int y){
+		ArrayList<Module> minList = min.getMinimum1();
+		return null;
 	}
 	
 	private ArrayList<Module> min1 = new ArrayList<Module>();
