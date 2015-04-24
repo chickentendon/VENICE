@@ -33,18 +33,19 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class loginTab {
 		
 	//Declaration of login widgets
-	public final static Button enter = new Button("Log In");
-	public final static PasswordTextBox ptb = new PasswordTextBox();
-	public final static Label top = new Label("Username:");
-	public final static Label bottom = new Label("Password:");
-	public final static TextBox user = new TextBox();
+	public final  Button enter = new Button("Log In");
+	public final  PasswordTextBox ptb = new PasswordTextBox();
+	public final  Label top = new Label("Username:");
+	public final  Label bottom = new Label("Password:");
+	public final  TextBox user = new TextBox();
 		
 	//Declaration of panels
-	public AbsolutePanel loginPanel = new AbsolutePanel();
-	public FlowPanel pwPanel = new FlowPanel();
-	public VerticalPanel vertPanel = new VerticalPanel();
+	public static AbsolutePanel loginPanel = new AbsolutePanel();
+	public static FlowPanel pwPanel = new FlowPanel();
+	public static VerticalPanel vertPanel = new VerticalPanel();
+	final static Label space = new Label("     ");
 	
-	public void initLoginPanel () {
+	public void initLoginPanel() {
 		
 		//
 		vertPanel.getElement().setAttribute("align", "center");
@@ -62,13 +63,35 @@ public class loginTab {
 	    user.setAlignment(TextAlignment.CENTER);
 	    user.setMaxLength(6);
 	    user.setVisibleLength(8);
+	    
+	    vertPanel.add(top);
+	    vertPanel.add(user);
+	    vertPanel.add(bottom);
+	    vertPanel.add(ptb);
+	    vertPanel.add(space);
+	    
+		final Button enter = new Button("Log In");
+		enter.getElement().setAttribute("align", "center");
+		
+		vertPanel.add(enter);
+		
+		pwPanel.add(vertPanel);
+		loginPanel.add(pwPanel);
+		
+//		enter.addClickHandler(new ClickHandler() {
+//	    	public void onClick(ClickEvent event) {
+//	    			Window.alert("BITCH");
+//	    	}
+//	    	});
+
+
 	}
 	
 	/**
 	 * Getter for enter button
 	 * @return enter
 	 */
-	public static Button getEnterButton() {
+	public Button getEnter() {
 		return enter;
 	}
 	
@@ -76,7 +99,7 @@ public class loginTab {
 	 * Getter for password textbox ptb
 	 * @return ptb
 	 */
-	public static PasswordTextBox getPTB() {
+	public PasswordTextBox getPTB() {
 		return ptb;
 	}
 	
@@ -84,7 +107,13 @@ public class loginTab {
 	 * Getter for user textbox
 	 * @return user 
 	 */
-	public static TextBox getUser() {
+	public TextBox getUser() {
 		return user;
 	}
+	
+	public AbsolutePanel getLoginPanel() {
+		return loginPanel;
+	}
+	
+
 }

@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Panel;
 import com.venice.mhcs.data.GUI.ModuleMap;
+import com.venice.mhcs.data.GUI.loginTab;
 import com.venice.mhcs.data.GUI.moduleTab;
 import com.venice.mhcs.data.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
@@ -72,26 +73,26 @@ public class MHCS implements EntryPoint {
 		
 		
 		//Declaration of Module Logging panel elements
-		AbsolutePanel loginPanel = new AbsolutePanel();		//Login Panel Stuff
-		FlowPanel pwPanel = new FlowPanel();
-		VerticalPanel vertPanel = new VerticalPanel();
-		vertPanel.getElement().setAttribute("align", "center");
-		final Label top = new Label("Username:");
-		top.getElement().setAttribute("align", "center");
-		final Label bottom = new Label("Password:");
-	    bottom.getElement().setAttribute("align", "center");
-	    final PasswordTextBox ptb = new PasswordTextBox();
-	    ptb.getElement().setAttribute("align", "center");
-	    ptb.setStyleName("logInMargin");
-	    ptb.setMaxLength(6);
-	    ptb.setVisibleLength(8);
-	    ptb.setAlignment(TextAlignment.CENTER);
-	    final TextBox user = new TextBox();
-	    user.getElement().setAttribute("align", "center");
-	    user.setStyleName("logInMargin");
-	    user.setAlignment(TextAlignment.CENTER);
-	    user.setMaxLength(6);
-	    user.setVisibleLength(8);
+//		AbsolutePanel loginPanel = new AbsolutePanel();		//Login Panel Stuff
+//		FlowPanel pwPanel = new FlowPanel();
+//		VerticalPanel vertPanel = new VerticalPanel();
+//		vertPanel.getElement().setAttribute("align", "center");
+//		final Label top = new Label("Username:");
+//		top.getElement().setAttribute("align", "center");
+//		final Label bottom = new Label("Password:");
+//	    bottom.getElement().setAttribute("align", "center");
+//	    final PasswordTextBox ptb = new PasswordTextBox();
+//	    ptb.getElement().setAttribute("align", "center");
+//	    ptb.setStyleName("logInMargin");
+//	    ptb.setMaxLength(6);
+//	    ptb.setVisibleLength(8);
+//	    ptb.setAlignment(TextAlignment.CENTER);
+//	    final TextBox user = new TextBox();
+//	    user.getElement().setAttribute("align", "center");
+//	    user.setStyleName("logInMargin");
+//	    user.setAlignment(TextAlignment.CENTER);
+//	    user.setMaxLength(6);
+//	    user.setVisibleLength(8);
 		
 		final FlowPanel modPanel = new FlowPanel(); 		//Module Tab
 		
@@ -111,13 +112,13 @@ public class MHCS implements EntryPoint {
 		modPanel.add(mapPanel);
 		//END MODULE MAP STUFF
 		
-		final Label space = new Label("     ");
-	    
-		vertPanel.add(top);
-	    vertPanel.add(user);
-	    vertPanel.add(bottom);
-	    vertPanel.add(ptb);
-	    vertPanel.add(space); 
+//		final Label space = new Label("     ");
+//	    
+//		vertPanel.add(top);
+//	    vertPanel.add(user);
+//	    vertPanel.add(bottom);
+//	    vertPanel.add(ptb);
+//	    vertPanel.add(space); 
 	    
 	    
 	   
@@ -126,17 +127,21 @@ public class MHCS implements EntryPoint {
 		
 		// Create a three-item tab panel, with the tab area 1.5em tall.
 		final TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
-		final Button enter = new Button("Log In");
-		enter.getElement().setAttribute("align", "center");
-		pwPanel.add(vertPanel);
-		loginPanel.add(pwPanel);
-		vertPanel.add(enter);
-		p.add(loginPanel, "Login");
+//		final Button enter = new Button("Log In");
+//		enter.getElement().setAttribute("align", "center");
+//		pwPanel.add(vertPanel);
+//		loginPanel.add(pwPanel);
+//		vertPanel.add(enter);
+		
+		final loginTab loginHelper = new loginTab();
+		loginHelper.initLoginPanel();
+		p.add(loginHelper.getLoginPanel(), "Login");
 
 		
-    	enter.addClickHandler(new ClickHandler() {
+    	loginHelper.enter.addClickHandler(new ClickHandler() {
     	public void onClick(ClickEvent event) {
-    			if (user.getText().equals("astro1") && ptb.getText().equals("lol")) {
+    			Window.alert("BITCH");
+    			if (loginHelper.getUser().getText().equals("astro1") && loginHelper.getPTB().getText().equals("lol")) {
     				Window.alert("Log In : Successful");
     				p.getTabWidget(0).removeFromParent();
     				p.add(modPanel, "Module Logging");
@@ -145,9 +150,9 @@ public class MHCS implements EntryPoint {
     			}
     			else {
     			Window.alert("Incorrect user ID/password, try again");
-    			ptb.setText("");
-    			user.setText("");
-    			user.setFocus(true);
+    			loginHelper.getPTB().setText("");
+    			loginHelper.getUser().setText("");
+    			loginHelper.getUser().setFocus(true);
     			}
 
     	}

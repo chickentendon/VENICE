@@ -181,6 +181,7 @@ public class moduleTab {
 	public static ScrollPanel getModList(){
 		return modList;
 	}
+	
 	/**
 	 * Helper class to create default text in textboxes
 	 * @author maxronning
