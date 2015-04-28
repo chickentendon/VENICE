@@ -122,16 +122,90 @@ public class Configuration {
 		return attachMod;
 	}
 	
-	private Module setBuildSite(int x, int y, Module setMod){
-		setMod.setX(Integer.toString(x));
-		setMod.setY(Integer.toString(y));
-		return setMod;
+	private ArrayList<Module> setPlains(int x, int y, ArrayList<Module> modList){
+		for(int i = 0; i < modList.size(); i++){
+			if(modList.get(i).getModuleType() == ModuleType.PLAIN && 
+			Integer.parseInt(modList.get(i).getX()) != x && 
+			Integer.parseInt(modList.get(i).getY()) != y){
+				modList.get(i).setX(Integer.toString(x));
+				modList.get(i).setY(Integer.toString(y));
+			}
+			else if(modList.get(i).getModuleType() == ModuleType.PLAIN && 
+			Integer.parseInt(modList.get(i).getX()) != (x+1) && 
+			Integer.parseInt(modList.get(i).getY()) != y){
+				modList.get(i).setX(Integer.toString(x+1));
+				modList.get(i).setY(Integer.toString(y));
+			}
+			else if(modList.get(i).getModuleType() == ModuleType.PLAIN && 
+			Integer.parseInt(modList.get(i).getX()) != (x-1) && 
+			Integer.parseInt(modList.get(i).getY()) != y){
+				modList.get(i).setX(Integer.toString(x-1));
+				modList.get(i).setY(Integer.toString(y));
+			}
+		}
+        return modList;
 	}
+	
+	private int findXSite(ArrayList<Module> minList){
+		int tempX = 0;
+		for(int i = 0; i < minList.size(); i++){
+			tempX += Integer.parseInt(minList.get(i).getX());
+		}
+		return tempX/minList.size();
+	}
+	
+	private int findYSite(ArrayList<Module> minList){
+		int tempY = 0;
+		for(int i = 0; i < minList.size(); i++){
+			tempY += Integer.parseInt(minList.get(i).getY());
+		}
+		return tempY/minList.size();
+	}
+	
+	
 	
 	//TODO
 	public Configuration buildMin1(Configuration min, int x, int y){
 		ArrayList<Module> minList = min.getMinimum1();
-		return null;
+		if(min.isMinimum(minList)){
+			min.setPlains(min.findXSite(minList),min.findYSite(minList), minList);
+			for(int i = 0; i < minList.size();i++){
+				
+				Module curMod = minList.get(i);
+				
+				if(curMod.getModuleType() == ModuleType.AIRLOCK){
+					curMod = attachLeft(x, y, curMod);
+					curMod = attachLeft(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.CANTEEN){
+					curMod = attachLeft(x, y, curMod);
+					curMod = attachTop(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.DORMITORY){
+					curMod = attachTop(x, y, curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.CONTROL){
+					curMod = attachRight(x, y, curMod);
+					curMod = attachTop(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.SANITATION){
+					curMod = attachRight(x, y, curMod);
+					curMod = attachRight(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.POWER){
+					curMod = attachRight(x, y, curMod);
+					curMod = attachBottom(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.FOOD_WATER){
+					curMod = attachLeft(x, y, curMod);
+					curMod = attachBottom(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+			minList.remove(i);
+			minList.add(i, curMod);
+			}
+		}
+		min.setMinimum1(minList);
+		return min;
 	}
 	
 	private ArrayList<Module> min1 = new ArrayList<Module>();
