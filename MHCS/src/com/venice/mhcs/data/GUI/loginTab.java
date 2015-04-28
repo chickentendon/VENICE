@@ -72,7 +72,8 @@ public class loginTab {
 	    vertPanel.add(ptb);
 	    vertPanel.add(space);
 	    
-	    
+	    final moduleTab moduleHelper = new moduleTab();
+	    //moduleHelper.initAttributes(MHCS.myStorage);
 		final Button enter = new Button("Log In");
 		enter.getElement().setAttribute("align", "center");
 		
@@ -88,7 +89,8 @@ public class loginTab {
     			if (getUser().getText().equals("astro1") && getPTB().getText().equals("lol")) {
     				Window.alert("Log In : Successful");
     				MHCS.getP().getTabWidget(0).removeFromParent();
-    				MHCS.getP().add(moduleTab.getModPanel(), "Module Logging");
+    				MHCS.getP().add(moduleTab.getAttributes(), "Module Logging");
+    				//MHCS.getP().add(moduleHelper.getModPanel(), "Module Logging");
     				MHCS.getP().add(new HTML("Habitat Config"), "Habitat Config");
     			}
     			else {

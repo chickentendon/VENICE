@@ -56,6 +56,7 @@ public class MHCS implements EntryPoint {
 	public static LocalStorage myStorage = new LocalStorage();
 	
 	final static TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
+	final loginTab loginHelper = new loginTab();
 
 	/**
 	 * This is the entry point method.
@@ -96,10 +97,10 @@ public class MHCS implements EntryPoint {
 
 
 		
-		final loginTab loginHelper = new loginTab();
-		final moduleTab moduleHelper = new moduleTab();
-		
+
+		//moduleHelper.initAttributes(myStorage);
 		loginHelper.initLoginPanel();
+		//moduleTab.initAttributes(MHCS.myStorage);
 		p.add(loginHelper.getLoginPanel(), "Login");
 
     	
@@ -114,6 +115,6 @@ public class MHCS implements EntryPoint {
 	
 	public final static TabLayoutPanel getP(){
 		return p;
-	}	
-	
+	}
+
 }
