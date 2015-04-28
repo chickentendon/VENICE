@@ -40,7 +40,7 @@ public class moduleTab {
 	//Declaration of module attribute widgets
 	private final static FlowPanel attribPanel = new FlowPanel();
 	private static ScrollPanel modList = new ScrollPanel();
-	
+	private final static FlowPanel modPanel = new FlowPanel(); 		//Module Tab
 	private static defaultTextBox idNum = new defaultTextBox("Module ID");
 	private static defaultTextBox x = new defaultTextBox("X");
 	private static defaultTextBox y = new defaultTextBox("Y");
@@ -171,6 +171,9 @@ public class moduleTab {
 	attribPanel.add(submit);
 	attribPanel.setStylePrimaryName("panelMargin");
 	modList.setStylePrimaryName("panelMargin");
+	
+	modPanel.add(moduleTab.getAttributes());
+	modPanel.add(moduleTab.getModList());
 }
 	
 	
@@ -182,12 +185,15 @@ public class moduleTab {
 		return modList;
 	}
 	
+	public static FlowPanel getModPanel() {
+		return modPanel;
+	}
+	
 	/**
 	 * Helper class to create default text in textboxes
 	 * @author maxronning
 	 *
 	 */
-	
 	public class DefaultTextBox extends TextBox implements FocusListener { 
         private String defaultText; 
 

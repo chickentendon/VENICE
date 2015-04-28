@@ -53,7 +53,9 @@ public class MHCS implements EntryPoint {
 			.create(GreetingService.class);
 	
 	
-	private LocalStorage myStorage = new LocalStorage();
+	public static LocalStorage myStorage = new LocalStorage();
+	
+	final static TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
 
 	/**
 	 * This is the entry point method.
@@ -72,30 +74,8 @@ public class MHCS implements EntryPoint {
 		moduleGrid.addArray(myStorage.getModuleList());
 		
 		
-		//Declaration of Module Logging panel elements
-//		AbsolutePanel loginPanel = new AbsolutePanel();		//Login Panel Stuff
-//		FlowPanel pwPanel = new FlowPanel();
-//		VerticalPanel vertPanel = new VerticalPanel();
-//		vertPanel.getElement().setAttribute("align", "center");
-//		final Label top = new Label("Username:");
-//		top.getElement().setAttribute("align", "center");
-//		final Label bottom = new Label("Password:");
-//	    bottom.getElement().setAttribute("align", "center");
-//	    final PasswordTextBox ptb = new PasswordTextBox();
-//	    ptb.getElement().setAttribute("align", "center");
-//	    ptb.setStyleName("logInMargin");
-//	    ptb.setMaxLength(6);
-//	    ptb.setVisibleLength(8);
-//	    ptb.setAlignment(TextAlignment.CENTER);
-//	    final TextBox user = new TextBox();
-//	    user.getElement().setAttribute("align", "center");
-//	    user.setStyleName("logInMargin");
-//	    user.setAlignment(TextAlignment.CENTER);
-//	    user.setMaxLength(6);
-//	    user.setVisibleLength(8);
 		
 		final FlowPanel modPanel = new FlowPanel(); 		//Module Tab
-		
 		final ScrollPanel mapPanel = new ScrollPanel();		//Map Panel
 		mapPanel.setPixelSize(1500, 400);					//Map Panel Size
 		
@@ -106,66 +86,34 @@ public class MHCS implements EntryPoint {
 		modPanel.add(moduleTab.getAttributes());
 		modPanel.add(moduleTab.getModList());
 		
-		//MODUEL MAP STUFF
+		//MODULE MAP STUFF
 		ModuleMap.initalizeMap(moduleGrid);
 	    mapPanel.add(ModuleMap.getGrid());
 		modPanel.add(mapPanel);
 		//END MODULE MAP STUFF
+	
 		
-//		final Label space = new Label("     ");
-//	    
-//		vertPanel.add(top);
-//	    vertPanel.add(user);
-//	    vertPanel.add(bottom);
-//	    vertPanel.add(ptb);
-//	    vertPanel.add(space); 
-	    
-	    
-	   
+
 
 		
-		
-		// Create a three-item tab panel, with the tab area 1.5em tall.
-		final TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
-//		final Button enter = new Button("Log In");
-//		enter.getElement().setAttribute("align", "center");
-//		pwPanel.add(vertPanel);
-//		loginPanel.add(pwPanel);
-//		vertPanel.add(enter);
-		
 		final loginTab loginHelper = new loginTab();
+		final moduleTab moduleHelper = new moduleTab();
+		
 		loginHelper.initLoginPanel();
 		p.add(loginHelper.getLoginPanel(), "Login");
 
-		
-    	loginHelper.enter.addClickHandler(new ClickHandler() {
-    	public void onClick(ClickEvent event) {
-    			Window.alert("BITCH");
-    			if (loginHelper.getUser().getText().equals("astro1") && loginHelper.getPTB().getText().equals("lol")) {
-    				Window.alert("Log In : Successful");
-    				p.getTabWidget(0).removeFromParent();
-    				p.add(modPanel, "Module Logging");
-    				p.add(new HTML("Habitat Config"), "Habitat Config");
-    				
-    			}
-    			else {
-    			Window.alert("Incorrect user ID/password, try again");
-    			loginHelper.getPTB().setText("");
-    			loginHelper.getUser().setText("");
-    			loginHelper.getUser().setFocus(true);
-    			}
-
-    	}
-    }); 	
-    	
-    	
     	
 		// Attach the LayoutPanel to the RootLayoutPanel. The latter will listen for
 	    // resize events on the window to ensure that its children are informed of
 	    // possible size changes.
-	    RootLayoutPanel rp = RootLayoutPanel.get();
-	    rp.add(p);
+    RootLayoutPanel rp = RootLayoutPanel.get();
+    rp.add(p);
 	    
 
 	};
+	
+	public final static TabLayoutPanel getP(){
+		return p;
+	}	
+	
 }
