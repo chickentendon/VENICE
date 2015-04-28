@@ -179,12 +179,6 @@ public class ModuleGrid {
 		return result;
 	}
 	
-	//TODO DISTANCE METHOD
-	public int distance(int xCoord1, int yCoord1, int xCoord2, int yCoord2)
-	{
-		return 0;
-	}
-	
 	
 	private int length, height;
 	private Cell[][] grid;

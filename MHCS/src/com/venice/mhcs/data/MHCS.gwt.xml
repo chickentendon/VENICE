@@ -27,6 +27,7 @@
   <source path='client'/>
   <source path='shared'/>
   <source path='GUI'/>
+  <source path='functions'/>
 
   <!-- allow Super Dev Mode -->
   <add-linker name="xsiframe"/>
