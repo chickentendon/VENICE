@@ -89,7 +89,7 @@ public class GUIComponets {
 		}
 
 		
-		ModulePanel.setSize("500px", "500px");
+		ModulePanel.setSize("500px", "200px");
 		ModulePanel.add(modtable);
 
 		
