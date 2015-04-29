@@ -100,7 +100,8 @@ public class homeTab  {
 	
 		 String sTemp = "Temp : " + temp.toString() + " °C";
 		 String sVisibility = "Visibility : " + visibility.toString() + " km";
-	
+		 Image logo = new Image("images/weatherlogo.jpg");
+		 vp.add(logo);
 		 vp.add(new Label(sTemp)); //TO VIEW
 		 vp.add(new Label(sVisibility)); //TO VIEW
 
