@@ -11,7 +11,6 @@ public class ModuleMap
 	public static void initalizeMap(ModuleGrid moduleMap)
 	{
 		g = new Grid(50, 100);
-		map = moduleMap;
 		g.setSize("5000px", "2500px");
 		for(int row = 0; row < g.getRowCount(); row++)
 	    {
@@ -22,10 +21,11 @@ public class ModuleMap
 	    	}
 	    }
 		g.setVisible(true);
-		updateMap();
+		updateMap(moduleMap);
 	}
-	public static void updateMap()
+	public static void updateMap(ModuleGrid moduleMap)
 	{
+		map = moduleMap;
 		for(int row = 0; row < g.getRowCount(); row++)
 	    {
 	    	for(int col = 0; col < g.getColumnCount(); col++)

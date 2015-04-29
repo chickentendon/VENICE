@@ -119,6 +119,15 @@ public class ModuleGrid {
 		return result;
 	}
 	
+	public void addModule(Module mod)
+	{
+		Cell curCell = new Cell(mod);
+		int modX = (int) Integer.valueOf(mod.getX());
+		int modY = (int) Integer.valueOf(mod.getY());
+		
+		grid [modX - 1][modY - 1] = curCell;
+	}
+	
 	public void addArray(ArrayList<Module> modules)
 	{
 		int size = modules.size();
