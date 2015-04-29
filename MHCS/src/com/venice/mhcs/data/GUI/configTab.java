@@ -1,9 +1,15 @@
 package com.venice.mhcs.data.GUI;
 
+import javax.validation.constraints.Min;
+
+import com.google.gwt.resources.css.Minify;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Panel;
+import com.venice.mhcs.data.client.Configuration;
+import com.venice.mhcs.data.client.LocalStorage;
+import com.venice.mhcs.data.client.ModuleGrid;
 import com.venice.mhcs.data.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -31,5 +37,26 @@ import com.google.gwt.user.client.ui.ToggleButton;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class configTab {
-
+	private Configuration mini = new Configuration();
+	private LocalStorage stor = new LocalStorage();
+	private ModuleGrid grid = new ModuleGrid();
+	private static ScrollPanel sp = new ScrollPanel();
+	private ModuleMap map = new ModuleMap();
+	private ModuleGrid g = new ModuleGrid();
+	
+	public void initConfig(){
+		mini.setMinimum1(stor.getModuleList());
+		
+		if(mini.isMinimum(mini.getMinimum1())){
+			mini = mini.buildMin1(mini);
+			grid.addArray(mini.getMinimum1());
+			map.initalizeMap(g);
+			map.updateMap();
+			sp.add(map.getGrid());
+		}
+	} 
+	
+	public static ScrollPanel getConfig(){
+		return sp;
+	}
 }

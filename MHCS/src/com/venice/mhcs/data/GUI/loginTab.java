@@ -91,7 +91,7 @@ public class loginTab {
     				MHCS.getP().add(homeTab.getMain(), "Home");
     				MHCS.getP().add(moduleTab.getModPanel(), "Module Logging");
 
-    				MHCS.getP().add(new HTML("Habitat Config"), "Habitat Config");
+    				MHCS.getP().add(configTab.getConfig(), "Habitat Config");
     			}
     			else {
     			Window.alert("Incorrect user ID/password, try again");
