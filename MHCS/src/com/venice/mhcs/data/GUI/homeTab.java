@@ -98,8 +98,8 @@ public class homeTab  {
 		 JSONValue temp = jB.get("temp_c");
 		 JSONValue visibility = jB.get("visibility_km");
 	
-		 String sTemp = "Temp (C) : " + temp.toString();
-		 String sVisibility = "Visibility (km) : " + visibility.toString();
+		 String sTemp = "Temp : " + temp.toString() + " °C";
+		 String sVisibility = "Visibility : " + visibility.toString() + " km";
 	
 		 vp.add(new Label(sTemp)); //TO VIEW
 		 vp.add(new Label(sVisibility)); //TO VIEW
