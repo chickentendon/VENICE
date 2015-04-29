@@ -81,7 +81,7 @@ public class loginTab {
 		pwPanel.add(vertPanel);
 		loginPanel.add(pwPanel);
 		
-
+		moduleTab.initAttributes(MHCS.myStorage);
 	
 		enter.addClickHandler(new ClickHandler() {
 	    	public void onClick(ClickEvent event) {
@@ -89,7 +89,8 @@ public class loginTab {
     			if (getUser().getText().equals("astro1") && getPTB().getText().equals("lol")) {
     				Window.alert("Log In : Successful");
     				MHCS.getP().getTabWidget(0).removeFromParent();
-    				MHCS.getP().add(moduleTab.getAttributes(), "Module Logging");
+    				MHCS.getP().add(moduleTab.getModPanel(), "Module Logging");
+
     				MHCS.getP().add(new HTML("Habitat Config"), "Habitat Config");
     			}
     			else {

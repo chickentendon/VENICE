@@ -41,11 +41,11 @@ public class moduleTab {
 	//Declaration of module attribute widgets
 	private final static FlowPanel attribPanel = new FlowPanel();
 	private static ScrollPanel modList = new ScrollPanel();
-	private final static FlowPanel modPanel = new FlowPanel(); 		//Module Tab
+	private final static  FlowPanel modPanel = new FlowPanel(); 		//Module Tab
 	private static defaultTextBox idNum = new defaultTextBox("Module ID");
 	private static defaultTextBox x = new defaultTextBox("X");
 	private static defaultTextBox y = new defaultTextBox("Y");
-
+	final static ScrollPanel mapPanel = new ScrollPanel();
 	//Declaration of panels
 
 	
@@ -75,6 +75,14 @@ public class moduleTab {
 	y.setVisibleLength(3);
 	y.setAlignment(TextAlignment.CENTER);
 	
+	ModuleGrid moduleGrid = new ModuleGrid();
+	moduleGrid.addArray(myStorage.getModuleList());
+	
+	//MODULE MAP STUFF
+	mapPanel.setPixelSize(1500, 400);		
+	ModuleMap.initalizeMap(moduleGrid);
+    mapPanel.add(ModuleMap.getGrid());
+
 	
 	//Declaring rotations ListBox and adding choices
 	final ListBox rotate = new ListBox();
@@ -174,6 +182,7 @@ public class moduleTab {
 	
 	modPanel.add(attribPanel);
 	modPanel.add(modList);
+	modPanel.add(mapPanel);
 }
 	
 	
@@ -186,9 +195,14 @@ public class moduleTab {
 	}
 	
 	public static FlowPanel getModPanel() {
-		moduleTab.initAttributes(MHCS.myStorage);
+		
 		return modPanel;
 	}
+	
+	public final static ScrollPanel getMapPanel() {
+		return mapPanel;
+	}
+
 	
 	/**
 	 * Helper class to create default text in textboxes
