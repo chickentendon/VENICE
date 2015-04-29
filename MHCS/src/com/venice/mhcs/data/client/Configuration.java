@@ -224,6 +224,55 @@ public class Configuration {
 		return min;
 	}
 	
+	public Configuration buildMin2(Configuration min){
+		ArrayList<Module> minList = min.getMinimum2();
+		int x = findXSite(minList);
+		System.out.println(x);
+		int y = findYSite(minList);
+		System.out.println(y);
+
+		if(min.isMinimum(minList)){
+			minList = setPlains(x, y, minList);
+			for(int i = 0; i < minList.size();i++){
+				
+				Module curMod = minList.get(i);
+				
+				if(curMod.getModuleType() == ModuleType.AIRLOCK){
+					curMod = attachLeft(x, y, curMod);
+					curMod = attachBottom(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.CANTEEN){
+					curMod = attachRight(x, y, curMod);
+					curMod = attachBottom(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.DORMITORY){
+					curMod = attachRight(x, y, curMod);
+					curMod = attachRight(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.CONTROL){
+					curMod = attachTop(x, y, curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.SANITATION){
+					curMod = attachLeft(x, y, curMod);
+					curMod = attachLeft(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.POWER){
+					curMod = attachLeft(x, y, curMod);
+					curMod = attachTop(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+				else if(curMod.getModuleType() == ModuleType.FOOD_WATER){
+					curMod = attachRight(x, y, curMod);
+					curMod = attachTop(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
+				}
+			minList.remove(i);
+			minList.add(i, curMod);
+			}
+		}
+		min.setMinimum2(minList);
+		return min;
+	}
+	
+	
 	private ArrayList<Module> min1 = new ArrayList<Module>();
 	private ArrayList<Module> min2 = new ArrayList<Module>();
 
