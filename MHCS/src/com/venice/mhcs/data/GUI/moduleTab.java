@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.venice.mhcs.data.GUI.defaultTextBox;
 import com.venice.mhcs.data.client.GUIComponets;
 import com.venice.mhcs.data.client.LocalStorage;
+import com.venice.mhcs.data.client.MHCS;
 import com.venice.mhcs.data.client.Module;
 import com.venice.mhcs.data.client.ModuleGrid;
 import com.venice.mhcs.data.shared.FieldVerifier;
@@ -99,6 +100,7 @@ public class moduleTab {
 	damage.addItem("Undamaged");
 	damage.addItem("Uncertain");
 	damage.setStylePrimaryName("listBoxMargin");
+	
 	//Change handler to disable default "Damage" value after a selection is made
 	damage.addChangeHandler(new ChangeHandler() {
         public void onChange(ChangeEvent changeEvent) {
@@ -156,9 +158,7 @@ public class moduleTab {
 				modList.add(GUIHelper.getScrollPanel());
 
 			}
-			else{	
-			}
-			
+			else{ }
 		}
 	});
 	
@@ -172,8 +172,8 @@ public class moduleTab {
 	attribPanel.setStylePrimaryName("panelMargin");
 	modList.setStylePrimaryName("panelMargin");
 	
-	modPanel.add(moduleTab.getAttributes());
-	modPanel.add(moduleTab.getModList());
+	modPanel.add(attribPanel);
+	modPanel.add(modList);
 }
 	
 	
@@ -186,6 +186,7 @@ public class moduleTab {
 	}
 	
 	public static FlowPanel getModPanel() {
+		moduleTab.initAttributes(MHCS.myStorage);
 		return modPanel;
 	}
 	

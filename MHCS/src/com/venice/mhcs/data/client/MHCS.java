@@ -57,7 +57,8 @@ public class MHCS implements EntryPoint {
 	
 	final static TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
 	final loginTab loginHelper = new loginTab();
-
+	final static ScrollPanel mapPanel = new ScrollPanel();		//Map Panel
+	
 	/**
 	 * This is the entry point method.
 	 */
@@ -77,7 +78,7 @@ public class MHCS implements EntryPoint {
 		
 		
 		final FlowPanel modPanel = new FlowPanel(); 		//Module Tab
-		final ScrollPanel mapPanel = new ScrollPanel();		//Map Panel
+
 		mapPanel.setPixelSize(1500, 400);					//Map Panel Size
 		
 		
@@ -98,9 +99,8 @@ public class MHCS implements EntryPoint {
 
 		
 
-		//moduleHelper.initAttributes(myStorage);
 		loginHelper.initLoginPanel();
-		//moduleTab.initAttributes(MHCS.myStorage);
+	
 		p.add(loginHelper.getLoginPanel(), "Login");
 
     	
@@ -115,6 +115,10 @@ public class MHCS implements EntryPoint {
 	
 	public final static TabLayoutPanel getP(){
 		return p;
+	}
+	
+	public final static ScrollPanel getMapPanel() {
+		return mapPanel;
 	}
 
 }
