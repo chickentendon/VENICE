@@ -1,6 +1,8 @@
 package com.venice.mhcs.data.client;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 import com.venice.mhcs.data.client.Module;
 
 /*
@@ -83,6 +85,7 @@ public class Configuration {
 	private Module attachTop(int x, int y, Module attachMod){
 		int newY = y + 1;
 		attachMod.setY(Integer.toString(newY));
+		attachMod.setX(Integer.toString(x));
 		return attachMod;
 	}
 	
@@ -95,6 +98,7 @@ public class Configuration {
 	private Module attachBottom(int x, int y, Module attachMod){
 		int newY = y - 1;
 		attachMod.setY(Integer.toString(newY));
+		attachMod.setX(Integer.toString(x));
 		return attachMod;
 	}
 	
@@ -107,6 +111,7 @@ public class Configuration {
 	private Module attachLeft(int x, int y, Module attachMod){
 		int newX = x - 1;
 		attachMod.setX(Integer.toString(newX));
+		attachMod.setY(Integer.toString(y));
 		return attachMod;
 	}
 	
@@ -119,31 +124,39 @@ public class Configuration {
 	private Module attachRight(int x, int y, Module attachMod){
 		int newX = x + 1;
 		attachMod.setX(Integer.toString(newX));
+		attachMod.setY(Integer.toString(y));
 		return attachMod;
 	}
-	
+
 	private ArrayList<Module> setPlains(int x, int y, ArrayList<Module> modList){
+		ArrayList<Module> pList = new ArrayList<Module>();
+		
 		for(int i = 0; i < modList.size(); i++){
-			if(modList.get(i).getModuleType() == ModuleType.PLAIN && 
-			Integer.parseInt(modList.get(i).getX()) != x && 
-			Integer.parseInt(modList.get(i).getY()) != y){
-				modList.get(i).setX(Integer.toString(x));
-				modList.get(i).setY(Integer.toString(y));
-			}
-			else if(modList.get(i).getModuleType() == ModuleType.PLAIN && 
-			Integer.parseInt(modList.get(i).getX()) != (x+1) && 
-			Integer.parseInt(modList.get(i).getY()) != y){
-				modList.get(i).setX(Integer.toString(x+1));
-				modList.get(i).setY(Integer.toString(y));
-			}
-			else if(modList.get(i).getModuleType() == ModuleType.PLAIN && 
-			Integer.parseInt(modList.get(i).getX()) != (x-1) && 
-			Integer.parseInt(modList.get(i).getY()) != y){
-				modList.get(i).setX(Integer.toString(x-1));
-				modList.get(i).setY(Integer.toString(y));
+			if(modList.get(i).getModuleType() == ModuleType.PLAIN){
+				pList.add(modList.remove(i));
+				i--;
 			}
 		}
-        return modList;
+		
+		for(int i = 0; i < pList.size(); i++){
+			if(i == 0){
+				pList.get(i).setX(Integer.toString(x));
+				pList.get(i).setY(Integer.toString(y));
+			}
+			else if(i == 1){
+				pList.get(i).setX(Integer.toString(x+1));
+				pList.get(i).setY(Integer.toString(y));
+			}
+			else if(i == 2){
+				pList.get(i).setX(Integer.toString(x-1));
+				pList.get(i).setY(Integer.toString(y));
+			}
+		}
+		
+		for(int i = 0; i < pList.size(); i++){
+			modList.add(pList.get(i));
+		}
+		return modList;
 	}
 	
 	private int findXSite(ArrayList<Module> minList){
@@ -162,13 +175,15 @@ public class Configuration {
 		return tempY/minList.size();
 	}
 	
-	
-	
-	//TODO
-	public Configuration buildMin1(Configuration min, int x, int y){
+	public Configuration buildMin1(Configuration min){
 		ArrayList<Module> minList = min.getMinimum1();
+		int x = findXSite(minList);
+		System.out.println(x);
+		int y = findYSite(minList);
+		System.out.println(y);
+
 		if(min.isMinimum(minList)){
-			min.setPlains(min.findXSite(minList),min.findYSite(minList), minList);
+			minList = setPlains(x, y, minList);
 			for(int i = 0; i < minList.size();i++){
 				
 				Module curMod = minList.get(i);
@@ -177,6 +192,7 @@ public class Configuration {
 					curMod = attachLeft(x, y, curMod);
 					curMod = attachLeft(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
 				}
+				
 				else if(curMod.getModuleType() == ModuleType.CANTEEN){
 					curMod = attachLeft(x, y, curMod);
 					curMod = attachTop(Integer.parseInt(curMod.getX()), Integer.parseInt(curMod.getY()), curMod);
