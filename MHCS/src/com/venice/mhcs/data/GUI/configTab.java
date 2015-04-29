@@ -42,7 +42,6 @@ public class configTab {
 	private static ModuleGrid grid = new ModuleGrid();
 	private static ScrollPanel sp = new ScrollPanel();
 	private static ModuleMap map = new ModuleMap();
-	private static ModuleGrid g = new ModuleGrid();
 	
 	public static void initConfig(){
 		mini.setMinimum1(stor.getModuleList());
@@ -50,8 +49,7 @@ public class configTab {
 		if(mini.isMinimum(mini.getMinimum1())){
 			mini = mini.buildMin1(mini);
 			grid.addArray(mini.getMinimum1());
-			map.initalizeMap(g);
-			map.updateMap();
+			map.initalizeMap(grid);
 			sp.add(map.getGrid());
 		}
 	} 
