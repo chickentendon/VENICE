@@ -85,10 +85,10 @@ public class loginTab {
 	
 		enter.addClickHandler(new ClickHandler() {
 	    	public void onClick(ClickEvent event) {
-	    		Window.alert("loginTab");
     			if (getUser().getText().equals("astro1") && getPTB().getText().equals("lol")) {
     				Window.alert("Log In : Successful");
-    				MHCS.getP().getTabWidget(0).removeFromParent();
+    				MHCS.getP().getTabWidget(0).removeFromParent(); 
+    				MHCS.getP().add(homeTab.getMain(), "Home");
     				MHCS.getP().add(moduleTab.getModPanel(), "Module Logging");
 
     				MHCS.getP().add(new HTML("Habitat Config"), "Habitat Config");
