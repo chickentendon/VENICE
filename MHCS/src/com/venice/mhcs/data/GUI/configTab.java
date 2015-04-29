@@ -37,14 +37,14 @@ import com.google.gwt.user.client.ui.ToggleButton;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class configTab {
-	private Configuration mini = new Configuration();
-	private LocalStorage stor = new LocalStorage();
-	private ModuleGrid grid = new ModuleGrid();
+	private static Configuration mini = new Configuration();
+	private static LocalStorage stor = new LocalStorage();
+	private static ModuleGrid grid = new ModuleGrid();
 	private static ScrollPanel sp = new ScrollPanel();
-	private ModuleMap map = new ModuleMap();
-	private ModuleGrid g = new ModuleGrid();
+	private static ModuleMap map = new ModuleMap();
+	private static ModuleGrid g = new ModuleGrid();
 	
-	public void initConfig(){
+	public static void initConfig(){
 		mini.setMinimum1(stor.getModuleList());
 		
 		if(mini.isMinimum(mini.getMinimum1())){

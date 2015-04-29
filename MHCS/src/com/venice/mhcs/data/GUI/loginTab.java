@@ -82,7 +82,8 @@ public class loginTab {
 		loginPanel.add(pwPanel);
 		
 		moduleTab.initAttributes(MHCS.myStorage);
-	
+		configTab.initConfig();
+		
 		enter.addClickHandler(new ClickHandler() {
 	    	public void onClick(ClickEvent event) {
     			if (getUser().getText().equals("astro1") && getPTB().getText().equals("lol")) {
