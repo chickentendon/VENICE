@@ -55,7 +55,7 @@ public class Configuration {
 	 *@return true if minimum, false if not minimum
 	 */
 	public boolean isMinimum(ArrayList<Module> config){
-		int airlock = 0, canteen = 0, control = 0, dorm = 0, foodwater = 0, plain = 0, power = 0;
+		int airlock = 0, canteen = 0, control = 0, dorm = 0, foodwater = 0, plain = 0, power = 0, sanitation = 0;
 		for(int i = 0; i < config.size() ; i++){
 			Module test = config.get(i);
 			if(test.getModuleType() == ModuleType.AIRLOCK) airlock++;
@@ -67,11 +67,11 @@ public class Configuration {
 			//else if(test.getModuleType() == ModuleType.MEDICAL) medical++;		//Commented to be used 
 			else if(test.getModuleType() == ModuleType.PLAIN) plain++;				//for Full Config Test
 			else if(test.getModuleType() == ModuleType.POWER) power++;
-			//else if(test.getModuleType() == ModuleType.SANITATION) sanitation++;
+			else if(test.getModuleType() == ModuleType.SANITATION) sanitation++;
 			else {}
 		}
 		if(airlock >= 1 && control >= 1 && power >= 1 && foodwater >= 1 && dorm >= 1 
-			&& canteen >= 1 && plain >= 3) return true;
+			&& canteen >= 1 && sanitation >= 1 && plain >= 3) return true;
 		else return false;
 	}
 	
