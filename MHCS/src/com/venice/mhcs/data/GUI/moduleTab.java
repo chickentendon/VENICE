@@ -146,10 +146,8 @@ public class moduleTab {
 				//GUIHelper.updatePanel(myStorage.getModuleList());
 				//modList.add(GUIHelper.getScrollPanel());
 				myStorage.Store(newModule);
-				moduleGrid.addModule(newModule);
 				GUIHelper.updatePanel(myStorage.getModuleList(), myStorage);
 				modList.add(GUIHelper.getScrollPanel());
-				ModuleMap.updateMap(moduleGrid);
 			}
 			else{ }
 		}
