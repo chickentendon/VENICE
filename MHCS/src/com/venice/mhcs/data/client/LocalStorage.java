@@ -18,7 +18,6 @@ public class LocalStorage implements EntryPoint {
 	
 	private Storage moduleStore = null;
 	
-	
 	@Override
 	public void onModuleLoad() {
 		// TODO Auto-generated method stub
@@ -121,5 +120,35 @@ public class LocalStorage implements EntryPoint {
 		return moduleList;
 	}
 	
+	public void StoreConfig(ArrayList<Module> array, String configName){
+		moduleStore = Storage.getLocalStorageIfSupported();
+		
+		if(moduleStore != null){
+			for(int i = 0; i < array.size(); i ++){
+				storeConfigModule(array.get(i), configName +array.get(i).getID());
+			}
+		}
+	}
 	
+	private void storeConfigModule(Module m, String key){
+		moduleStore = Storage.getLocalStorageIfSupported();
+		
+		if(moduleStore != null){
+			moduleStore.setItem(key, m.moduleString());
+		}
+	}
+	
+	public ArrayList<Module> getStoredConfig(String configName){
+		ArrayList<Module> rList = new ArrayList<Module>();
+		Module tempModule = new Module();
+		
+		for(int i = 1; i < 185; i++){
+			if (Read(configName + i)!= null){
+				tempModule = toModule(configName + i);
+				rList.add(tempModule);
+			}
+		}
+		return rList;
+	}
 }
+	

@@ -4,6 +4,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Panel;
+import com.venice.mhcs.data.client.MHCS;
 import com.venice.mhcs.data.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -33,11 +34,11 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class loginTab {
 		
 	//Declaration of login widgets
-	public final  Button enter = new Button("Log In");
-	public final  PasswordTextBox ptb = new PasswordTextBox();
-	public final  Label top = new Label("Username:");
-	public final  Label bottom = new Label("Password:");
-	public final  TextBox user = new TextBox();
+	public final static  Button enter = new Button("Log In");
+	public final static  PasswordTextBox ptb = new PasswordTextBox();
+	public final static Label top = new Label("Username:");
+	public final static  Label bottom = new Label("Password:");
+	public final static  TextBox user = new TextBox();
 		
 	//Declaration of panels
 	public static AbsolutePanel loginPanel = new AbsolutePanel();
@@ -45,9 +46,10 @@ public class loginTab {
 	public static VerticalPanel vertPanel = new VerticalPanel();
 	final static Label space = new Label("     ");
 	
-	public void initLoginPanel() {
+	public static void initLoginPanel() {
 		
-		//
+		final RootLayoutPanel rp = RootLayoutPanel.get();
+		
 		vertPanel.getElement().setAttribute("align", "center");
 		top.getElement().setAttribute("align", "center");
 	    bottom.getElement().setAttribute("align", "center");
@@ -70,19 +72,34 @@ public class loginTab {
 	    vertPanel.add(ptb);
 	    vertPanel.add(space);
 	    
+	    final moduleTab moduleHelper = new moduleTab();
+
 		final Button enter = new Button("Log In");
 		enter.getElement().setAttribute("align", "center");
 		
 		vertPanel.add(enter);
-		
 		pwPanel.add(vertPanel);
 		loginPanel.add(pwPanel);
 		
-//		enter.addClickHandler(new ClickHandler() {
-//	    	public void onClick(ClickEvent event) {
-//	    			Window.alert("BITCH");
-//	    	}
-//	    	});
+
+	
+		enter.addClickHandler(new ClickHandler() {
+	    	public void onClick(ClickEvent event) {
+	    		Window.alert("loginTab");
+    			if (getUser().getText().equals("astro1") && getPTB().getText().equals("lol")) {
+    				Window.alert("Log In : Successful");
+    				MHCS.getP().getTabWidget(0).removeFromParent();
+    				MHCS.getP().add(moduleTab.getAttributes(), "Module Logging");
+    				MHCS.getP().add(new HTML("Habitat Config"), "Habitat Config");
+    			}
+    			else {
+    			Window.alert("Incorrect user ID/password, try again");
+    			getPTB().setText("");
+    			getUser().setText("");
+    			getUser().setFocus(true);
+    			}
+	    	}
+	    	});
 
 
 	}
@@ -91,7 +108,7 @@ public class loginTab {
 	 * Getter for enter button
 	 * @return enter
 	 */
-	public Button getEnter() {
+	public static Button getEnter() {
 		return enter;
 	}
 	
@@ -99,7 +116,7 @@ public class loginTab {
 	 * Getter for password textbox ptb
 	 * @return ptb
 	 */
-	public PasswordTextBox getPTB() {
+	public static PasswordTextBox getPTB() {
 		return ptb;
 	}
 	
@@ -107,7 +124,7 @@ public class loginTab {
 	 * Getter for user textbox
 	 * @return user 
 	 */
-	public TextBox getUser() {
+	public static TextBox getUser() {
 		return user;
 	}
 	
@@ -115,5 +132,4 @@ public class loginTab {
 		return loginPanel;
 	}
 	
-
 }

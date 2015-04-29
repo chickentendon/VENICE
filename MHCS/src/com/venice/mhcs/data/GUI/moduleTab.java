@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.venice.mhcs.data.GUI.defaultTextBox;
 import com.venice.mhcs.data.client.GUIComponets;
 import com.venice.mhcs.data.client.LocalStorage;
+import com.venice.mhcs.data.client.MHCS;
 import com.venice.mhcs.data.client.Module;
 import com.venice.mhcs.data.client.ModuleGrid;
 import com.venice.mhcs.data.shared.FieldVerifier;
@@ -40,7 +41,7 @@ public class moduleTab {
 	//Declaration of module attribute widgets
 	private final static FlowPanel attribPanel = new FlowPanel();
 	private static ScrollPanel modList = new ScrollPanel();
-	
+	private final static FlowPanel modPanel = new FlowPanel(); 		//Module Tab
 	private static defaultTextBox idNum = new defaultTextBox("Module ID");
 	private static defaultTextBox x = new defaultTextBox("X");
 	private static defaultTextBox y = new defaultTextBox("Y");
@@ -99,6 +100,7 @@ public class moduleTab {
 	damage.addItem("Undamaged");
 	damage.addItem("Uncertain");
 	damage.setStylePrimaryName("listBoxMargin");
+	
 	//Change handler to disable default "Damage" value after a selection is made
 	damage.addChangeHandler(new ChangeHandler() {
         public void onChange(ChangeEvent changeEvent) {
@@ -156,9 +158,7 @@ public class moduleTab {
 				modList.add(GUIHelper.getScrollPanel());
 
 			}
-			else{	
-			}
-			
+			else{ }
 		}
 	});
 	
@@ -171,6 +171,9 @@ public class moduleTab {
 	attribPanel.add(submit);
 	attribPanel.setStylePrimaryName("panelMargin");
 	modList.setStylePrimaryName("panelMargin");
+	
+	modPanel.add(attribPanel);
+	modPanel.add(modList);
 }
 	
 	
@@ -182,12 +185,16 @@ public class moduleTab {
 		return modList;
 	}
 	
+	public static FlowPanel getModPanel() {
+		moduleTab.initAttributes(MHCS.myStorage);
+		return modPanel;
+	}
+	
 	/**
 	 * Helper class to create default text in textboxes
 	 * @author maxronning
 	 *
 	 */
-	
 	public class DefaultTextBox extends TextBox implements FocusListener { 
         private String defaultText; 
 
