@@ -92,6 +92,8 @@ public class homeTab  {
 	String url =
 				"http://api.wunderground.com/api/9d52d4b7aab6ed63/conditions/q/55812.json";
 				 url = URL.encode(url);
+	String sunset = "http://api.wunderground.com/api/9d52d4b7aab6ed63/astronomy/q/MN/Duluth.json";
+				 sunset = URL.encode(sunset);
 			// Send request to server and catch any errors.
 			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 			try {
