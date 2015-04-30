@@ -2,6 +2,7 @@ package com.venice.mhcs.data.GUI;
 
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
@@ -58,6 +59,12 @@ public class homeTab  {
 	static FlowPanel space = new FlowPanel();
 	static Label header = new Label("Mars Habitat Control System");
 	Label version = new Label("Version 1.2");
+	Timer tenDay = new Timer() {
+		@Override
+		public void run(){
+			
+		}
+	};
 	
 	public static void start(){
 		startFeed();
@@ -109,13 +116,18 @@ public class homeTab  {
 		 (JSONObject)JSONParser.parseLenient(jTry.toString());
 		 JSONValue temp = jB.get("temp_c");
 		 JSONValue visibility = jB.get("visibility_km");
-	
+		 
 		 String sTemp = "Temp : " + temp.toString() + " °C";
 		 String sVisibility = "Visibility : " + visibility.toString() + " km";
-		 Image logo = new Image("images/weatherlogo.jpg");
+		 sVisibility = sVisibility.replace("\"", "");
+		 Label tempLabel = new Label(sTemp);
+		 Label visLabel = new Label(sVisibility);
+		 tempLabel.setStylePrimaryName("labelText");
+		 visLabel.setStylePrimaryName("labelText");
+		 Image logo = new Image("images/weather.png");
 		 vp.add(logo);
-		 vp.add(new Label(sTemp)); //TO VIEW
-		 vp.add(new Label(sVisibility)); //TO VIEW
+		 vp.add(tempLabel); //TO VIEW
+		 vp.add(visLabel); //TO VIEW
 
 		 return vp;
 	}
@@ -124,8 +136,8 @@ public class homeTab  {
 		start();
 		homePanel.setStylePrimaryName("homeBackground");
 		header.setStylePrimaryName("h1");
-		space.setHeight("200px");
-		space.setWidth("100px");
+		space.setHeight("135px");
+		space.setWidth("1");
 		space.getElement().getStyle().setOpacity(100);
 		vp.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		tommyPC.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
