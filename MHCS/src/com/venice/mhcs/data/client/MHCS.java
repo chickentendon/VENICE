@@ -78,7 +78,8 @@ public class MHCS implements EntryPoint {
 		modPanel.add(moduleTab.getModList());
 		
 		loginHelper.initLoginPanel();
-	
+		p.setAnimationVertical(true);
+		p.setAnimationDuration(200);
 		p.add(loginHelper.getLoginPanel(), "Login");
 
     	
