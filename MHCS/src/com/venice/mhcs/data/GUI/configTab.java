@@ -157,11 +157,15 @@ public class configTab {
 					Window.alert("No config found");
 				}
 				else{
+				saveList = new ArrayList<Module>(); 
 				saveList = stor.getStoredConfig(savedConfig.getItemText(savedConfig.getSelectedIndex()));
 				grid = new ModuleGrid();
 				grid.addArray(saveList);
 				map.initalizeMap(grid);
 				sp.add(map.getGrid());
+				sp.clear();
+				vp.add(fp);
+				vp.add(sp);
 				}
 			}
 		});
