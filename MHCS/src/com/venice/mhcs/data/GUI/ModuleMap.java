@@ -1,5 +1,6 @@
 package com.venice.mhcs.data.GUI;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.Image;
 import com.venice.mhcs.data.client.*;
@@ -7,11 +8,11 @@ import com.venice.mhcs.data.client.*;
 public class ModuleMap 
 {
 	private static Grid g;
-	private static ModuleGrid map;
 	public static void initalizeMap(ModuleGrid moduleMap)
 	{
 		g = new Grid(50, 100);
 		g.setSize("5000px", "2500px");
+		g.setBorderWidth(1);
 		for(int row = 0; row < g.getRowCount(); row++)
 	    {
 	    	for(int col = 0; col < g.getColumnCount(); col++)
@@ -25,7 +26,8 @@ public class ModuleMap
 	}
 	public static void updateMap(ModuleGrid moduleMap)
 	{
-		map = moduleMap;
+		ModuleGrid map = moduleMap;
+		g.clear();
 		for(int row = 0; row < g.getRowCount(); row++)
 	    {
 	    	for(int col = 0; col < g.getColumnCount(); col++)
