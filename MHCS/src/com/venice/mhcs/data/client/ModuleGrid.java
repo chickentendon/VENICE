@@ -2,8 +2,6 @@ package com.venice.mhcs.data.client;
 
 import java.util.ArrayList;
 
-import com.google.gwt.user.client.Window;
-
 public class ModuleGrid {
 	/**
 	 * Constructor that is called when specific dimensions for a grid are required.
@@ -122,8 +120,8 @@ public class ModuleGrid {
 	public void addModule(Module mod)
 	{
 		Cell curCell = new Cell(mod);
-		int modX = (int) Integer.valueOf(mod.getX());
-		int modY = (int) Integer.valueOf(mod.getY());
+		int modX = Integer.valueOf(mod.getX());
+		int modY = Integer.valueOf(mod.getY());
 		
 		grid [modX - 1][modY - 1] = curCell;
 	}
@@ -135,8 +133,8 @@ public class ModuleGrid {
 		{
 			Module curModule = modules.get(i);
 			Cell curCell = new Cell(curModule);
-			int modX = (int) Integer.valueOf(curModule.getX());
-			int modY = (int) Integer.valueOf(curModule.getY());
+			int modX = Integer.valueOf(curModule.getX());
+			int modY = Integer.valueOf(curModule.getY());
 			
 			grid [modX - 1][modY - 1] = curCell;
 		}

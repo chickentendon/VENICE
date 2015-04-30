@@ -4,23 +4,10 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Panel;
-import com.venice.mhcs.data.GUI.ModuleMap;
-import com.venice.mhcs.data.GUI.loginTab;
-import com.venice.mhcs.data.GUI.moduleTab;
 import com.venice.mhcs.data.client.MHCS;
-import com.venice.mhcs.data.shared.FieldVerifier;
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.SelectElement;
-import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.shared.UmbrellaException;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -30,24 +17,10 @@ import com.google.gwt.http.client.URL;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
-import com.google.gwt.layout.client.Layout.Alignment;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.FocusListener;
-import com.google.gwt.user.client.ui.Grid;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.LayoutPanel;
-import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.PasswordTextBox;
-import com.google.gwt.user.client.ui.RichTextArea;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.user.client.ui.TabLayoutPanel;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.ToggleButton;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class homeTab  {
@@ -65,7 +38,8 @@ public class homeTab  {
     static Button b = new Button("Reset Calibration Timer");
 	
 	static Timer tenDay = new Timer() {
-		  public void run() {
+		  @Override
+		public void run() {
 		        countDown.setText("Time remaining: " + Integer.toString(count) + " seconds");
 		        count--;
 		        if(count==0) {
@@ -99,11 +73,13 @@ public class homeTab  {
 			try {
 			 Request request = builder.sendRequest(null, new RequestCallback() {
 		
-			 public void onError(Request request, Throwable exception) {
+			 @Override
+			public void onError(Request request, Throwable exception) {
 				 Window.alert("onError: Couldn't retrieve JSON");
 				 }
 			
-				 public void onResponseReceived(Request request, Response response) {
+				 @Override
+				public void onResponseReceived(Request request, Response response) {
 					 if (200 == response.getStatusCode()) {
 					 String rt = response.getText();
 					 vp = update(rt); //METHOD CALL TO DO SOMETHING WITH RESPONSE TEXT
@@ -159,6 +135,7 @@ public class homeTab  {
 		b.setEnabled(false);
 		
 		b.addClickHandler(new ClickHandler() {
+			@Override
 			public void onClick(ClickEvent event) {
     		count = 600;
     		tenDay.run();

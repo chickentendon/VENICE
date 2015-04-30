@@ -49,6 +49,7 @@ public enum ModuleType {
 	 * definition of toString method
 	 * @return moduleString associated with module type
 	 */
+	@Override
 	public String toString() {
 		return moduleString;
 	}  

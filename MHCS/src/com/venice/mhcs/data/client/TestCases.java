@@ -29,11 +29,13 @@ import com.google.gwt.user.client.Window;
 			try {
 			 Request request = builder.sendRequest(null, new RequestCallback() {
 
-			 public void onError(Request request, Throwable exception) {
+			 @Override
+			public void onError(Request request, Throwable exception) {
 			 Window.alert("onError: Couldn't retrieve JSON");
 			 }
 
-			 public void onResponseReceived(Request request, Response response) {
+			 @Override
+			public void onResponseReceived(Request request, Response response) {
 			 if (200 == response.getStatusCode()) {
 			 String rt = response.getText();
 			 testList = toModule(rt); //METHOD CALL TO DO SOMETHING WITH RESPONSE TEXT

@@ -1,6 +1,5 @@
 package com.venice.mhcs.data.GUI;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.Image;
 import com.venice.mhcs.data.client.*;

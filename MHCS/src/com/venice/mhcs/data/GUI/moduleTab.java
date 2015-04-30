@@ -7,7 +7,6 @@ import com.venice.mhcs.data.GUI.defaultTextBox;
 import com.venice.mhcs.data.client.Configuration;
 import com.venice.mhcs.data.client.GUIComponets;
 import com.venice.mhcs.data.client.LocalStorage;
-import com.venice.mhcs.data.client.MHCS;
 import com.venice.mhcs.data.client.Module;
 import com.venice.mhcs.data.client.ModuleGrid;
 import com.google.gwt.dom.client.SelectElement;
@@ -79,7 +78,8 @@ public class moduleTab {
 	
 	//Change handler to disable default "Rotations" value after a selection is made
 	rotate.addChangeHandler(new ChangeHandler() {
-        public void onChange(ChangeEvent changeEvent) {
+        @Override
+		public void onChange(ChangeEvent changeEvent) {
             SelectElement selectElement = rotate.getElement().cast();
             selectElement.getOptions().getItem(0).setDisabled(true);
 
@@ -96,7 +96,8 @@ public class moduleTab {
 	
 	//Change handler to disable default "Damage" value after a selection is made
 	damage.addChangeHandler(new ChangeHandler() {
-        public void onChange(ChangeEvent changeEvent) {
+        @Override
+		public void onChange(ChangeEvent changeEvent) {
             SelectElement selectElement = damage.getElement().cast();
             selectElement.getOptions().getItem(0).setDisabled(true);
 
@@ -110,6 +111,7 @@ public class moduleTab {
 	modList.add(GUIHelper.getScrollPanel());
 	
 	submit.addClickHandler(new ClickHandler() {
+		@Override
 		public void onClick(ClickEvent event){
 			
 			String ID = "";

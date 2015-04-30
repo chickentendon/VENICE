@@ -1,8 +1,6 @@
 package com.venice.mhcs.data.client;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
 import com.venice.mhcs.data.client.Module;
 
 /*
