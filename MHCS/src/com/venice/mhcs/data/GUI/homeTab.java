@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.venice.mhcs.data.GUI.ModuleMap;
 import com.venice.mhcs.data.GUI.loginTab;
 import com.venice.mhcs.data.GUI.moduleTab;
+import com.venice.mhcs.data.client.MHCS;
 import com.venice.mhcs.data.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -59,12 +60,28 @@ public class homeTab  {
 	static FlowPanel space = new FlowPanel();
 	static Label header = new Label("Mars Habitat Control System");
 	Label version = new Label("Version 1.2");
-	Timer tenDay = new Timer() {
-		@Override
-		public void run(){
-			
-		}
+	static int count = 120;
+	static Label countDown = new Label();
+    static Button b = new Button("Reset Calibration Timer");
+	
+	static Timer tenDay = new Timer() {
+		  public void run() {
+		        countDown.setText("Time remaining: " + Integer.toString(count) + " seconds");
+		        count--;
+		        if(count==0) {
+		            Window.alert("Calibrate Rover!");
+		            b.setEnabled(true);
+		            MHCS.getP().selectTab(0);
+		            this.cancel(); 
+		        }
+		  }
 	};
+		  
+
+
+	
+		  
+		
 	
 	public static void start(){
 		startFeed();
@@ -134,15 +151,30 @@ public class homeTab  {
 	
 	public static AbsolutePanel getMain() {
 		start();
+		tenDay.scheduleRepeating(1000);
+		countDown.getElement().getStyle().setMarginTop(20, Style.Unit.PX);
+		countDown.setStylePrimaryName("labelText");
+		b.setEnabled(false);
+		
+		b.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+    		count = 600;
+    		tenDay.run();
+    		tenDay.scheduleRepeating(1000);
+		}
+		});
+		
 		homePanel.setStylePrimaryName("homeBackground");
 		header.setStylePrimaryName("h1");
-		space.setHeight("135px");
+		space.setHeight("100px");
 		space.setWidth("1");
 		space.getElement().getStyle().setOpacity(100);
 		vp.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		tommyPC.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		tommyPC.add(header);
 		tommyPC.add(vp);
+		tommyPC.add(countDown);
+		tommyPC.add(b);
 		tommyPC.add(space);
 		tommyPC.add(nasa);
 		tommyPC.add(esa);
