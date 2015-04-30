@@ -1,3 +1,2 @@
 # Module mhcs
 # RPC service class, partial path of RPC policy file
-com.venice.mhcs.data.client.GreetingService, DE05732B65EB1C846D6AAC4DECDD84FF.gwt.rpc

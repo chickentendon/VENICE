@@ -35,7 +35,7 @@ public class moduleTab {
 	
 	private static LocalStorage myStorage;
 	private static GUIComponets GUIHelper = new GUIComponets();
-	final ModuleGrid moduleGrid = new ModuleGrid();
+	private static ModuleGrid moduleGrid = new ModuleGrid();
 
 	
 	public static void initAttributes(LocalStorage Stor) {
@@ -59,7 +59,6 @@ public class moduleTab {
 	y.setVisibleLength(3);
 	y.setAlignment(TextAlignment.CENTER);
 	
-	ModuleGrid moduleGrid = new ModuleGrid();
 	moduleGrid.addArray(myStorage.getModuleList());
 	
 	//MODULE MAP STUFF
@@ -146,10 +145,21 @@ public class moduleTab {
 				//GUIHelper.updatePanel(myStorage.getModuleList());
 				//modList.add(GUIHelper.getScrollPanel());
 				myStorage.Store(newModule);
+				
+				
+				moduleGrid.addModule(newModule);
+				ModuleMap.updateMap(moduleGrid);
 				GUIHelper.updatePanel(myStorage.getModuleList(), myStorage);
 				modList.add(GUIHelper.getScrollPanel());
+				mapPanel.add(ModuleMap.getGrid());
+//				ModuleMap.getGrid().setVisible(true);
+				
+				
+				
+
 			}
 			else{ }
+			
 		}
 	});
 	
