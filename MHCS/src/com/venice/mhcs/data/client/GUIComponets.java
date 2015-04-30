@@ -46,15 +46,15 @@ public class GUIComponets {
 		String tempRotation = new String();
 		String tempType = new String();
 		
-
+		modtable.setCellPadding(3);
 		modtable.setStylePrimaryName("tableAlign");
-		modtable.setText(0, 0, "ID Number");
-		modtable.setText(0, 1, "Type");
-		modtable.setText(0, 2, "X-Coordinate");
-		modtable.setText(0, 3, "Y-Coordinate");
-		modtable.setText(0, 4, "Rotations");
-		modtable.setText(0, 5, "Condition");
-		modtable.setText(0, 6, "Remove");
+		modtable.setText(0, 0, " ID Number ");
+		modtable.setText(0, 1, " Type ");
+		modtable.setText(0, 2, " (X,Y) ");
+
+		modtable.setText(0, 4, " Rotations ");
+		modtable.setText(0, 5, " Condition ");
+		modtable.setText(0, 6, " Remove ");
 
 		for (int i = 0; i < modList.size(); i++){
 			final int size = modtable.getRowCount();
@@ -67,8 +67,8 @@ public class GUIComponets {
 			
 			modtable.setText(size, 0, tempID);
 			modtable.setText(size, 1, tempType);
-			modtable.setText(size, 2, tempX);
-			modtable.setText(size, 3, tempY);
+			modtable.setText(size, 2, "(" + tempX + " , " + tempY + ")");
+
 			modtable.setText(size, 4, tempRotation);
 			modtable.setText(size, 5, tempDamage);
 	
