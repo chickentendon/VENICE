@@ -19,6 +19,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FocusListener;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -58,19 +59,20 @@ public class loginTab {
 	    
 	    ptb.setStyleName("logInMargin");
 	    ptb.setMaxLength(6);
-	    ptb.setVisibleLength(8);
+	    ptb.setVisibleLength(10);
 	    ptb.setAlignment(TextAlignment.CENTER);
 	    
 	    user.setStyleName("logInMargin");
 	    user.setAlignment(TextAlignment.CENTER);
 	    user.setMaxLength(6);
-	    user.setVisibleLength(8);
+	    user.setVisibleLength(10);
 	    
 	    vertPanel.add(top);
 	    vertPanel.add(user);
 	    vertPanel.add(bottom);
 	    vertPanel.add(ptb);
 	    vertPanel.add(space);
+	    vertPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 	    
 	    final moduleTab moduleHelper = new moduleTab();
 
