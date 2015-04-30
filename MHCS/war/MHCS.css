@@ -35,10 +35,6 @@
   width: 50%;
 }
 
-.bigText {
-	
-}
-
 .gwt-ProgressBar-shell .gwt-ProgressBar-bar {
   background-color: #67A7E3;
 }
@@ -80,6 +76,10 @@
 .textBoxMargin {
      margin-right:5px;
      margin-left:5px;
+}
+
+.tableAlign {
+	text-align: center;
 }
 
 .listBoxMargin {

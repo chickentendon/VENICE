@@ -47,7 +47,7 @@ public class GUIComponets {
 		String tempType = new String();
 		
 
-		
+		modtable.setStylePrimaryName("tableAlign");
 		modtable.setText(0, 0, "ID Number");
 		modtable.setText(0, 1, "Type");
 		modtable.setText(0, 2, "X-Coordinate");
