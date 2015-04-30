@@ -1,5 +1,6 @@
 package com.venice.mhcs.data.GUI;
 
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
@@ -26,16 +27,19 @@ import com.google.gwt.http.client.URL;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
+import com.google.gwt.layout.client.Layout.Alignment;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FocusListener;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.PasswordTextBox;
+import com.google.gwt.user.client.ui.RichTextArea;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
@@ -44,8 +48,14 @@ import com.google.gwt.user.client.ui.ToggleButton;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class homeTab  {
-	private static FlowPanel tommyPC = new FlowPanel();
+	private static VerticalPanel tommyPC = new VerticalPanel();
 	static VerticalPanel vp = new VerticalPanel();
+	public static AbsolutePanel homePanel = new AbsolutePanel();
+	static Image nasa = new Image("images/nasa.png");
+	static Image esa = new Image("images/esa.jpg");
+	static FlowPanel space = new FlowPanel();
+	static Label header = new Label("Mars Habitat Control System");
+	Label version = new Label("Version 1.2");
 	
 	public static void start(){
 		startFeed();
@@ -108,10 +118,22 @@ public class homeTab  {
 		 return vp;
 	}
 	
-	public static FlowPanel getMain() {
+	public static AbsolutePanel getMain() {
 		start();
-		tommyPC.add(vp);;
-		return tommyPC;
+		header.getStylePrimaryName("bigText");
+		space.setHeight("200px");
+		space.setWidth("100px");
+		vp.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		tommyPC.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		tommyPC.add(header);
+		tommyPC.add(vp);
+		tommyPC.add(space);
+		tommyPC.add(nasa);
+		tommyPC.add(esa);
+		homePanel.add(tommyPC);
+		homePanel.getElement().setAttribute("align", "center");
+		
+		return homePanel;
 	}
 
 }
