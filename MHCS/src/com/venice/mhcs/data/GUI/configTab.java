@@ -156,21 +156,20 @@ public class configTab {
 				if(stor.getStoredConfig(savedConfig.getItemText(savedConfig.getSelectedIndex())).size() == 0){
 					Window.alert("No config found");
 				}
-				else{
-				saveList = new ArrayList<Module>(); 
-				saveList = stor.getStoredConfig(savedConfig.getItemText(savedConfig.getSelectedIndex()));
+				else{ 
+				Window.alert("Config loaded");
 				grid = new ModuleGrid();
-				grid.addArray(saveList);
+				grid.addArray(stor.getStoredConfig(savedConfig.getItemText(savedConfig.getSelectedIndex())));
 				map.initalizeMap(grid);
-				sp.add(map.getGrid());
 				sp.clear();
+				sp.add(map.getGrid());
 				vp.add(fp);
 				vp.add(sp);
 				}
 			}
 		});
 		
-		sp.setPixelSize(700, 700);
+		sp.setPixelSize(1500, 700);
 		fp.setHeight("25px");
 		fp.add(arrayBox);
 		fp.add(configBox);
