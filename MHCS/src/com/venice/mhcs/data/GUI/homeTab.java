@@ -1,5 +1,6 @@
 package com.venice.mhcs.data.GUI;
 
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
@@ -53,6 +54,7 @@ public class homeTab  {
 	public static AbsolutePanel homePanel = new AbsolutePanel();
 	static Image nasa = new Image("images/nasa.png");
 	static Image esa = new Image("images/esa.jpg");
+	static Image mars = new Image("images/mars1");
 	static FlowPanel space = new FlowPanel();
 	static Label header = new Label("Mars Habitat Control System");
 	Label version = new Label("Version 1.2");
@@ -120,9 +122,11 @@ public class homeTab  {
 	
 	public static AbsolutePanel getMain() {
 		start();
-		header.getStylePrimaryName("bigText");
+		homePanel.setStylePrimaryName("homeBackground");
+		header.setStylePrimaryName("h1");
 		space.setHeight("200px");
 		space.setWidth("100px");
+		space.getElement().getStyle().setOpacity(100);
 		vp.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		tommyPC.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		tommyPC.add(header);

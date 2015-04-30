@@ -2,16 +2,23 @@
 
 
 /** Example rules used by the template application (remove for your app) */
-h1 {
-  font-size: 2em;
+.h1 {
+  font-size: 4em;
   font-weight: bold;
-  color: #777777;
-  margin: 40px 0px 70px;
+  color: #FFFFFF;
+  margin: 40px 0px 35px;
   text-align: center;
 }
 
 .logInMargin{
 	     margin-bottom:5px;
+}
+
+.homeBackground {
+	   background-image:url('images/mars1.jpg');
+	   background-position: center;
+	   max-width: 100%;
+	   height: auto; 
 }
 
 .gwt-ProgressBar-shell {
@@ -21,6 +28,10 @@ h1 {
   background-color: #AAAAAA;
   height: 14pt;
   width: 50%;
+}
+
+.bigText {
+	
 }
 
 .gwt-ProgressBar-shell .gwt-ProgressBar-bar {
