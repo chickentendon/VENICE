@@ -196,9 +196,8 @@ public class Configuration {
 	public Configuration buildMin1(Configuration min){
 		ArrayList<Module> minList = min.getMinimum1();
 		int x = findXSite(minList);
-		System.out.println(x);
 		int y = findYSite(minList);
-		System.out.println(y);
+
 
 		if(min.isMinimum(minList)){
 			minList = setPlains(x, y, minList);

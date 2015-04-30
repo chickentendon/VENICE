@@ -80,32 +80,58 @@ public class configTab {
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				Window.alert(arrayBox.getItemText(arrayBox.getSelectedIndex()));
+				sp.clear();
+				grid = new ModuleGrid();
 				if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Local Storage")){
 					modList = stor.getModuleList();
 				}
 				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test1")){
 					modList = tCase.getTestCase("1");
+					modList = tCase.getTestCase("1");
 				}
 				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test2")){
+					modList = tCase.getTestCase("2");
 					modList = tCase.getTestCase("2");
 				}
 				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test3")){
 					modList = tCase.getTestCase("3");
+					modList = tCase.getTestCase("3");
+				}
+				else{
+					Window.alert("Test Case Not ready");
 				}
 				
-				mini.setMinimum1(modList);
 				
-				if(mini.isMinimum(mini.getMinimum1())){
-					mini = mini.buildMin1(mini);
-					grid.addArray(mini.getMinimum1());
-					map.initalizeMap(grid);
+				if(configBox.getItemText(configBox.getSelectedIndex()).equals("Minimum Config1")){
+					mini.setMinimum1(modList);
 					
-					sp.add(map.getGrid());
+					if(mini.isMinimum(mini.getMinimum1())){
+						mini = mini.buildMin1(mini);
+						grid.addArray(mini.getMinimum1());
+						map.initalizeMap(grid);
+						sp.add(map.getGrid());
+					}
 				}
 				
+				else if (configBox.getItemText(configBox.getSelectedIndex()).equals("Minimum Config2")){
+					mini.setMinimum2(modList);
+					
+					if(mini.isMinimum(mini.getMinimum2())){
+						mini = mini.buildMin2(mini);
+						grid.addArray(mini.getMinimum2());
+						map.initalizeMap(grid);
+						sp.add(map.getGrid());
+					}
+				}
+
+
+				vp.add(fp);
+				vp.add(sp);
 			}
+			
 		});
+		
+		
 		
 		sp.setPixelSize(700, 700);
 		fp.setHeight("25px");
@@ -114,6 +140,8 @@ public class configTab {
 		fp.add(sumbitButton);
 		vp.add(fp);
 		vp.add(sp);
+		
+
 	} 
 	
 	public static VerticalPanel getConfig(){

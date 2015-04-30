@@ -83,7 +83,6 @@ import com.google.gwt.user.client.Window;
 				 jN = (JSONNumber) jO.get("Y");
 				 d = jN.doubleValue();
 				 tempY = Double.toString(d);
-				 Window.alert(tempID + tempDamage + tempX + tempY + tempRotation);
 				 if (tempDamage == "undamaged"){
 					 tempDamage = "Undamaged";
 				 }
