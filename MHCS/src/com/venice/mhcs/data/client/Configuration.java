@@ -161,18 +161,36 @@ public class Configuration {
 	
 	private int findXSite(ArrayList<Module> minList){
 		int tempX = 0;
+		int site = 0;
 		for(int i = 0; i < minList.size(); i++){
 			tempX += Integer.parseInt(minList.get(i).getX());
 		}
-		return tempX/minList.size();
+		
+		site = tempX/minList.size();
+		
+		if(site == 1) site += 2;
+		else if(site == 2) site += 1;
+		else if(site == 100) site -= 2;
+		else if(site == 99) site -= 1;
+		
+		return site;
 	}
 	
 	private int findYSite(ArrayList<Module> minList){
 		int tempY = 0;
+		int site = 0;
 		for(int i = 0; i < minList.size(); i++){
 			tempY += Integer.parseInt(minList.get(i).getY());
 		}
-		return tempY/minList.size();
+		
+		site = tempY/minList.size();
+		
+		if(site == 1) site += 2;
+		else if(site == 2) site += 1;
+		else if(site == 50) site -= 2;
+		else if(site == 49) site -= 1;
+		
+		return site;
 	}
 	
 	public Configuration buildMin1(Configuration min){
@@ -220,17 +238,15 @@ public class Configuration {
 			minList.add(i, curMod);
 			}
 		}
-		min.setMinimum1(minList);
-		return min;
+	
+			min.setMinimum1(minList);
+			return min;
 	}
 	
 	public Configuration buildMin2(Configuration min){
 		ArrayList<Module> minList = min.getMinimum2();
 		int x = findXSite(minList);
-		System.out.println(x);
 		int y = findYSite(minList);
-		System.out.println(y);
-
 		if(min.isMinimum(minList)){
 			minList = setPlains(x, y, minList);
 			for(int i = 0; i < minList.size();i++){
@@ -268,8 +284,9 @@ public class Configuration {
 			minList.add(i, curMod);
 			}
 		}
-		min.setMinimum2(minList);
-		return min;
+		
+			min.setMinimum2(minList);
+			return min;
 	}
 	
 	
