@@ -131,6 +131,7 @@ public class configTab {
 		});
 		
 		final ListBox savedConfig = new ListBox();
+		savedConfig.setStylePrimaryName("listBoxMargin");
 		savedConfig.addItem("min1");
 		savedConfig.addItem("min2");
 		savedConfig.addItem("full1");
@@ -144,7 +145,24 @@ public class configTab {
 			@Override
 			public void onClick(ClickEvent event) {
 				stor.StoreConfig(saveList, savedConfig.getItemText(savedConfig.getSelectedIndex()));
-				
+				Window.alert("Config saved");
+			}
+		});
+		
+		load.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				if(stor.getStoredConfig(savedConfig.getItemText(savedConfig.getSelectedIndex())).size() == 0){
+					Window.alert("No config found");
+				}
+				else{
+				saveList = stor.getStoredConfig(savedConfig.getItemText(savedConfig.getSelectedIndex()));
+				grid = new ModuleGrid();
+				grid.addArray(saveList);
+				map.initalizeMap(grid);
+				sp.add(map.getGrid());
+				}
 			}
 		});
 		
