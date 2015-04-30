@@ -49,12 +49,11 @@ public class configTab {
 	private static VerticalPanel vp = new VerticalPanel();
 	private static ModuleMap map = new ModuleMap();
 	private static ArrayList<Module> modList = new ArrayList<Module>();
+	private static ArrayList<Module> saveList = new ArrayList<Module>();
 	//private static TestCases tCase = new TestCases();
 	public static void initConfig(){
 		final TestCases tCase = new TestCases();
 		final ListBox arrayBox = new ListBox();
-
-		
 		arrayBox.addItem("Local Storage");
 		arrayBox.addItem("Test1");
 		arrayBox.addItem("Test2");
@@ -110,6 +109,7 @@ public class configTab {
 						grid.addArray(mini.getMinimum1());
 						map.initalizeMap(grid);
 						sp.add(map.getGrid());
+						saveList = mini.getMinimum1();
 					}
 				}
 				
@@ -121,23 +121,42 @@ public class configTab {
 						grid.addArray(mini.getMinimum2());
 						map.initalizeMap(grid);
 						sp.add(map.getGrid());
+						saveList = mini.getMinimum2();
 					}
 				}
-
-
 				vp.add(fp);
 				vp.add(sp);
 			}
 			
 		});
 		
+		final ListBox savedConfig = new ListBox();
+		savedConfig.addItem("min1");
+		savedConfig.addItem("min2");
+		savedConfig.addItem("full1");
+		savedConfig.addItem("full2");
 		
+		final Button save = new Button("Save");
+		final Button load = new Button("Load");
+		
+		save.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				stor.StoreConfig(saveList, savedConfig.getItemText(savedConfig.getSelectedIndex()));
+				
+			}
+		});
 		
 		sp.setPixelSize(700, 700);
 		fp.setHeight("25px");
 		fp.add(arrayBox);
 		fp.add(configBox);
 		fp.add(sumbitButton);
+		fp.add(savedConfig);
+		fp.add(save);
+		fp.add(load);
+
 		vp.add(fp);
 		vp.add(sp);
 		
