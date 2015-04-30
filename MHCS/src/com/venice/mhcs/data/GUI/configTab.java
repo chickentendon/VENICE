@@ -13,6 +13,7 @@ import com.venice.mhcs.data.client.Configuration;
 import com.venice.mhcs.data.client.LocalStorage;
 import com.venice.mhcs.data.client.Module;
 import com.venice.mhcs.data.client.ModuleGrid;
+import com.venice.mhcs.data.client.TestCases;
 import com.venice.mhcs.data.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -43,12 +44,17 @@ public class configTab {
 	private static Configuration mini = new Configuration();
 	private static LocalStorage stor = new LocalStorage();
 	private static ModuleGrid grid = new ModuleGrid();
+	private static FlowPanel fp = new FlowPanel();
 	private static ScrollPanel sp = new ScrollPanel();
+	private static VerticalPanel vp = new VerticalPanel();
 	private static ModuleMap map = new ModuleMap();
 	private static ArrayList<Module> modList = new ArrayList<Module>();
+	//private static TestCases tCase = new TestCases();
 	public static void initConfig(){
-		
+		final TestCases tCase = new TestCases();
 		final ListBox arrayBox = new ListBox();
+
+		
 		arrayBox.addItem("Local Storage");
 		arrayBox.addItem("Test1");
 		arrayBox.addItem("Test2");
@@ -69,27 +75,48 @@ public class configTab {
 		configBox.addItem("Minimum Config2");
 		configBox.setStylePrimaryName("listBoxMargin");
 		
-		final Button sumbitButton = new Button("Sumbit");
+		final Button sumbitButton = new Button("Submit");
 		sumbitButton.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
+				Window.alert(arrayBox.getItemText(arrayBox.getSelectedIndex()));
+				if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Local Storage")){
+					modList = stor.getModuleList();
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test1")){
+					modList = tCase.getTestCase("1");
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test2")){
+					modList = tCase.getTestCase("2");
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test3")){
+					modList = tCase.getTestCase("3");
+				}
 				
+				mini.setMinimum1(modList);
+				
+				if(mini.isMinimum(mini.getMinimum1())){
+					mini = mini.buildMin1(mini);
+					grid.addArray(mini.getMinimum1());
+					map.initalizeMap(grid);
+					
+					sp.add(map.getGrid());
+				}
 				
 			}
 		});
 		
-		mini.setMinimum1(stor.getModuleList());
-		
-		if(mini.isMinimum(mini.getMinimum1())){
-			mini = mini.buildMin1(mini);
-			grid.addArray(mini.getMinimum1());
-			map.initalizeMap(grid);
-			sp.add(map.getGrid());
-		}
+		sp.setPixelSize(700, 700);
+		fp.setHeight("25px");
+		fp.add(arrayBox);
+		fp.add(configBox);
+		fp.add(sumbitButton);
+		vp.add(fp);
+		vp.add(sp);
 	} 
 	
-	public static ScrollPanel getConfig(){
-		return sp;
+	public static VerticalPanel getConfig(){
+		return vp;
 	}
 }
