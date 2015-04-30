@@ -71,6 +71,10 @@ public class ModuleMap
 	    		{
 	    			g.setWidget((row), col, new Image("images/Sanitation.jpg"));
 	    		}
+	    		else if(map.getItem(col + 1, g.getRowCount() - row).getType().equals("Medical"))
+	    		{
+	    			g.setWidget((row), col, new Image("images/Medical.jpg"));
+	    		}
 			  }
 	    }
 	}

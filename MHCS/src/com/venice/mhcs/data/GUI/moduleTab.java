@@ -4,6 +4,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
 import com.venice.mhcs.data.GUI.defaultTextBox;
+import com.venice.mhcs.data.client.Configuration;
 import com.venice.mhcs.data.client.GUIComponets;
 import com.venice.mhcs.data.client.LocalStorage;
 import com.venice.mhcs.data.client.MHCS;
@@ -30,6 +31,7 @@ public class moduleTab {
 	private static defaultTextBox x = new defaultTextBox("X");
 	private static defaultTextBox y = new defaultTextBox("Y");
 	final static ScrollPanel mapPanel = new ScrollPanel();
+	private static Configuration mini = new Configuration();
 	//Declaration of panels
 
 	
@@ -145,6 +147,9 @@ public class moduleTab {
 				//GUIHelper.updatePanel(myStorage.getModuleList());
 				//modList.add(GUIHelper.getScrollPanel());
 				myStorage.Store(newModule);
+				
+				
+				//if(mini.isMinimum(myStorage.getModuleList())) Window.alert("Minimum Configuration Available");
 				
 				
 				moduleGrid.addModule(newModule);
