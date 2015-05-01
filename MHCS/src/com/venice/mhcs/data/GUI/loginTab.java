@@ -1,14 +1,23 @@
 package com.venice.mhcs.data.GUI;
 
+import apple.laf.JRSUIConstants.Widget;
+
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
 import com.venice.mhcs.data.client.MHCS;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.KeyboardListener;
+import com.google.gwt.user.client.ui.KeyboardListenerAdapter;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -28,14 +37,23 @@ public class loginTab {
 	public static AbsolutePanel loginPanel = new AbsolutePanel();
 	public static FlowPanel pwPanel = new FlowPanel();
 	public static VerticalPanel vertPanel = new VerticalPanel();
+	static VerticalPanel head = new VerticalPanel();
 	final static Label space = new Label("     ");
+
 	
 	public static void initLoginPanel() {
-		
+
+		loginPanel.setStylePrimaryName("homeBackground");
 		final RootLayoutPanel rp = RootLayoutPanel.get();
+		homeTab.homePanel.setStylePrimaryName("homeBackground");
+		homeTab.header.setStylePrimaryName("h1");
 		
 		vertPanel.getElement().setAttribute("align", "center");
+	    head.add(homeTab.header);
+	    head.getElement().setAttribute("align", "center");
 		top.getElement().setAttribute("align", "center");
+		top.setStylePrimaryName("whiteText");
+		bottom.setStylePrimaryName("whiteText");
 	    bottom.getElement().setAttribute("align", "center");
 	    ptb.getElement().setAttribute("align", "center");
 	    user.getElement().setAttribute("align", "center");
@@ -44,12 +62,21 @@ public class loginTab {
 	    ptb.setMaxLength(6);
 	    ptb.setVisibleLength(10);
 	    ptb.setAlignment(TextAlignment.CENTER);
+	    ptb.addKeyDownHandler(new KeyDownHandler() {
+
+	        @Override
+	        public void onKeyDown(KeyDownEvent event) {
+	         if(event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+	                     enter.click();
+	               }
+	        }
+	    });
 	    
 	    user.setStyleName("logInMargin");
 	    user.setAlignment(TextAlignment.CENTER);
 	    user.setMaxLength(6);
 	    user.setVisibleLength(10);
-	    
+
 	    vertPanel.add(top);
 	    vertPanel.add(user);
 	    vertPanel.add(bottom);
@@ -59,15 +86,18 @@ public class loginTab {
 	    
 	    final moduleTab moduleHelper = new moduleTab();
 
-		final Button enter = new Button("Log In");
+
 		enter.getElement().setAttribute("align", "center");
 		
 		vertPanel.add(enter);
+		pwPanel.add(head);
 		pwPanel.add(vertPanel);
 		loginPanel.add(pwPanel);
 		
 		moduleTab.initAttributes(MHCS.myStorage);
 		configTab.initConfig();
+		
+
 		
 		enter.addClickHandler(new ClickHandler() {
 	    	@Override
@@ -121,3 +151,6 @@ public class loginTab {
 	}
 	
 }
+
+
+

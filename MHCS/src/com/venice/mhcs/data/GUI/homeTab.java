@@ -26,6 +26,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class homeTab  {
 	private static VerticalPanel tommyPC = new VerticalPanel();
 	static VerticalPanel vp = new VerticalPanel();
+
 	public static AbsolutePanel homePanel = new AbsolutePanel();
 	static Image nasa = new Image("images/nasa.png");
 	static Image esa = new Image("images/esa.jpg");
@@ -64,10 +65,8 @@ public class homeTab  {
 	public static VerticalPanel startFeed() {
 	
 	String url =
-				"http://api.wunderground.com/api/9d52d4b7aab6ed63/conditions/q/55812.json";
+				"http://api.wunderground.com/api/9d52d4b7aab6ed63/astronomy/conditions/q/55812.json";
 				 url = URL.encode(url);
-	String sunset = "http://api.wunderground.com/api/9d52d4b7aab6ed63/astronomy/q/MN/Duluth.json";
-				 sunset = URL.encode(sunset);
 			// Send request to server and catch any errors.
 			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 			try {
@@ -103,26 +102,45 @@ public class homeTab  {
 		 //vp.add(new Label(rt)); //TO VIEW
 	
 		 String sAll = rt;
-		 JSONObject jA =
-		 (JSONObject)JSONParser.parseLenient(sAll);
+		 
+		 JSONObject jA = (JSONObject)JSONParser.parseLenient(sAll);
+
+		 
+		 JSONValue jSun = jA.get("sun_phase");
+		 
 		 JSONValue jTry = jA.get("current_observation");
-	
-		 JSONObject jB =
-		 (JSONObject)JSONParser.parseLenient(jTry.toString());
+		 
+		 JSONObject astro = (JSONObject)JSONParser.parseLenient(jSun.toString());
+		 JSONObject jB = (JSONObject)JSONParser.parseLenient(jTry.toString());
+		 
 		 JSONValue temp = jB.get("temp_c");
 		 JSONValue visibility = jB.get("visibility_km");
 		 
+		 JSONValue sunsetH = astro.get("sunset");
+		 
 		 String sTemp = "Temp : " + temp.toString() + " °C";
 		 String sVisibility = "Visibility : " + visibility.toString() + " km";
+		
 		 sVisibility = sVisibility.replace("\"", "");
+		 String sunsetHour;
+		 String sunsetMin;
+		 String sunset;
+		 sunsetHour = sunsetH.toString();
+		 sunsetHour = sunsetHour.subSequence(9, 11).toString();
+		 sunsetMin = sunsetH.toString();
+		 sunsetMin = sunsetMin.subSequence(24, 26).toString();
+		 sunset = "Today's sunset occurs at " + sunsetHour + ":" + sunsetMin;
 		 Label tempLabel = new Label(sTemp);
 		 Label visLabel = new Label(sVisibility);
+		 Label sunsetLabel = new Label (sunset);
 		 tempLabel.setStylePrimaryName("labelText");
 		 visLabel.setStylePrimaryName("labelText");
+		 sunsetLabel.setStylePrimaryName("labelText");
 		 Image logo = new Image("images/weather.png");
 		 vp.add(logo);
 		 vp.add(tempLabel); //TO VIEW
 		 vp.add(visLabel); //TO VIEW
+		 vp.add(sunsetLabel);
 
 		 return vp;
 	}
@@ -130,7 +148,7 @@ public class homeTab  {
 	public static AbsolutePanel getMain() {
 		start();
 		tenDay.scheduleRepeating(1000);
-		countDown.getElement().getStyle().setMarginTop(20, Style.Unit.PX);
+		countDown.getElement().getStyle().setMarginTop(50, Style.Unit.PX);
 		countDown.setStylePrimaryName("labelText");
 		b.setEnabled(false);
 		
@@ -145,7 +163,7 @@ public class homeTab  {
 		
 		homePanel.setStylePrimaryName("homeBackground");
 		header.setStylePrimaryName("h1");
-		space.setHeight("100px");
+		space.setHeight("25px");
 		space.setWidth("1");
 		space.getElement().getStyle().setOpacity(100);
 		vp.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);

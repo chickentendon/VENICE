@@ -12,18 +12,24 @@
 
 .labelText {
     font-size: 1.25em;
-	color: #FFFFFF;
+    color: #FFFFFF;
+
+}
+
+.whiteText {
+      color: #FFFFFF;
+      margin: 5px 0px 5px;
 }
 
 .logInMargin{
-	     margin-bottom:5px;
+         margin-bottom:5px;
 }
 
 .homeBackground {
-	   background-image:url('images/mars1.jpg');
-	   background-position: center;
-	   max-width: 100%;
-	   height: auto; 
+       background-image:url('images/mars1.jpg');
+       background-position: center;
+       max-width: 100%;
+       height: auto; 
 }
 
 .gwt-ProgressBar-shell {
@@ -51,7 +57,7 @@
 }
 
 .buttonMargin {
-	 margin-top:2px;
+     margin-top:2px;
      margin-bottom:2px;
      margin-right:5px;
      margin-left:5px;
@@ -67,7 +73,7 @@
 }
 
 .panelMargin {
-	margin-top:15px;
+    margin-top:15px;
      margin-bottom:15px;
      margin-right:20px;
      margin-left:20px;
@@ -79,12 +85,12 @@
 }
 
 .tableAlign {
-	text-align: center;
-	padding: 10px;
+    text-align: center;
+    padding: 10px;
 }
 
 .listBoxMargin {
-	 margin-top:2px;
+     margin-top:2px;
      margin-bottom:2px;
      margin-right:5px;
      margin-left:5px;
