@@ -109,7 +109,7 @@ public class loginTab {
     				SoundController soundController = new SoundController();
     				Sound sound = soundController.createSound(Sound.MIME_TYPE_AUDIO_BASIC,
     				    "http://www.d.umn.edu/~ronni111/war/loginsuccessful.mp3");
-    				sound.setVolume(25);
+    				sound.setVolume(1);
     				sound.play();
     				Window.alert("Log In : Successful");
     				MHCS.getP().getTabWidget(0).removeFromParent(); 

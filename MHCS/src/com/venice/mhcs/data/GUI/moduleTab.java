@@ -16,6 +16,7 @@ import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FocusListener;
 import com.google.gwt.user.client.ui.ListBox;
@@ -27,7 +28,7 @@ public class moduleTab {
 	//Declaration of module attribute widgets
 	private final static FlowPanel attribPanel = new FlowPanel();
 	private static ScrollPanel modList = new ScrollPanel();
-	private final static  FlowPanel modPanel = new FlowPanel(); 		//Module Tab
+	private final static  AbsolutePanel modPanel = new AbsolutePanel(); 		//Module Tab
 	private static defaultTextBox idNum = new defaultTextBox("Module ID");
 	private static defaultTextBox x = new defaultTextBox("X");
 	private static defaultTextBox y = new defaultTextBox("Y");
@@ -184,11 +185,11 @@ public class moduleTab {
 	attribPanel.add(damage);
 	attribPanel.add(submit);
 	attribPanel.setStylePrimaryName("panelMargin");
-	modList.setStylePrimaryName("panelMargin");
+	//modList.setStylePrimaryName("panelMargin");
 	
 	modPanel.add(attribPanel);
-	modPanel.add(modList);
-	modPanel.add(mapPanel);
+	modPanel.add(modList, 500, 0);
+	modPanel.add(mapPanel, 0, 250);
 }
 	
 	
@@ -200,7 +201,7 @@ public class moduleTab {
 		return modList;
 	}
 	
-	public static FlowPanel getModPanel() {
+	public static AbsolutePanel getModPanel() {
 		
 		return modPanel;
 	}
