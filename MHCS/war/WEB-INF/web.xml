@@ -4,7 +4,10 @@
               http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5"
          xmlns="http://java.sun.com/xml/ns/javaee">
-
+  
+  <!-- Inherit sound support -->
+  <inherits name='com.allen_sauer.gwt.voices.gwt-voices'/>
+    
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
@@ -15,6 +18,8 @@
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/mhcs/greet</url-pattern>
   </servlet-mapping>
+  
+
   
   <!-- Default page to serve -->
   <welcome-file-list>
