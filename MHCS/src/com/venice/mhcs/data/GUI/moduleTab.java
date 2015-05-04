@@ -1,5 +1,7 @@
 package com.venice.mhcs.data.GUI;
 
+import com.allen_sauer.gwt.voices.client.Sound;
+import com.allen_sauer.gwt.voices.client.SoundController;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
@@ -119,7 +121,11 @@ public class moduleTab {
 			String Y = "";
 			String rotation = "";
 			String dam = "";
-			
+			SoundController soundController = new SoundController();
+			Sound sound = soundController.createSound(Sound.MIME_TYPE_AUDIO_BASIC,
+			    "http://www.d.umn.edu/~ronni111/war/module.mp3");
+			sound.setVolume(1);
+
 			if(!idNum.getText().equals("")) {
 				ID = idNum.getText();
 			}
@@ -160,7 +166,7 @@ public class moduleTab {
 				modList.add(GUIHelper.getScrollPanel());
 				mapPanel.add(ModuleMap.getGrid());
 //				ModuleMap.getGrid().setVisible(true);
-				
+				sound.play();
 				
 				
 
