@@ -2,6 +2,8 @@ package com.venice.mhcs.data.GUI;
 
 import apple.laf.JRSUIConstants.Widget;
 
+import com.allen_sauer.gwt.voices.client.Sound;
+import com.allen_sauer.gwt.voices.client.SoundController;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Button;
@@ -42,7 +44,7 @@ public class loginTab {
 
 	
 	public static void initLoginPanel() {
-
+		
 		loginPanel.setStylePrimaryName("homeBackground");
 		final RootLayoutPanel rp = RootLayoutPanel.get();
 		homeTab.homePanel.setStylePrimaryName("homeBackground");
@@ -96,19 +98,24 @@ public class loginTab {
 		
 		moduleTab.initAttributes(MHCS.myStorage);
 		configTab.initConfig();
-		
+
+
 
 		
 		enter.addClickHandler(new ClickHandler() {
 	    	@Override
 			public void onClick(ClickEvent event) {
     			if (getUser().getText().equals("astro1") && getPTB().getText().equals("lol")) {
+    				SoundController soundController = new SoundController();
+    				Sound sound = soundController.createSound(Sound.MIME_TYPE_AUDIO_BASIC,
+    				    "http://www.d.umn.edu/~ronni111/war/loginsuccessful.mp3");
+    				sound.play();
     				Window.alert("Log In : Successful");
     				MHCS.getP().getTabWidget(0).removeFromParent(); 
     				MHCS.getP().add(homeTab.getMain(), "Home");
     				MHCS.getP().add(moduleTab.getModPanel(), "Module Logging");
-
     				MHCS.getP().add(configTab.getConfig(), "Habitat Config");
+  
     			}
     			else {
     			Window.alert("Incorrect user ID/password, try again");

@@ -1,5 +1,7 @@
 package com.venice.mhcs.data.GUI;
 
+import com.allen_sauer.gwt.voices.client.Sound;
+import com.allen_sauer.gwt.voices.client.SoundController;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.Timer;
@@ -151,13 +153,18 @@ public class homeTab  {
 		countDown.getElement().getStyle().setMarginTop(50, Style.Unit.PX);
 		countDown.setStylePrimaryName("labelText");
 		b.setEnabled(false);
-		
+
 		b.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-    		count = 600;
+ 				SoundController soundController = new SoundController();
+				Sound sound = soundController.createSound(Sound.MIME_TYPE_AUDIO_BASIC,
+				    "http://www.d.umn.edu/~ronni111/war/rovercalibrated.mp3");
+				sound.play();
+			count = 600;
     		tenDay.run();
     		tenDay.scheduleRepeating(1000);
+    		b.setEnabled(false);
 		}
 		});
 		
