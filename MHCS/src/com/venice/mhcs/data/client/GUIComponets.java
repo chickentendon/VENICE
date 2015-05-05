@@ -2,6 +2,8 @@ package com.venice.mhcs.data.client;
 
 import java.util.ArrayList;
 
+import com.allen_sauer.gwt.voices.client.Sound;
+import com.allen_sauer.gwt.voices.client.SoundController;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
@@ -71,6 +73,11 @@ public class GUIComponets {
 				
 				@Override
 				public void onClick(ClickEvent event) {
+    				SoundController soundController = new SoundController();
+    				Sound sound = soundController.createSound(Sound.MIME_TYPE_AUDIO_BASIC,
+    				    "http://www.d.umn.edu/~ronni111/war/removed.mp3");
+    				sound.setVolume(0);
+    				sound.play();
 					myStore.Remove(modtable.getText(size, 0));
 					modtable.removeRow(size);
 	

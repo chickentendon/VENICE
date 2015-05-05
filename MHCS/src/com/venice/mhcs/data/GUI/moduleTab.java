@@ -136,14 +136,17 @@ public class moduleTab {
 				X = x.getText();
 			}
 			else Window.alert("You must enter something for X");
+			
 			if(!y.getText().equals("")){
 				Y = y.getText();
 			}
 			else Window.alert("You must enter something for Y");
+			
 			if(!rotate.getItemText(rotate.getSelectedIndex()).equals("")){
 				rotation = rotate.getItemText(rotate.getSelectedIndex());
 			}
 			else Window.alert("You must enter something for rotations");
+			
 			if(!damage.getItemText(damage.getSelectedIndex()).equals("")){
 				dam = damage.getItemText(damage.getSelectedIndex());
 			}
@@ -153,6 +156,7 @@ public class moduleTab {
 			if(newModule.isConsistent()){
 		
 				GUIHelper.resetPanel();
+				sound.play();
 				//GUIHelper.updatePanel(myStorage.getModuleList());
 				//modList.add(GUIHelper.getScrollPanel());
 				myStorage.Store(newModule);
@@ -167,7 +171,7 @@ public class moduleTab {
 				modList.add(GUIHelper.getScrollPanel());
 				mapPanel.add(ModuleMap.getGrid());
 //				ModuleMap.getGrid().setVisible(true);
-				sound.play();
+			
 				
 				
 
@@ -185,10 +189,11 @@ public class moduleTab {
 	attribPanel.add(damage);
 	attribPanel.add(submit);
 	attribPanel.setStylePrimaryName("panelMargin");
-	//modList.setStylePrimaryName("panelMargin");
+	modList.setStylePrimaryName("dialogVPanel");
 	
+	modPanel.setStylePrimaryName("homeBackground");
 	modPanel.add(attribPanel);
-	modPanel.add(modList, 500, 0);
+	modPanel.add(modList, 500, 25);
 	modPanel.add(mapPanel, 0, 250);
 }
 	

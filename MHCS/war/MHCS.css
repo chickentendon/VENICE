@@ -33,12 +33,9 @@
 }
 
 .gwt-ProgressBar-shell {
-  border: 2px solid #faf9f7;
-  border-right: 2px solid #848280;
-  border-bottom: 2px solid #848280;
-  background-color: #AAAAAA;
-  height: 14pt;
-  width: 50%;
+
+  background-color: #FFFFFF;
+
 }
 
 .gwt-ProgressBar-shell .gwt-ProgressBar-bar {
@@ -69,7 +66,7 @@
 }
 
 .dialogVPanel {
-  margin: 5px;
+     background-color: #FFFFFF;
 }
 
 .panelMargin {
@@ -77,6 +74,7 @@
      margin-bottom:15px;
      margin-right:20px;
      margin-left:20px;
+
 }
 
 .textBoxMargin {
