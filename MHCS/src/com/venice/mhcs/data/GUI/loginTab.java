@@ -1,7 +1,5 @@
 package com.venice.mhcs.data.GUI;
 
-import apple.laf.JRSUIConstants.Widget;
-
 import com.allen_sauer.gwt.voices.client.Sound;
 import com.allen_sauer.gwt.voices.client.SoundController;
 import com.google.gwt.user.client.Window;
@@ -109,7 +107,7 @@ public class loginTab {
     				SoundController soundController = new SoundController();
     				Sound sound = soundController.createSound(Sound.MIME_TYPE_AUDIO_BASIC,
     				    "http://www.d.umn.edu/~ronni111/war/loginsuccessful.mp3");
-    				sound.setVolume(1);
+    				sound.setVolume(50);
     				sound.play();
     				Window.alert("Log In : Successful");
     				MHCS.getP().getTabWidget(0).removeFromParent(); 

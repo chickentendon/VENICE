@@ -125,7 +125,7 @@ public class moduleTab {
 			SoundController soundController = new SoundController();
 			Sound sound = soundController.createSound(Sound.MIME_TYPE_AUDIO_BASIC,
 			    "http://www.d.umn.edu/~ronni111/war/module.mp3");
-			sound.setVolume(1);
+			sound.setVolume(50);
 
 			if(!idNum.getText().equals("")) {
 				ID = idNum.getText();
@@ -181,6 +181,7 @@ public class moduleTab {
 		}
 	});
 	
+
 	submit.setStylePrimaryName("buttonMargin");
 	attribPanel.add(idNum);
 	attribPanel.add(x);
@@ -191,8 +192,9 @@ public class moduleTab {
 	attribPanel.setStylePrimaryName("panelMargin");
 	modList.setStylePrimaryName("dialogVPanel");
 	
-	modPanel.setStylePrimaryName("homeBackground");
-	modPanel.add(attribPanel);
+	mapPanel.setStylePrimaryName("homeBackground");
+	modPanel.setStylePrimaryName("modBackground");
+	modPanel.add(attribPanel, 0, 90);
 	modPanel.add(modList, 500, 25);
 	modPanel.add(mapPanel, 0, 250);
 }
