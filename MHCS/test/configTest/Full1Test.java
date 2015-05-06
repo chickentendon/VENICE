@@ -59,11 +59,11 @@ public class Full1Test {
 		}
 		ArrayList<Module> sanitations = new ArrayList<Module>();
 		for(int i = 91; i < 101; i++){
-			sanitations.add(new Module(""+i, "Undamaged", ""+(80-i),""+(90-i),"0"));
+			sanitations.add(new Module(""+i, "Undamaged", ""+(i-90),""+(i-90),"0"));
 		}
 		ArrayList<Module> foodwater = new ArrayList<Module>();
 		for(int i = 111; i < 121; i++){
-			foodwater.add(new Module(""+i, "Undamaged", ""+(90-i),""+(100-i),"0"));
+			foodwater.add(new Module(""+i, "Undamaged", ""+(i-90),""+(i-100),"0"));
 		}
 		
 		fConfig.add(m1);
