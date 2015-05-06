@@ -140,6 +140,34 @@ public class configTab {
 					modList = tCase.getTestCase("3");
 					modList = tCase.getTestCase("3");
 				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test4")){
+					modList = tCase.getTestCase("4");
+					modList = tCase.getTestCase("4");
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test5")){
+					modList = tCase.getTestCase("5");
+					modList = tCase.getTestCase("5");
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test6")){
+					modList = tCase.getTestCase("6");
+					modList = tCase.getTestCase("6");
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test7")){
+					modList = tCase.getTestCase("7");
+					modList = tCase.getTestCase("7");
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test8")){
+					modList = tCase.getTestCase("8");
+					modList = tCase.getTestCase("8");
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test9")){
+					modList = tCase.getTestCase("9");
+					modList = tCase.getTestCase("9");
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test10")){
+					modList = tCase.getTestCase("10");
+					modList = tCase.getTestCase("10");
+				}
 				else{
 					Window.alert("Test Case Not ready");
 				}
