@@ -17,6 +17,9 @@ public class ModuleGrid {
 	/**
 	 * Constructor called when no dimensions given.
 	 */
+	/**
+	 * 
+	 */
 	public ModuleGrid()
 	{
 		length = 100;
@@ -106,6 +109,12 @@ public class ModuleGrid {
 		return result;
 	}
 	
+	/**
+	 * removes a module from a given coordinate, does not remove terrain
+	 * @param xcoord
+	 * @param ycoord
+	 * @return
+	 */
 	public boolean removeItem(int xcoord, int ycoord)			   
 	{
 		boolean result;
@@ -128,6 +137,10 @@ public class ModuleGrid {
 		return result;
 	}
 	
+	/**
+	 * adds a module to the map
+	 * @param mod
+	 */
 	public void addModule(Module mod)
 	{
 		Cell curCell = new Cell(mod);
@@ -137,6 +150,10 @@ public class ModuleGrid {
 		grid [modX - 1][modY - 1] = curCell;
 	}
 	
+	/**
+	 * adds all of the modules in the arrayList into the grid
+	 * @param modules
+	 */
 	public void addArray(ArrayList<Module> modules)
 	{
 		int size = modules.size();
@@ -151,6 +168,12 @@ public class ModuleGrid {
 		}
 	}
 	
+	/**
+	 * returns a boolean stating if the given coordinate is terrain or not
+	 * @param xcoord
+	 * @param ycoord
+	 * @return
+	 */
 	public boolean isTerrain(int xcoord, int ycoord)
 	{
 		boolean result;
@@ -165,6 +188,11 @@ public class ModuleGrid {
 		return result;
 	}
 	
+	/**
+	 * adds terrain to a given coordinate
+	 * @param xcoord
+	 * @param ycoord
+	 */
 	public void addTerrain(int xcoord, int ycoord)
 	{
 		if(grid[xcoord - 1][ycoord - 1] != null)
@@ -177,6 +205,12 @@ public class ModuleGrid {
 		}
 	}
 	
+	/**
+	 * removes terrain from the given coordinate
+	 * @param xcoord
+	 * @param ycoord
+	 * @return
+	 */
 	public boolean removeTerrain(int xcoord, int ycoord)
 	{
 		boolean result;
