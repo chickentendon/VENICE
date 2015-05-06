@@ -34,6 +34,10 @@ public class ModuleMap
 	    		if(map.getItem(col + 1, g.getRowCount() - row) == null)
 	    		{
 	    		}
+	    		else if(map.getItem(col + 1, g.getRowCount() - row).isTerrain())
+	    		{
+	    			g.setWidget((row), col, new Image("images/X-Terrain.png"));
+	    		}
 	    		else if(map.getItem(col + 1, g.getRowCount() - row).getType().equals("Plain"))
 	    		{
 	    			g.setWidget((row), col, new Image("images/Plain.jpg"));

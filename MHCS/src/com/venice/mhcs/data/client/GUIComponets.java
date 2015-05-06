@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.ScrollPanel;
+import com.venice.mhcs.data.GUI.moduleTab;
 
 public class GUIComponets {
 	private ScrollPanel ModulePanel = new ScrollPanel(); 
@@ -80,6 +81,7 @@ public class GUIComponets {
     				sound.play();
 					myStore.Remove(modtable.getText(size, 0));
 					modtable.removeRow(size);
+					moduleTab.refreshMap();
 	
 					
 				}

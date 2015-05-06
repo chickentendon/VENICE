@@ -22,6 +22,17 @@ public class ModuleGrid {
 		length = 100;
 		height = 50;
 		grid = new Cell[length][height];
+		
+		for(int row = 1; row < 51; row++)
+		{
+			for(int col = 1; col< 101; col++)
+			{
+				if((col > 39 && col < 51) && (row < 51 && row> 39))
+				{
+					addTerrain(col, row);
+				}
+			}
+		}
 	}
 	
 	/**

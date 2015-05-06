@@ -216,7 +216,13 @@ public class moduleTab {
 	public final static ScrollPanel getMapPanel() {
 		return mapPanel;
 	}
-
+	
+	public final static void refreshMap(){
+		moduleGrid = new ModuleGrid();
+		moduleGrid.addArray(myStorage.getModuleList());
+		ModuleMap.updateMap(moduleGrid);
+	    mapPanel.add(ModuleMap.getGrid());
+	}
 	
 	/**
 	 * Helper class to create default text in textboxes
