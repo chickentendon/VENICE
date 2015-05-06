@@ -114,7 +114,11 @@ public class LocalStorage implements EntryPoint {
 		
 		return moduleList;
 	}
-	
+	/**
+	 * Stores a config into local storage
+	 * @param array array of configuration.
+	 * @param configName name of the config
+	 */
 	public void StoreConfig(ArrayList<Module> array, String configName){
 		moduleStore = Storage.getLocalStorageIfSupported();
 		
@@ -124,7 +128,11 @@ public class LocalStorage implements EntryPoint {
 			}
 		}
 	}
-	
+	/**
+	 * Stores an single module
+	 * @param m the module to be stored
+	 * @param key the key to module
+	 */
 	private void storeConfigModule(Module m, String key){
 		moduleStore = Storage.getLocalStorageIfSupported();
 		
@@ -132,7 +140,11 @@ public class LocalStorage implements EntryPoint {
 			moduleStore.setItem(key, m.moduleString());
 		}
 	}
-	
+	/**
+	 * Retrieves config from local storage
+	 * @param configName key of the module string
+	 * @return returns the arrayList
+	 */
 	public ArrayList<Module> getStoredConfig(String configName){
 		ArrayList<Module> rList = new ArrayList<Module>();
 		Module tempModule = new Module();
