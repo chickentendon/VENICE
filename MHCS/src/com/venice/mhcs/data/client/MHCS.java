@@ -1,4 +1,4 @@
-	package com.venice.mhcs.data.client;
+package com.venice.mhcs.data.client;
 import com.venice.mhcs.data.GUI.loginTab;
 import com.venice.mhcs.data.GUI.moduleTab;
 import com.google.gwt.core.client.EntryPoint;
