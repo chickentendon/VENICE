@@ -195,7 +195,7 @@ public class moduleTab {
 	mapPanel.setStylePrimaryName("homeBackground");
 	modPanel.setStylePrimaryName("modBackground");
 	modPanel.add(attribPanel, 0, 90);
-	modPanel.add(modList, 500, 25);
+	modPanel.add(modList, 550, 25);
 	modPanel.add(mapPanel, 0, 250);
 }
 	
