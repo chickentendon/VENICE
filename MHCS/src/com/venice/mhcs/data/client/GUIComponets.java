@@ -76,7 +76,7 @@ public class GUIComponets {
     				SoundController soundController = new SoundController();
     				Sound sound = soundController.createSound(Sound.MIME_TYPE_AUDIO_BASIC,
     				    "http://www.d.umn.edu/~ronni111/war/removed.mp3");
-    				sound.setVolume(0);
+    				sound.setVolume(50);
     				sound.play();
 					myStore.Remove(modtable.getText(size, 0));
 					modtable.removeRow(size);
