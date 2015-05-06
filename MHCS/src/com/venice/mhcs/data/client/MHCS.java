@@ -27,10 +27,13 @@ public class MHCS implements EntryPoint {
 	private final GreetingServiceAsync greetingService = GWT
 			.create(GreetingService.class);
 	
-	
+	//Declaration of local storage 
 	public static LocalStorage myStorage = new LocalStorage();
 	
+	//Declaration of tabbed interface
 	final static TabLayoutPanel p = new TabLayoutPanel(2.0, Unit.EM);
+	
+	//declaration of loginHelper
 	final loginTab loginHelper = new loginTab();
 
 	/**
@@ -39,37 +42,50 @@ public class MHCS implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 		
-		GWT.setUncaughtExceptionHandler(new
-		        GWT.UncaughtExceptionHandler() {
-		        @Override
-				public void onUncaughtException(Throwable e) {
-		          // do exception handling stuff
-		      }
-		      // do module loading stuff
-		    });		
+	GWT.setUncaughtExceptionHandler(new
+	        GWT.UncaughtExceptionHandler() {
+	        @Override
+			public void onUncaughtException(Throwable e) {
+	          // do exception handling stuff
+	      }
+	      // do module loading stuff
+	    });		
 		
-		final FlowPanel modPanel = new FlowPanel(); 		//Module Tab
+		//Declaration of modPanel
+	final FlowPanel modPanel = new FlowPanel(); 		//Module Tab
+	
+	//Add widgets to modPanel
+	modPanel.add(moduleTab.getAttributes());
+	modPanel.add(moduleTab.getModList());
 		
-		//add characteristic
-		modPanel.add(moduleTab.getAttributes());
-		modPanel.add(moduleTab.getModList());
-		
-		loginTab.initLoginPanel();
-		p.setAnimationVertical(true);
-		p.setAnimationDuration(200);
-		p.add(loginHelper.getLoginPanel(), "Login");
+	//initialize loginPanel
+	loginTab.initLoginPanel();
+	
+	//set animation when moving between tabs
+	p.setAnimationVertical(true);
+	p.setAnimationDuration(200);
+	
+	//add loginTab on project launch
+	p.add(loginHelper.getLoginPanel(), "Login");
 
     	
-		// Attach the LayoutPanel to the RootLayoutPanel. The latter will listen for
-	    // resize events on the window to ensure that its children are informed of
-	    // possible size changes.
+	// Attach the LayoutPanel to the RootLayoutPanel. The latter will listen for
+	// resize events on the window to ensure that its children are informed of
+    // possible size changes.	
     RootLayoutPanel rp = RootLayoutPanel.get();
+    
+    //set CSS defined margins to root panel
     rp.setStylePrimaryName("translateMargin");
+    
+    //add TabLayoutPanel p to rootpanel
     rp.add(p);
-	    
 
 	};
 	
+	/**
+	 * Getter for tablayoutpanel "p"
+	 * @return p
+	 */
 	public final static TabLayoutPanel getP(){
 		return p;
 	}
