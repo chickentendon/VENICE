@@ -195,7 +195,7 @@ public class moduleTab {
 	mapPanel.setStylePrimaryName("homeBackground");
 	modPanel.setStylePrimaryName("modBackground");
 	modPanel.add(attribPanel, 0, 90);
-	modPanel.add(modList, 500, 25);
+	modPanel.add(modList, 550, 25);
 	modPanel.add(mapPanel, 0, 250);
 }
 	
@@ -216,7 +216,13 @@ public class moduleTab {
 	public final static ScrollPanel getMapPanel() {
 		return mapPanel;
 	}
-
+	
+	public final static void refreshMap(){
+		moduleGrid = new ModuleGrid();
+		moduleGrid.addArray(myStorage.getModuleList());
+		ModuleMap.updateMap(moduleGrid);
+	    mapPanel.add(ModuleMap.getGrid());
+	}
 	
 	/**
 	 * Helper class to create default text in textboxes

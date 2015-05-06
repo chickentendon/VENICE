@@ -49,7 +49,7 @@ public class configTab {
 		
 		configBox.addItem("Minimum Config1");
 		configBox.addItem("Minimum Config2");
-		configBox.addItem("Full Config");
+		configBox.addItem("Full Config1");
 		configBox.setStylePrimaryName("listBoxMargin");
 		
 		final Button sumbitButton = new Button("Submit");

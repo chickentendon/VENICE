@@ -142,6 +142,13 @@ public class Configuration {
 		return attachMod;
 	}
 
+	/**
+	 * 
+	 * @param x - X coordinate for middle of where plain modules will be set
+	 * @param y - Y coordinate for middle of where plains modules be set
+	 * @param modList - ArrayList of plain modules
+	 * @return List of plain modules with adjusted coordinates around midPoint x,y
+	 */
 	private ArrayList<Module> setPlains(int x, int y, ArrayList<Module> modList){
 		ArrayList<Module> pList = new ArrayList<Module>();
 		
@@ -173,6 +180,11 @@ public class Configuration {
 		return modList;
 	}
 	
+	/**
+	 * finds the x coordinate of midpoint for the min configuration
+	 * @param minList - ArrayList of minConfig
+	 * @return x coordinate
+	 */
 	private int findXSite(ArrayList<Module> minList){
 		int tempX = 0;
 		int site = 0;
@@ -182,7 +194,7 @@ public class Configuration {
 		
 		site = tempX/minList.size();
 		
-		if(site == 1) site += 2;
+		if(site == 1) site += 2;     //adjustments to be within landing zone
 		else if(site == 2) site += 1;
 		else if(site == 100) site -= 2;
 		else if(site == 99) site -= 1;
@@ -190,6 +202,11 @@ public class Configuration {
 		return site;
 	}
 	
+	/**
+	 * finds the y coordinate of midpoint for the min configuration
+	 * @param minList - ArrayList of minConfig
+	 * @return y coordinate
+	 */
 	private int findYSite(ArrayList<Module> minList){
 		int tempY = 0;
 		int site = 0;
@@ -199,7 +216,7 @@ public class Configuration {
 		
 		site = tempY/minList.size();
 		
-		if(site == 1) site += 2;
+		if(site == 1) site += 2;     //adjustments to be within landing zone
 		else if(site == 2) site += 1;
 		else if(site == 50) site -= 2;
 		else if(site == 49) site -= 1;
@@ -207,6 +224,12 @@ public class Configuration {
 		return site;
 	}
 	
+	/**
+	 * Takes a configuration that is yet to be built, accesses a list to be previously set,
+	 * alters list, sets it, and returns configuration with module list of updated coordinates 
+	 * @param min - Configuration with a set minimum list to be built
+	 * @return configuration with altered minimum list
+	 */
 	public Configuration buildMin1(Configuration min){
 		ArrayList<Module> minList = min.getMinimum1();
 		int x = findXSite(minList);
@@ -255,7 +278,13 @@ public class Configuration {
 			min.setMinimum1(minList);
 			return min;
 	}
-	
+
+	/**
+	 * Takes a configuration that is yet to be built, accesses a list to be previously set,
+	 * alters list, sets it, and returns configuration with module list of updated coordinates 
+	 * @param min - Configuration with a set minimum list to be built
+	 * @return configuration with altered minimum list
+	 */
 	public Configuration buildMin2(Configuration min){
 		ArrayList<Module> minList = min.getMinimum2();
 		int x = findXSite(minList);
@@ -302,6 +331,11 @@ public class Configuration {
 			return min;
 	}
 	
+	/**
+	 * Takes 
+	 * @param full - ArrayList of modules to be used for full configuration
+	 * @return x coord
+	 */
 	private int findX(ArrayList<Module> full){
 		int tempX = 0;
 		int site = 0;
