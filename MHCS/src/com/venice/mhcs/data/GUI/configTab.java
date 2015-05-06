@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class configTab {
 	private static Configuration mini = new Configuration();
+	private static Configuration full = new Configuration();
 	private static LocalStorage stor = new LocalStorage();
 	private static ModuleGrid grid = new ModuleGrid();
 	private static FlowPanel fp = new FlowPanel();
@@ -48,6 +49,7 @@ public class configTab {
 		
 		configBox.addItem("Minimum Config1");
 		configBox.addItem("Minimum Config2");
+		configBox.addItem("Full Config");
 		configBox.setStylePrimaryName("listBoxMargin");
 		
 		final Button sumbitButton = new Button("Submit");
@@ -100,9 +102,54 @@ public class configTab {
 						saveList = mini.getMinimum2();
 					}
 				}
+				
+				else if(configBox.getItemText(configBox.getSelectedIndex()).equals("Full Config1")){
+					full.setFull1(modList);
+					
+					full = full.buildFull1(full);
+					grid.addArray(full.getFull1());
+					ModuleMap.initalizeMap(grid);
+					sp.add(ModuleMap.getGrid());
+					saveList = full.getFull1();
+				}
 				vp.add(fp);
 				vp.add(sp);
 			}
+			
+		});
+		
+		final Button mapButton = new Button("Show Map");
+		mapButton.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				sp.clear();
+				grid = new ModuleGrid();
+				if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Local Storage")){
+					modList = stor.getModuleList();
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test1")){
+					modList = tCase.getTestCase("1");
+					modList = tCase.getTestCase("1");
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test2")){
+					modList = tCase.getTestCase("2");
+					modList = tCase.getTestCase("2");
+				}
+				else if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Test3")){
+					modList = tCase.getTestCase("3");
+					modList = tCase.getTestCase("3");
+				}
+				else{
+					Window.alert("Test Case Not ready");
+				}
+				grid.addArray(modList);
+				ModuleMap.initalizeMap(grid);
+				sp.add(ModuleMap.getGrid());
+				vp.add(fp);
+				vp.add(sp);
+			}
+				
 			
 		});
 		
@@ -149,6 +196,7 @@ public class configTab {
 		fp.setHeight("25px");
 		fp.add(arrayBox);
 		fp.add(configBox);
+		fp.add(mapButton);
 		fp.add(sumbitButton);
 		fp.add(savedConfig);
 		fp.add(save);
