@@ -37,34 +37,42 @@ public class loginTab {
 	public static AbsolutePanel loginPanel = new AbsolutePanel();
 	public static FlowPanel pwPanel = new FlowPanel();
 	public static VerticalPanel vertPanel = new VerticalPanel();
+	
+	//Declaration of panels for formatting
 	static VerticalPanel head = new VerticalPanel();
 	final static Label space = new Label("     ");
 
-	
+	/**
+	 * initialize the loginPanel
+	 */
 	public static void initLoginPanel() {
 		
+		//set CSS defined characteristics to loginPanel widgets
 		loginPanel.setStylePrimaryName("homeBackground");
-		final RootLayoutPanel rp = RootLayoutPanel.get();
 		homeTab.homePanel.setStylePrimaryName("homeBackground");
 		homeTab.header.setStylePrimaryName("h1");
-		
 		vertPanel.getElement().setAttribute("align", "center");
-	    head.add(homeTab.header);
+	    
+		//Add and align MHCS header, and login textboxes
+		head.add(homeTab.header);
 	    head.getElement().setAttribute("align", "center");
-		top.getElement().setAttribute("align", "center");
+	    top.getElement().setAttribute("align", "center");
 		top.setStylePrimaryName("whiteText");
 		bottom.setStylePrimaryName("whiteText");
 	    bottom.getElement().setAttribute("align", "center");
 	    ptb.getElement().setAttribute("align", "center");
 	    user.getElement().setAttribute("align", "center");
-	    
 	    ptb.setStyleName("logInMargin");
+	    user.setStyleName("logInMargin");
+	    
+	    //set characteristics of password textbox
 	    ptb.setMaxLength(6);
 	    ptb.setVisibleLength(10);
 	    ptb.setAlignment(TextAlignment.CENTER);
 	    ptb.addKeyDownHandler(new KeyDownHandler() {
 
-	        @Override
+	       //keyboard handler to click "Log In" button when the enter key is pressed
+	    	@Override
 	        public void onKeyDown(KeyDownEvent event) {
 	         if(event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
 	                     enter.click();
@@ -72,34 +80,42 @@ public class loginTab {
 	        }
 	    });
 	    
-	    user.setStyleName("logInMargin");
+	    //set characteristics for username textbox
 	    user.setAlignment(TextAlignment.CENTER);
 	    user.setMaxLength(6);
 	    user.setVisibleLength(10);
 
+	    //add username label, username textbox, password label, password textbox to vertpanel
 	    vertPanel.add(top);
 	    vertPanel.add(user);
 	    vertPanel.add(bottom);
 	    vertPanel.add(ptb);
 	    vertPanel.add(space);
-	    vertPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 	    
-	    final moduleTab moduleHelper = new moduleTab();
+	    //align widgets in vertpanel to align vertically
+	    vertPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
-
+	    //set alignment of login button to center
 		enter.getElement().setAttribute("align", "center");
 		
+		//add login to vertPanel
 		vertPanel.add(enter);
+		
+		//add header and vertPanel to pwPanel
 		pwPanel.add(head);
 		pwPanel.add(vertPanel);
+		
+		//add pwPanel to loginPanel
 		loginPanel.add(pwPanel);
 		
+		//initialize modules in local storage before login
 		moduleTab.initAttributes(MHCS.myStorage);
+		
+		//initialize configuration tab before login
 		configTab.initConfig();
 	
-
-
-		
+		//click handler to hide login tab on successful login, 
+		//and show home, logging and config tab
 		enter.addClickHandler(new ClickHandler() {
 	    	@Override
 			public void onClick(ClickEvent event) {
@@ -152,6 +168,10 @@ public class loginTab {
 		return user;
 	}
 	
+	/**
+	 * Getter for loginPanel
+	 * @return loginPanel
+	 */
 	public AbsolutePanel getLoginPanel() {
 		return loginPanel;
 	}
