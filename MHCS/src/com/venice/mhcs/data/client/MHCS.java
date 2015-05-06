@@ -63,6 +63,7 @@ public class MHCS implements EntryPoint {
 	    // resize events on the window to ensure that its children are informed of
 	    // possible size changes.
     RootLayoutPanel rp = RootLayoutPanel.get();
+    rp.setStylePrimaryName("translateMargin");
     rp.add(p);
 	    
 
