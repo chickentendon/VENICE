@@ -179,6 +179,7 @@ public class moduleTab {
 				GUIHelper.resetPanel();
 				//play "module added" output
 				sound.play();
+				newModule.makeClean();
 				//add newModule to local storage
 				myStorage.Store(newModule);
 				

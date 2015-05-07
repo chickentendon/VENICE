@@ -115,6 +115,10 @@ public class configTab {
 				
 				// if configbox is minconfig1 it set map to minconfig1
 				if(configBox.getItemText(configBox.getSelectedIndex()).equals("Minimum Config1")){
+					for(int i = 0; i < modList.size(); i++){
+						modList.get(i).makeClean();
+					}
+					
 					mini.setMinimum1(modList);
 					
 					if(mini.isMinimum(mini.getMinimum1())){
@@ -127,6 +131,10 @@ public class configTab {
 				}
 				// if configbox is minconfig2 it set map to minconfig2
 				else if (configBox.getItemText(configBox.getSelectedIndex()).equals("Minimum Config2")){
+					for(int i = 0; i < modList.size(); i++){
+						modList.get(i).makeClean();
+					}
+					
 					mini.setMinimum2(modList);
 					
 					if(mini.isMinimum(mini.getMinimum2())){
@@ -139,6 +147,10 @@ public class configTab {
 				}
 				// if configbox is fullconfig1 it set map to fullconfig1
 				else if(configBox.getItemText(configBox.getSelectedIndex()).equals("Full Config1")){
+					for(int i = 0; i < modList.size(); i++){
+						modList.get(i).makeClean();
+					}
+					
 					full.setFull1(modList);
 					
 					full = full.buildFull1(full);
@@ -149,6 +161,10 @@ public class configTab {
 				}
 				// if configbox is fullconfig1 it set map to fullconfig2
 				else if(configBox.getItemText(configBox.getSelectedIndex()).equals("Full Config2")){
+					for(int i = 0; i < modList.size(); i++){
+						modList.get(i).makeClean();
+					}
+					
 					full.setFull1(modList);
 					
 					full = full.buildFull2(full);

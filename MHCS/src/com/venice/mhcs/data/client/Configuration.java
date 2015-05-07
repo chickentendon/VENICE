@@ -932,6 +932,7 @@ public class Configuration {
 		for(int i = 0; i < dirtyList.size(); i++){
 			if(dirtyList.get(i).getDamage() == "Damaged"){
 				dirtyList.remove(i);
+				i--;
 			}
 		}
 		return dirtyList;
