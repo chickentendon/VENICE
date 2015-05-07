@@ -1,8 +1,6 @@
 package com.venice.mhcs.data.client;
 import java.lang.String;
 
-import com.allen_sauer.gwt.voices.client.Sound;
-import com.allen_sauer.gwt.voices.client.SoundController;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONString;
 import com.google.gwt.user.client.Window;
