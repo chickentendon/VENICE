@@ -268,8 +268,8 @@ public class moduleTab {
 	}
 	
 	/**
-	 * Helper class to create default text in textboxes
-	 * @author maxronning
+	 * Helper class to create default text in textboxs
+	 * implemented by Max Ronning
 	 */
 	@SuppressWarnings("deprecation")
 	public class DefaultTextBox extends TextBox implements FocusListener { 

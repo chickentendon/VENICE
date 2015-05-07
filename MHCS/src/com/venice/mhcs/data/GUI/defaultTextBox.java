@@ -3,6 +3,10 @@ package com.venice.mhcs.data.GUI;
 import com.google.gwt.user.client.ui.FocusListener;
 import com.google.gwt.user.client.ui.TextBox;
 
+/**
+ * Helper class to create default text in textboxs
+ * implemented by Max Ronning
+ */
 public class defaultTextBox extends TextBox implements FocusListener { 
     private String defaultText; 
 
