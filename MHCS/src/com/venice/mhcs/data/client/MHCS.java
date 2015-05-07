@@ -89,7 +89,4 @@ public class MHCS implements EntryPoint {
 	public final static TabLayoutPanel getP(){
 		return p;
 	}
-	
-
 }
-

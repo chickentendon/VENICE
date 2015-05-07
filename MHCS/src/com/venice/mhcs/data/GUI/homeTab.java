@@ -40,7 +40,7 @@ public class homeTab  {
 
 	//Declare labels
 	static Label header = new Label("Mars Habitat Control System");
-	static Label version = new Label("Version 1.2");
+	static Label version = new Label("Version 1.5");
 	static int count = 120;
 	static Label countDown = new Label();
     static Button b = new Button("Reset Calibration Timer");
@@ -193,6 +193,7 @@ public class homeTab  {
 		//set CSS defined styles to homePanel and header
 		homePanel.setStylePrimaryName("homeBackground");
 		header.setStylePrimaryName("h1");
+		version.setStylePrimaryName("versionLabel");
 		
 		//set dimensions of space panel and make it invisible
 		space.setHeight("18px");
@@ -221,5 +222,4 @@ public class homeTab  {
 		
 		return homePanel;
 	}
-
 }
