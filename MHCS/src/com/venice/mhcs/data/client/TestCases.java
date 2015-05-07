@@ -17,9 +17,13 @@ import com.google.gwt.user.client.Window;
 
  public class TestCases {
 	
-	// private ArrayList<Module> testList = new ArrayList<Module>();
 		 private ArrayList<Module> testList = new ArrayList<Module>();
 		 
+		 /**
+		  * returns ArrayList from test cases 
+		  * @param id number of the test 
+		  * @return arraylist from the number
+		  */
 		 public ArrayList<Module> getTestCase(String id){
 			 
 			String url = "http://www.d.umn.edu/~abrooks/SomeTests.php?q=" + id;
@@ -38,7 +42,7 @@ import com.google.gwt.user.client.Window;
 			public void onResponseReceived(Request request, Response response) {
 			 if (200 == response.getStatusCode()) {
 			 String rt = response.getText();
-			 testList = toModule(rt); //METHOD CALL TO DO SOMETHING WITH RESPONSE TEXT
+			 testList = toModule(rt); //sets testList to an testlist
 			 } else {
 			 Window.alert("Couldn't retrieve JSON (" + response.getStatusCode()
 			 + ")");
@@ -54,7 +58,11 @@ import com.google.gwt.user.client.Window;
 			}
 			 return testList;
 		 }
-
+		 /**
+		  * returns an arrayList of from test cases
+		  * @param rt JSON String of modules
+		  * @return arrayList of modules
+		  */
 		 protected ArrayList<Module> toModule(String rt){
 			 ArrayList<Module> rList = new ArrayList<Module>();
 			 String sAll = rt;
