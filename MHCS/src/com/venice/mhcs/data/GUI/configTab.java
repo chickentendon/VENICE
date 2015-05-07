@@ -30,6 +30,7 @@ public class configTab {
 	//private static TestCases tCase = new TestCases();
 	public static void initConfig(){
 		final TestCases tCase = new TestCases();
+		//Listbox of sources of arrayLists
 		final ListBox arrayBox = new ListBox();
 		arrayBox.addItem("Local Storage");
 		arrayBox.addItem("Test1");
@@ -42,23 +43,28 @@ public class configTab {
 		arrayBox.addItem("Test8");
 		arrayBox.addItem("Test9");
 		arrayBox.addItem("Test10");
-		
+		//sets arrayBox css
 		arrayBox.setStylePrimaryName("listBoxMargin");
-		
+		// listbox of what type of configs
 		final ListBox configBox = new ListBox();
 		
+		// adds settings to config tabs
 		configBox.addItem("Minimum Config1");
 		configBox.addItem("Minimum Config2");
 		configBox.addItem("Full Config1");
 		configBox.setStylePrimaryName("listBoxMargin");
 		
-		final Button sumbitButton = new Button("Submit");
+		//declares submit button
+		final Button sumbitButton = new Button("Show Config");
+		//handler checks for configbox and testbox for values
 		sumbitButton.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
+				// clears map
 				sp.clear();
 				grid = new ModuleGrid();
+				// checks what value is in the config dropdown and adds arraylist modlist
 				if(arrayBox.getItemText(arrayBox.getSelectedIndex()).equals("Local Storage")){
 					modList = stor.getModuleList();
 				}
@@ -106,7 +112,7 @@ public class configTab {
 					Window.alert("Test Case Not ready");
 				}
 				
-				
+				// if configbox is minconfig1 it set map to minconfig1
 				if(configBox.getItemText(configBox.getSelectedIndex()).equals("Minimum Config1")){
 					mini.setMinimum1(modList);
 					
@@ -118,7 +124,7 @@ public class configTab {
 						saveList = mini.getMinimum1();
 					}
 				}
-				
+				// if configbox is minconfig2 it set map to minconfig2
 				else if (configBox.getItemText(configBox.getSelectedIndex()).equals("Minimum Config2")){
 					mini.setMinimum2(modList);
 					
@@ -130,7 +136,7 @@ public class configTab {
 						saveList = mini.getMinimum2();
 					}
 				}
-				
+				// if configbox is fullconfig1 it set map to fullconfig1
 				else if(configBox.getItemText(configBox.getSelectedIndex()).equals("Full Config1")){
 					full.setFull1(modList);
 					
@@ -140,13 +146,15 @@ public class configTab {
 					sp.add(ModuleMap.getGrid());
 					saveList = full.getFull1();
 				}
+				// updates panel
 				vp.add(fp);
 				vp.add(sp);
 			}
 			
 		});
-		
+		// declares show map button
 		final Button mapButton = new Button("Show Map");
+		// handler displays module map
 		mapButton.addClickHandler(new ClickHandler() {
 			
 			@Override
