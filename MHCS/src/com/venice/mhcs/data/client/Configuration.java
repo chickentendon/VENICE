@@ -879,7 +879,7 @@ public class Configuration {
 	}
 	
 	public Configuration buildFull2(Configuration full){
-		ArrayList<Module> fullList = full.getFull1();
+		ArrayList<Module> fullList = full.getFull2();
 		ArrayList<Module> config = new ArrayList<Module>();
 		
 		fullList = cleanList(fullList);
@@ -924,7 +924,7 @@ public class Configuration {
 		config.addAll(hall6);
 		config.addAll(buildBottomDorm(hall6,dList,sList,gList,fwList,canList,x+5,y-3));
 		
-		full.setFull1(config);
+		full.setFull2(config);
 		return full;
 	}
 	

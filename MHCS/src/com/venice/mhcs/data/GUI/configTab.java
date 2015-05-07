@@ -165,13 +165,13 @@ public class configTab {
 						modList.get(i).makeClean();
 					}
 					
-					full.setFull1(modList);
+					full.setFull2(modList);
 					
 					full = full.buildFull2(full);
 					grid.addArray(full.getFull2());
 					ModuleMap.initalizeMap(grid);
 					sp.add(ModuleMap.getGrid());
-					saveList = full.getFull1();
+					saveList = full.getFull2();
 				}
 				
 				// updates panel
