@@ -693,6 +693,206 @@ public class Configuration {
 			return hall;
 		}
 	
+	private ArrayList<Module> buildBottomDorm(ArrayList<Module> hall, ArrayList<Module> dorm, ArrayList<Module> sani, ArrayList<Module> gym, 
+			ArrayList<Module> fw, ArrayList<Module> can, int x, int y){
+		
+		ArrayList<Module> dormWing = new ArrayList<Module>();
+		int pCount = hall.size();
+	
+		if(pCount == 3 || pCount == 4){
+			pullAndPlace(dormWing, dorm, x+1, y);
+			pullAndPlace(dormWing, dorm, x-1, y);
+		}
+		else if(pCount == 5){
+			pullAndPlace(dormWing, dorm, x+1, y);
+			pullAndPlace(dormWing, dorm, x-1, y);
+			pullAndPlace(dormWing, dorm, x+1, y-2);
+			pullAndPlace(dormWing, dorm, x, y-3);
+		}
+		
+		if(pCount == 4){
+			pullAndPlace(dormWing, sani, x+1, y-1);
+		}
+		else if(pCount == 5){
+			pullAndPlace(dormWing, sani, x+1,y-1);
+			pullAndPlace(dormWing, sani, x-1,y-2);
+		}
+		
+		if(pCount >= 4){
+			pullAndPlace(dormWing, gym, x-1, y-1);
+		}
+		
+		if(pCount == 1){
+			pullAndPlace(dormWing, fw, x-1, y+2);
+		}
+		else if(pCount >= 2){
+			pullAndPlace(dormWing, fw, x-1, y+2);
+			pullAndPlace(dormWing, fw, x-1, y+1);
+			pullAndPlace(dormWing, fw, x+1, y+1);
+		}
+		
+		if(pCount >= 1){
+			pullAndPlace(dormWing, can, x+1, y+2);
+		}
+		
+		return dormWing;
+	}
+	
+	private ArrayList<Module> buildTopControl(ArrayList<Module> cont, ArrayList<Module> pow, ArrayList<Module> med,
+			ArrayList<Module> air, ArrayList<Module> sani, ArrayList<Module> plain, int x, int y){
+		
+		ArrayList<Module> contWing = new ArrayList<Module>();
+		int pCount = plain.size();
+		
+		if(pCount == 2 || pCount == 3){
+			pullAndPlace(contWing, cont, x-1, y-1);
+			pullAndPlace(contWing, cont, x+1, y-1);
+		}
+		if(pCount >= 4){
+			pullAndPlace(contWing, cont, x-1, y-1);
+			pullAndPlace(contWing, cont, x+1, y-1);
+			pullAndPlace(contWing, cont, x+1, y+1);
+			pullAndPlace(contWing, cont, x-1, y+1);
+		}
+		if(pCount == 1 || pCount == 3){
+			pullAndPlace(contWing, pow, x-1, y-2);
+			pullAndPlace(contWing, pow, x+1, y-2);
+		}
+		if(pCount >= 3){
+			pullAndPlace(contWing, pow, x-1, y-2);
+			pullAndPlace(contWing, pow, x+1, y-2);
+			pullAndPlace(contWing, pow, x-1, y);
+			pullAndPlace(contWing, pow, x+1, y);
+		}
+		if(pCount == 5){
+			pullAndPlace(contWing, med, x+1, y+2);
+			pullAndPlace(contWing, sani, x-1, y+2);
+			pullAndPlace(contWing, air, x, y+3);
+		}
+		return contWing;
+	}
+	
+	private ArrayList<Module> buildTopWestWing(ArrayList<Module> plain, ArrayList<Module> dorm, ArrayList<Module> sani,
+			ArrayList<Module> fw, ArrayList<Module> can, ArrayList<Module> gym, ArrayList<Module> med, int x, int y){
+		
+		ArrayList<Module> westWing = new ArrayList<Module>();
+		int pCount = plain.size();
+		
+		if(pCount == 3){
+			pullAndPlace(westWing, dorm, x-1, y);
+			pullAndPlace(westWing, dorm, x+1, y);
+		}
+		if(pCount == 4){
+			pullAndPlace(westWing, dorm, x-1, y);
+			pullAndPlace(westWing, dorm, x+1, y);
+			pullAndPlace(westWing, dorm, x-1, y+1);
+			pullAndPlace(westWing, dorm, x+1, y+1);
+		}
+		if(pCount == 5){
+			pullAndPlace(westWing, dorm, x-1, y);
+			pullAndPlace(westWing, dorm, x+1, y);
+			pullAndPlace(westWing, dorm, x-1, y+1);
+			pullAndPlace(westWing, dorm, x+1, y+1);
+			pullAndPlace(westWing, dorm, x+1, y+2);
+			pullAndPlace(westWing, fw, x, y+3);
+			pullAndPlace(westWing, can, x-1, y+2);
+		}
+		if(pCount == 1){
+			pullAndPlace(westWing, sani, x-1, y-2);
+		}
+		if(pCount >= 1){
+			pullAndPlace(westWing, med, x+1, y-2);
+		}
+		if(pCount >= 2){
+			pullAndPlace(westWing, sani, x-1, y-2);
+			pullAndPlace(westWing, sani, x+1, y-1);
+			pullAndPlace(westWing, gym, x-1, y-1);
+		}
+		return westWing;
+	
+	}
+	
+	private ArrayList<Module> buildTopEastWing(ArrayList<Module> plain, ArrayList<Module> dorm, ArrayList<Module> sani,
+			ArrayList<Module> med, ArrayList<Module> air, ArrayList<Module> fw, int x, int y){
+		
+		ArrayList<Module> eastWing = new ArrayList<Module>();
+		int pCount = plain.size();
+		
+		if(pCount >= 1){
+			pullAndPlace(eastWing, sani, x+1, y-2);
+			pullAndPlace(eastWing, med, x-1, y-2);
+		}
+		if(pCount == 2){
+			pullAndPlace(eastWing, dorm, x+1, y-1);
+			pullAndPlace(eastWing, dorm, x-1, y-1);
+		}
+		if(pCount >=3){
+			pullAndPlace(eastWing, dorm, x+1, y-1);
+			pullAndPlace(eastWing, dorm, x-1, y-1);
+			pullAndPlace(eastWing, dorm, x-1, y);
+		}
+		if(pCount == 4){
+			pullAndPlace(eastWing, fw, x-1, y+1);
+			pullAndPlace(eastWing, fw, x+1, y+1);
+		}
+		if(pCount ==5){
+			pullAndPlace(eastWing, fw, x-1, y+1);
+			pullAndPlace(eastWing, fw, x+1, y+1);
+			pullAndPlace(eastWing, fw, x-1, y+2);
+			pullAndPlace(eastWing, air, x, y+3);
+			pullAndPlace(eastWing, med, x+1, y+2);
+		}
+		return eastWing;
+	}
+	
+	public Configuration buildFull2(Configuration full){
+		ArrayList<Module> fullList = full.getFull1();
+		ArrayList<Module> config = new ArrayList<Module>();
+		int x = findX(fullList);
+		int y = findY(fullList);
+		
+		ArrayList<Module> pList = getTypeList(fullList, ModuleType.PLAIN);
+		ArrayList<Module> aList = getTypeList(fullList, ModuleType.AIRLOCK);
+		ArrayList<Module> canList = getTypeList(fullList, ModuleType.CANTEEN);
+		ArrayList<Module> conList = getTypeList(fullList, ModuleType.CONTROL);
+		ArrayList<Module> dList = getTypeList(fullList, ModuleType.DORMITORY);
+		ArrayList<Module> fwList = getTypeList(fullList, ModuleType.FOOD_WATER);
+		ArrayList<Module> gList = getTypeList(fullList, ModuleType.GYM_RELAXATION);
+		ArrayList<Module> mList = getTypeList(fullList, ModuleType.MEDICAL);
+		ArrayList<Module> powList = getTypeList(fullList, ModuleType.POWER);
+		ArrayList<Module> sList = getTypeList(fullList, ModuleType.SANITATION);
+		
+		config.addAll(buildSpine(pList,aList, x, y));
+		
+		ArrayList<Module> hall = buildTopHallway(pList, x-4, y+3);
+		config.addAll(hall);
+		config.addAll(buildTopWestWing(hall,dList,sList,fwList,canList,gList,mList,x-4,y+3));
+		
+		ArrayList<Module> hall2 = buildTopHallway(pList, x, y+3);
+		config.addAll(hall2);
+		config.addAll(buildTopControl(conList,powList,mList,aList,sList,hall2,x,y+3));
+		
+		ArrayList<Module> hall3 = buildTopHallway(pList, x+4, y+3);
+		config.addAll(hall3);
+		config.addAll(buildTopEastWing(hall3,dList,sList,mList,aList,fwList,x+4,y+3));
+		
+		ArrayList<Module> hall4 = buildBottomHallway(pList, x-3, y-3);
+		config.addAll(hall4);
+		config.addAll(buildBottomDorm(hall4,dList,sList,gList,fwList,canList,x-3,y-3));
+		
+		ArrayList<Module> hall5 = buildBottomHallway(pList, x+1, y-3);
+		config.addAll(hall5);
+		config.addAll(buildBottomDorm(hall5,dList,sList,gList,fwList,canList,x+1,y-3));
+		
+		ArrayList<Module> hall6 = buildBottomHallway(pList, x+5, y-3);
+		config.addAll(hall6);
+		config.addAll(buildBottomDorm(hall6,dList,sList,gList,fwList,canList,x+5,y-3));
+		
+		full.setFull1(config);
+		return full;
+	}
+	
+	
 	private ArrayList<Module> min1 = new ArrayList<Module>();
 	private ArrayList<Module> min2 = new ArrayList<Module>();
 	private ArrayList<Module> full1 = new ArrayList<Module>();

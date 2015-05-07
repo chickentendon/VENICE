@@ -52,6 +52,7 @@ public class configTab {
 		configBox.addItem("Minimum Config1");
 		configBox.addItem("Minimum Config2");
 		configBox.addItem("Full Config1");
+		configBox.addItem("Full Config2");
 		configBox.setStylePrimaryName("listBoxMargin");
 		
 		//declares submit button
@@ -146,6 +147,17 @@ public class configTab {
 					sp.add(ModuleMap.getGrid());
 					saveList = full.getFull1();
 				}
+				// if configbox is fullconfig1 it set map to fullconfig2
+				else if(configBox.getItemText(configBox.getSelectedIndex()).equals("Full Config2")){
+					full.setFull1(modList);
+					
+					full = full.buildFull2(full);
+					grid.addArray(full.getFull2());
+					ModuleMap.initalizeMap(grid);
+					sp.add(ModuleMap.getGrid());
+					saveList = full.getFull1();
+				}
+				
 				// updates panel
 				vp.add(fp);
 				vp.add(sp);
