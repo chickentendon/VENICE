@@ -236,6 +236,14 @@ public class Module {
 		
 		
 	}
+	
+	public void makeClean(){
+		if(Integer.parseInt(this.getX()) >= 40 && Integer.parseInt(this.getX()) <= 50){
+			if(Integer.parseInt(this.getY()) >= 40 && Integer.parseInt(this.getY()) <= 50){
+				this.setDamage("Damaged");
+			}
+		}
+	}
 		
 	/**
 	 * Tests module variables to ensure it is consistent with module rules
