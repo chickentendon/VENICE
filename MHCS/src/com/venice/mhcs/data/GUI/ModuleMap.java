@@ -7,6 +7,10 @@ import com.venice.mhcs.data.client.*;
 public class ModuleMap 
 {
 	private static Grid g;
+	/**
+	 * creates a new map with the given modules
+	 * @param moduleMap
+	 */
 	public static void initalizeMap(ModuleGrid moduleMap)
 	{
 		g = new Grid(50, 100);
@@ -23,6 +27,10 @@ public class ModuleMap
 		g.setVisible(true);
 		updateMap(moduleMap);
 	}
+	/**
+	 * updates the map given a module map
+	 * @param moduleMap
+	 */
 	public static void updateMap(ModuleGrid moduleMap)
 	{
 		ModuleGrid map = moduleMap;
