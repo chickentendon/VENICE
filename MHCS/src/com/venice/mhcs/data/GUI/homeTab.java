@@ -195,7 +195,7 @@ public class homeTab  {
 		header.setStylePrimaryName("h1");
 		
 		//set dimensions of space panel and make it invisible
-		space.setHeight("25px");
+		space.setHeight("18px");
 		space.setWidth("1");
 		space.getElement().getStyle().setOpacity(100);
 		
