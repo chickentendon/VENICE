@@ -343,9 +343,9 @@ public class Configuration {
 	}
 	
 	/**
-	 * Takes 
+	 * Finds the middle x coordinate for configuration, and adjusts accordingly to restrictions
 	 * @param full - ArrayList of modules to be used for full configuration
-	 * @return x coord
+	 * @return x coordinate
 	 */
 	private int findX(ArrayList<Module> full){
 		int tempX = 0;
@@ -382,6 +382,11 @@ public class Configuration {
 		return site;
 	}
 	
+	/**
+	 * Finds the middle y coordinate for configuration, and adjusts accordingly to restrictions
+	 * @param full - ArrayList of modules to be used for full configuration
+	 * @return y coordinate
+	 */
 	private int findY(ArrayList<Module> full){
 		int tempY = 0;
 		int tempX = 0;
@@ -415,6 +420,12 @@ public class Configuration {
 		return site;
 	}
 	
+	/**
+	 * Finds and creates a new list of modules of specified type
+	 * @param fullList - list of random modules
+	 * @param type - the type to be separated out of list into a new list
+	 * @return list of modules of specified type
+	 */
 	private ArrayList<Module> getTypeList(ArrayList<Module> fullList, ModuleType type){
 		ArrayList<Module> tList = new ArrayList<Module>();
 		for(int i = 0; i < fullList.size(); i++){
@@ -426,6 +437,11 @@ public class Configuration {
 		return tList;
 	}
 	
+	/**
+	 * Builds configuration full1
+	 * @param full - a configuration with full1 set
+	 * @return A configuration containing full1 with module coordinates altered appropriately 
+	 */
 	public Configuration buildFull1(Configuration full){
 		ArrayList<Module> fullList = full.getFull1();
 		
@@ -476,6 +492,14 @@ public class Configuration {
 		return full;
 	}
 	
+	/**
+	 * Builds the "spine" on which configuration wings branch off of
+	 * @param plain - list of plain modules
+	 * @param air - list of airlock modules
+	 * @param x - x midpoint coordinate for configuration 
+	 * @param y - y midpoint coordinate for configuration
+	 * @return a line of plain modules with airlocks on the ends
+	 */
 	private ArrayList<Module> buildSpine(ArrayList<Module> plain, ArrayList<Module> air, int x, int y){
 		ArrayList<Module> spine = new ArrayList<Module>();
 		for(int i  = 0; i < 10; i++){
@@ -495,6 +519,18 @@ public class Configuration {
 		return spine;
 	}
 	
+	/**
+	 * builds dorm wing
+	 * @param hall - list of plain modules
+	 * @param dorm - list of dormitory modules
+	 * @param sani - list of sanitation modules
+	 * @param gym - list of gym modules
+	 * @param fw - list of food and water modules
+	 * @param can - list of canteen modules
+	 * @param x - x midpoint for wing
+	 * @param y - x midpoint for wing
+	 * @return List of altered modules
+	 */
 	private ArrayList<Module> buildDorm(ArrayList<Module> hall, ArrayList<Module> dorm, ArrayList<Module> sani, ArrayList<Module> gym, 
 			ArrayList<Module> fw, ArrayList<Module> can, int x, int y){
 		
@@ -540,6 +576,13 @@ public class Configuration {
 		return dormWing;
 	}
 	
+	/**
+	 * pulls module from list, changes coordinates, and places in new list
+	 * @param addList - the list to be added to
+	 * @param removeList - the list to be removed from
+	 * @param x - x coordinate to be placed at
+	 * @param y - y coordinate to be placed at
+	 */
 	private void pullAndPlace(ArrayList<Module> addList, ArrayList<Module> removeList, int x, int y){
 		if(!removeList.isEmpty()){
 			Module temp = removeList.remove(0);
@@ -548,7 +591,18 @@ public class Configuration {
 			addList.add(temp);
 		}
 	}
-	
+	/**
+	 * builds control wing
+	 * @param cont - List of control modules
+	 * @param pow - List of power modules
+	 * @param med - List of medical modules
+	 * @param air - List of airlock modules
+	 * @param sani - List of sanitation modules
+	 * @param plain - List of plain modules
+	 * @param x - x midpoint for control wing
+	 * @param y - y midpoint for control wing
+	 * @return list of altered modules
+	 */
 	private ArrayList<Module> buildControl(ArrayList<Module> cont, ArrayList<Module> pow, ArrayList<Module> med,
 			ArrayList<Module> air, ArrayList<Module> sani, ArrayList<Module> plain, int x, int y){
 		
@@ -583,6 +637,19 @@ public class Configuration {
 		return contWing;
 	}
 	
+	/**
+	 * builds west wing
+	 * @param plain - list of plain modules
+	 * @param dorm - list of dormitory modules
+	 * @param sani - list of sanitation modules
+	 * @param fw - list of food and water modules
+	 * @param can - list of canteen modules
+	 * @param gym - list of gym modules
+	 * @param med - list of medical modules
+	 * @param x - x midpoint for west wing
+	 * @param y - y midpoint for west wing
+	 * @return list of altered modules
+	 */
 	private ArrayList<Module> buildWestWing(ArrayList<Module> plain, ArrayList<Module> dorm, ArrayList<Module> sani,
 			ArrayList<Module> fw, ArrayList<Module> can, ArrayList<Module> gym, ArrayList<Module> med, int x, int y){
 		
@@ -878,6 +945,11 @@ public class Configuration {
 		return eastWing;
 	}
 	
+	/**
+	 * Builds full2 configuration
+	 * @param full - Configuration with full2 previously set
+	 * @return configuration containing a list full2 of appropiately altered modules
+	 */
 	public Configuration buildFull2(Configuration full){
 		ArrayList<Module> fullList = full.getFull2();
 		ArrayList<Module> config = new ArrayList<Module>();
@@ -928,6 +1000,11 @@ public class Configuration {
 		return full;
 	}
 	
+	/**
+	 * Ensures that no damaged or modules within unusable area are used in configuration
+	 * @param dirtyList - list containing damaged modules
+	 * @return a list containing no damaged modules
+	 */
 	private ArrayList<Module> cleanList(ArrayList<Module> dirtyList){
 		for(int i = 0; i < dirtyList.size(); i++){
 			if(dirtyList.get(i).getDamage() == "Damaged"){
