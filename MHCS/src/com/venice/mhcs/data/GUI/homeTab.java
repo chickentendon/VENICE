@@ -26,20 +26,26 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class homeTab  {
+	
+	//Declare panels 
 	private static VerticalPanel tommyPC = new VerticalPanel();
 	static VerticalPanel vp = new VerticalPanel();
-
+	static FlowPanel space = new FlowPanel();
 	public static AbsolutePanel homePanel = new AbsolutePanel();
+	
+	//Declare logos and background image
 	static Image nasa = new Image("images/nasa.png");
 	static Image esa = new Image("images/esa.jpg");
 	static Image mars = new Image("images/mars1");
-	static FlowPanel space = new FlowPanel();
+
+	//Declare labels
 	static Label header = new Label("Mars Habitat Control System");
-	Label version = new Label("Version 1.2");
+	static Label version = new Label("Version 1.2");
 	static int count = 120;
 	static Label countDown = new Label();
     static Button b = new Button("Reset Calibration Timer");
 	
+    //Timer declaration and handling
 	static Timer tenDay = new Timer() {
 		  @Override
 		public void run() {
@@ -54,12 +60,6 @@ public class homeTab  {
 		  }
 	};
 		  
-
-
-	
-		  
-		
-	
 	public static void start(){
 		startFeed();
 	}
@@ -98,46 +98,53 @@ public class homeTab  {
 			return vp;
 	}
 
-
+	/**
+	 * Pulls weather and sunset info from Wunderground API
+	 * @param rt
+	 * @return vp
+	 */
 	public static VerticalPanel update(String rt) {
 		
-		 //vp.add(new Label(rt)); //TO VIEW
-	
 		 String sAll = rt;
-		 
-		 JSONObject jA = (JSONObject)JSONParser.parseLenient(sAll);
-
-		 
-		 JSONValue jSun = jA.get("sun_phase");
-		 
-		 JSONValue jTry = jA.get("current_observation");
-		 
-		 JSONObject astro = (JSONObject)JSONParser.parseLenient(jSun.toString());
-		 JSONObject jB = (JSONObject)JSONParser.parseLenient(jTry.toString());
-		 
-		 JSONValue temp = jB.get("temp_c");
-		 JSONValue visibility = jB.get("visibility_km");
-		 
-		 JSONValue sunsetH = astro.get("sunset");
-		 
-		 String sTemp = "Temp : " + temp.toString() + " °C";
-		 String sVisibility = "Visibility : " + visibility.toString() + " km";
-		
-		 sVisibility = sVisibility.replace("\"", "");
 		 String sunsetHour;
 		 String sunsetMin;
 		 String sunset;
+		 
+		 //create objects and get conditions info
+		 JSONObject jA = (JSONObject)JSONParser.parseLenient(sAll);
+		 JSONValue jSun = jA.get("sun_phase");
+		 JSONValue jTry = jA.get("current_observation");
+		 JSONObject astro = (JSONObject)JSONParser.parseLenient(jSun.toString());
+		 JSONObject jB = (JSONObject)JSONParser.parseLenient(jTry.toString());
+		 
+		 //Pull weather and sunset info
+		 JSONValue temp = jB.get("temp_c");
+		 JSONValue visibility = jB.get("visibility_km");
+		 JSONValue sunsetH = astro.get("sunset");
+		 
+		 //Store info to string
+		 String sTemp = "Temp : " + temp.toString() + " °C";
+		 String sVisibility = "Visibility : " + visibility.toString() + " km";
+		 sVisibility = sVisibility.replace("\"", "");
+		 
+		 //Parse extra text to format info to  (hours:minutes)
 		 sunsetHour = sunsetH.toString();
 		 sunsetHour = sunsetHour.subSequence(9, 11).toString();
 		 sunsetMin = sunsetH.toString();
 		 sunsetMin = sunsetMin.subSequence(24, 26).toString();
 		 sunset = "Today's sunset occurs at " + sunsetHour + ":" + sunsetMin;
+		 
+		 //Creating labels out of API info
 		 Label tempLabel = new Label(sTemp);
 		 Label visLabel = new Label(sVisibility);
 		 Label sunsetLabel = new Label (sunset);
+		 
+		 //set CSS defined styles to labels
 		 tempLabel.setStylePrimaryName("labelText");
 		 visLabel.setStylePrimaryName("labelText");
 		 sunsetLabel.setStylePrimaryName("labelText");
+		 
+		 //include Wunderground logo per their guidelines
 		 Image logo = new Image("images/weather.png");
 		 vp.add(logo);
 		 vp.add(tempLabel); //TO VIEW
@@ -147,42 +154,69 @@ public class homeTab  {
 		 return vp;
 	}
 	
+	/**
+	 * creates main panel widgets
+	 * @return homePanel
+	 */
 	public static AbsolutePanel getMain() {
+		//timer characteristics
 		start();
 		tenDay.scheduleRepeating(1000);
+		
+		//set CSS defined style of countdown text
 		countDown.getElement().getStyle().setMarginTop(50, Style.Unit.PX);
 		countDown.setStylePrimaryName("labelText");
+		
+		//Disable reset button while timer is active 
 		b.setEnabled(false);
-
+		
+		//Add clickhandler to reset rover calibration and play sound on click
 		b.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
- 				SoundController soundController = new SoundController();
+ 				//initialize and play sound on click
+				SoundController soundController = new SoundController();
 				Sound sound = soundController.createSound(Sound.MIME_TYPE_AUDIO_BASIC,
 				    "http://www.d.umn.edu/~ronni111/war/rovercalibrated.mp3");
 				sound.play();
+				
+			//set count to 600 and restart timer	
 			count = 600;
     		tenDay.run();
     		tenDay.scheduleRepeating(1000);
+    		
+    		//disable button while timer is activeß
     		b.setEnabled(false);
 		}
 		});
 		
+		//set CSS defined styles to homePanel and header
 		homePanel.setStylePrimaryName("homeBackground");
 		header.setStylePrimaryName("h1");
+		
+		//set dimensions of space panel and make it invisible
 		space.setHeight("25px");
 		space.setWidth("1");
 		space.getElement().getStyle().setOpacity(100);
+		
+		//center align elements in vp and tommyPCß
 		vp.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		tommyPC.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		
+		//add widgets to tommyPC VerticalPanel
 		tommyPC.add(header);
+		tommyPC.add(version);
 		tommyPC.add(vp);
 		tommyPC.add(countDown);
 		tommyPC.add(b);
 		tommyPC.add(space);
 		tommyPC.add(nasa);
 		tommyPC.add(esa);
+		
+		//Add tommyPC to Homepanel
 		homePanel.add(tommyPC);
+		
+		//center align HomePanel 
 		homePanel.getElement().setAttribute("align", "center");
 		
 		return homePanel;
