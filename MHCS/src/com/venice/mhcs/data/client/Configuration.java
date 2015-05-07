@@ -187,9 +187,13 @@ public class Configuration {
 	 */
 	private int findXSite(ArrayList<Module> minList){
 		int tempX = 0;
+		int tempY = 0;
 		int site = 0;
 		for(int i = 0; i < minList.size(); i++){
 			tempX += Integer.parseInt(minList.get(i).getX());
+		}
+		for(int i = 0; i < minList.size(); i++){
+			tempY += Integer.parseInt(minList.get(i).getY());
 		}
 		
 		site = tempX/minList.size();
@@ -198,6 +202,8 @@ public class Configuration {
 		else if(site == 2) site += 1;
 		else if(site == 100) site -= 2;
 		else if(site == 99) site -= 1;
+		else if(site >= 38 && site <= 45 && tempY >= 40) site -= 8;
+		else if(site >= 45 && site <= 52 && tempY >= 40) site +=8;
 		
 		return site;
 	}
@@ -209,9 +215,13 @@ public class Configuration {
 	 */
 	private int findYSite(ArrayList<Module> minList){
 		int tempY = 0;
+		int tempX = 0;
 		int site = 0;
 		for(int i = 0; i < minList.size(); i++){
 			tempY += Integer.parseInt(minList.get(i).getY());
+		}
+		for(int i = 0; i < minList.size(); i++){
+			tempX += Integer.parseInt(minList.get(i).getX());
 		}
 		
 		site = tempY/minList.size();
@@ -220,6 +230,7 @@ public class Configuration {
 		else if(site == 2) site += 1;
 		else if(site == 50) site -= 2;
 		else if(site == 49) site -= 1;
+		else if(site >= 39 && site <= 50 && tempX >= 40 && tempY <= 50) site -= 13;
 		
 		return site;
 	}
@@ -338,10 +349,15 @@ public class Configuration {
 	 */
 	private int findX(ArrayList<Module> full){
 		int tempX = 0;
+		int tempY = 0;
 		int site = 0;
 		for(int i = 0; i < full.size(); i++){
 			tempX += Integer.parseInt(full.get(i).getX());		
 		}
+		for(int i = 0; i < full.size(); i++){
+			tempY += Integer.parseInt(full.get(i).getY());		
+		}
+		
 		site = tempX/full.size();
 		
 		if(site == 5) site++;
@@ -357,15 +373,26 @@ public class Configuration {
 		if(site == 99) site -= 5;
 		if(site == 100) site -= 6;
 		
+		if(site > 45 && site <= 50 && tempY >= 40) site += 11;
+		if(site <= 45 && site >= 40 && tempY >= 40)site -= 11;
+		
+		if(site >= 34 && site < 40 && tempY >= 40) site -= 7;
+		if(site > 50 && site <= 55 && tempY >= 40) site += 6;
+		
 		return site;
 	}
 	
 	private int findY(ArrayList<Module> full){
 		int tempY = 0;
+		int tempX = 0;
 		int site = 0;
 		for(int i = 0; i < full.size(); i++){
-			tempY += Integer.parseInt(full.get(i).getX());		
+			tempY += Integer.parseInt(full.get(i).getY());		
 		}
+		for(int i = 0; i < full.size(); i++){
+			tempX += Integer.parseInt(full.get(i).getX());		
+		}
+		
 		site = tempY/full.size();
 		
 		if(site == 6) site++;
@@ -381,6 +408,9 @@ public class Configuration {
 		if(site == 48) site -= 4;
 		if(site == 49) site -= 5;
 		if(site == 50) site -= 6;
+		
+		if(site > 40 && site <= 50 && tempX >= 40 && tempX <= 50) site -= 17;
+		if(site >= 34 && site <= 40 && tempX >= 40 && tempX <= 50) site -= 6;
 		
 		return site;
 	}
@@ -398,6 +428,9 @@ public class Configuration {
 	
 	public Configuration buildFull1(Configuration full){
 		ArrayList<Module> fullList = full.getFull1();
+		
+		fullList = cleanList(fullList);
+		
 		ArrayList<Module> config = new ArrayList<Module>();
 		int x = findX(fullList);
 		int y = findY(fullList);
@@ -848,6 +881,9 @@ public class Configuration {
 	public Configuration buildFull2(Configuration full){
 		ArrayList<Module> fullList = full.getFull1();
 		ArrayList<Module> config = new ArrayList<Module>();
+		
+		fullList = cleanList(fullList);
+		
 		int x = findX(fullList);
 		int y = findY(fullList);
 		
@@ -892,6 +928,14 @@ public class Configuration {
 		return full;
 	}
 	
+	private ArrayList<Module> cleanList(ArrayList<Module> dirtyList){
+		for(int i = 0; i < dirtyList.size(); i++){
+			if(dirtyList.get(i).getDamage() == "Damaged"){
+				dirtyList.remove(i);
+			}
+		}
+		return dirtyList;
+	}
 	
 	private ArrayList<Module> min1 = new ArrayList<Module>();
 	private ArrayList<Module> min2 = new ArrayList<Module>();
